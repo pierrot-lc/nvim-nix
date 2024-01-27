@@ -1,90 +1,98 @@
-local configs = require('nvim-treesitter.configs')
-vim.g.skip_ts_context_comment_string_module = true
-configs.setup {
-  -- ensure_installed = 'all',
-  -- auto_install = false, -- Do not automatically install missing parsers when entering buffer
-  highlight = {
-    enable = true,
-    disable = function(_, buf)
-      local max_filesize = 100 * 1024 -- 100 KiB
-      local ok, stats = pcall(vim.loop.fs_stat, vim.api.nvim_buf_get_name(buf))
-      if ok and stats and stats.size > max_filesize then
-        return true
-      end
-    end,
-  },
-  textobjects = {
-    select = {
-      enable = true,
-      -- Automatically jump forward to textobject, similar to targets.vim
-      lookahead = true,
-      keymaps = {
-        ['af'] = '@function.outer',
-        ['if'] = '@function.inner',
-        ['ac'] = '@class.outer',
-        ['ic'] = '@class.inner',
-        ['aC'] = '@call.outer',
-        ['iC'] = '@call.inner',
-        ['a#'] = '@comment.outer',
-        ['i#'] = '@comment.outer',
-        ['ai'] = '@conditional.outer',
-        ['ii'] = '@conditional.outer',
-        ['al'] = '@loop.outer',
-        ['il'] = '@loop.inner',
-        ['aP'] = '@parameter.outer',
-        ['iP'] = '@parameter.inner',
-      },
-      selection_modes = {
-        ['@parameter.outer'] = 'v', -- charwise
-        ['@function.outer'] = 'V', -- linewise
-        ['@class.outer'] = '<c-v>', -- blockwise
-      },
-    },
-    swap = {
-      enable = true,
-      swap_next = {
-        ['<leader>a'] = '@parameter.inner',
-      },
-      swap_previous = {
-        ['<leader>A'] = '@parameter.inner',
-      },
-    },
-    move = {
-      enable = true,
-      set_jumps = true, -- whether to set jumps in the jumplist
-      goto_next_start = {
-        [']m'] = '@function.outer',
-        [']P'] = '@parameter.outer',
-      },
-      goto_next_end = {
-        [']m'] = '@function.outer',
-        [']P'] = '@parameter.outer',
-      },
-      goto_previous_start = {
-        ['[m'] = '@function.outer',
-        ['[P'] = '@parameter.outer',
-      },
-      goto_previous_end = {
-        ['[m'] = '@function.outer',
-        ['[P'] = '@parameter.outer',
-      },
-    },
-    nsp_interop = {
-      enable = true,
-      peek_definition_code = {
-        ['df'] = '@function.outer',
-        ['dF'] = '@class.outer',
-      },
-    },
-  },
-}
+require("nvim-treesitter.configs").setup({
+	-- Highlight based on treesitter.
+	highlight = { enable = true },
+	-- Indentation based on treesitter (use `=` operator).
+	ident = { enable = true },
+	-- Incremental selection in the parsed tree.
+	incremental_selection = {
+		enable = true,
+		keymaps = {
+			init_selection = "gn",
+			node_incremental = "<TAB>",
+			node_decremental = "<S-TAB>",
+			scope_incremental = false,
+		},
+	},
+	-- Refactor modules.
+	refactor = {
+		highlight_definitions = {
+			enable = true,
+			clear_on_cursor_move = true,
+		},
+		highlight_current_scope = { enable = false },
+		smart_rename = {
+			enable = false,
+			keymaps = { smart_rename = "gR" },
+		},
+	},
+	-- Manipulate text-objects.
+	textobjects = {
+		-- Adding text-objects to select operators.
+		select = {
+			enable = true,
+			lookahead = true,
+			include_surrounding_whitespace = true,
+			keymaps = {
+				["af"] = { query = "@function.outer", desc = "Select function outer" },
+				["if"] = { query = "@function.inner", desc = "Select function inner" },
+				["ac"] = { query = "@comment.outer", desc = "Select comment outer" },
+				["ic"] = { query = "@comment.inner", desc = "Select comment inner" },
+				["al"] = { query = "@loop.outer", desc = "Select loop outer" },
+				["il"] = { query = "@loop.inner", desc = "Select loop innter" },
+				["ai"] = { query = "@conditional.outer", desc = "Select conditional outer" },
+				["ii"] = { query = "@conditional.inner", desc = "Select conditional inner" },
+				["ap"] = { query = "@parameter.outer", desc = "Select parameter outer" },
+				["ai"] = { query = "@parameter.inner", desc = "Select parameter inner" },
+			},
+		},
+		-- Swap two text-objects.
+		swap = {
+			enable = true,
+			swap_next = {
+				["<Leader>ls"] = { query = "@parameter.inner", desc = "Swap with the next parameter" },
+			},
+			swap_previous = {
+				["<Leader>lS"] = { query = "@parameter.inner", desc = "Swap with the previous parameter" },
+			},
+		},
+		-- Move around text-objects.
+		move = {
+			enable = true,
+			set_jumps = true,
+			goto_next_start = {
+				["]m"] = "@function.outer",
+				["]]"] = { query = "@class.outer", desc = "Next class start" },
+			},
+			goto_next_end = {
+				["]M"] = "@function.outer",
+				["]["] = "@class.outer",
+			},
+			goto_previous_start = {
+				["[m"] = "@function.outer",
+				["[["] = "@class.outer",
+			},
+			goto_previous_end = {
+				["[M"] = "@function.outer",
+				["[]"] = "@class.outer",
+			},
+		},
+		-- Peek definition code using built-in LSP.
+		lsp_interop = {
+			enable = true,
+			border = "none",
+			peek_definition_code = {
+				["<Leader>lf"] = { query = "@function.outer", desc = "Show function definition" },
+				["<Leader>lc"] = { query = "@class.outer", desc = "Show class definition" },
+			},
+		},
+	},
+})
 
-require('treesitter-context').setup {
-  max_lines = 3,
-}
+require("treesitter-context").setup({
+	enable = true,
+	max_lines = 1,
+})
 
-require('ts_context_commentstring').setup()
-
--- Tree-sitter based folding
--- vim.opt.foldmethod = 'expr'
-vim.opt.foldexpr = 'nvim_treesitter#foldexpr()'
+-- Use treesitter expressions for folds.
+vim.opt.foldmethod = "expr"
+vim.opt.foldexpr = "nvim_treesitter#foldexpr()"

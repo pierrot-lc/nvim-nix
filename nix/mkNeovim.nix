@@ -149,7 +149,8 @@ with lib;
         }"'';
   in
     # wrapNeovimUnstable is the nixpkgs utility function for building a Neovim derivation.
-    pkgs.wrapNeovimUnstable pkgs.neovim-unwrapped (neovimConfig
+    # The nightly build is used here, thanks to the added overlay in the flake.nix.
+    pkgs.wrapNeovimUnstable pkgs.neovim-nightly (neovimConfig
       // {
         luaRcContent = initLua;
         wrapperArgs =

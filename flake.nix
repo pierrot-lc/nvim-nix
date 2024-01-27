@@ -4,19 +4,52 @@
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     flake-utils.url = "github:numtide/flake-utils";
+    neovim-nightly = {
+      url = "github:nix-community/neovim-nightly-overlay";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     # Add bleeding-edge plugins here.
     # They can be updated with `nix flake update` (make sure to commit the generated flake.lock)
-    # wf-nvim = {
-    #   url = "github:Cassin01/wf.nvim";
-    #   flake = false;
-    # };
+    gitmoji-nvim = {
+      url = "github:Dynge/gitmoji.nvim";
+      flake = false;
+    };
+    nordic-nvim = {
+      url = "github:AlexvZyl/nordic.nvim";
+      flake = false;
+    };
+    nvim-puppeteer = {
+      url = "github:chrisgrieser/nvim-puppeteer";
+      flake = false;
+    };
+    nvim-rooter = {
+      url = "github:notjedi/nvim-rooter.lua";
+      flake = false;
+    };
+    outline-nvim = {
+      url = "github:hedyhli/outline.nvim";
+      flake = false;
+    };
+    telescope-repo-nvim = {
+      url = "github:cljoly/telescope-repo.nvim";
+      flake = false;
+    };
+    vim-characterize = {
+      url = "github:tpope/vim-characterize";
+      flake = false;
+    };
+    vim-kitty = {
+      url = "github:fladson/vim-kitty";
+      flake = false;
+    };
   };
 
   outputs = inputs @ {
     self,
     nixpkgs,
     flake-utils,
+    neovim-nightly,
     ...
   }: let
     supportedSystems = [
@@ -35,6 +68,7 @@
         overlays = [
           # Import the overlay, so that the final Neovim derivation(s) can be accessed via pkgs.<nvim-pkg>
           neovim-overlay
+          neovim-nightly.overlay
         ];
       };
       shell = pkgs.mkShell {
