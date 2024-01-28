@@ -48,6 +48,9 @@ require('conform').setup {
     tex = { 'latexindent' },
   },
 }
+require('conform').formatters.latexindent = {
+  command = 'latexindent.pl',
+}
 
 vim.keymap.set('n', '<leader>F', require('conform').format, { desc = 'Format' })
 
