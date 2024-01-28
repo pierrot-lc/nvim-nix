@@ -45,6 +45,7 @@ require('conform').setup {
     sh = { 'shfmt' },
     json = { 'jq' },
     latex = { 'latexindent' },
+    tex = { 'latexindent' },
   },
 }
 
