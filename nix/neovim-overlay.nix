@@ -100,6 +100,10 @@ with final.pkgs.lib; let
   ];
 
   extraPackages = with pkgs; [
+    # Neovim dependency.
+    luajit
+
+    # Extra packages for your plugins.
     isort
     jq
     lua-language-server
