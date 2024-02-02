@@ -11,16 +11,13 @@ vim.keymap.set("n", "<leader>a", "<cmd>keepjumps normal! ggVG<cr>", { desc = "Se
 vim.keymap.set({ "n", "x" }, "cp", '"+y', { desc = "Copy to system clipboard" })
 vim.keymap.set({ "n", "x" }, "cv", '"+p', { desc = "Paste from system clipboard" })
 vim.keymap.set("n", "x", '"_x', { desc = "Delete without changing internal clipboard" })
-vim.keymap.set("n", "dd", function()
-	if vim.api.nvim_get_current_line():match("^%s*$") then
-		return '"_dd'
-	else
-		return "dd"
-	end
-end, { desc = "Smart dd, yank only if the line is not empty" })
 
 -- Window jumps
 vim.keymap.set("n", "<C-j>", "<C-w>j", { desc = "Quick move to bottom buffer" })
 vim.keymap.set("n", "<C-k>", "<C-w>k", { desc = "Quick move to upper buffer" })
 vim.keymap.set("n", "<C-h>", "<C-w>h", { desc = "Quick move to left buffer" })
 vim.keymap.set("n", "<C-l>", "<C-w>l", { desc = "Quick move to right buffer" })
+
+-- Moves
+vim.keymap.set({ "n", "o", "x" }, "k", "gk", { desc = "Up on wrapped lines" })
+vim.keymap.set({ "n", "o", "x" }, "j", "gj", { desc = "Down on wrapped lines" })

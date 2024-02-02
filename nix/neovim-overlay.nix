@@ -63,7 +63,6 @@ with final.pkgs.lib; let
     nvim-ufo
     todo-comments-nvim
     toggleterm-nvim
-    vim-lastplace
     (mkNvimPlugin inputs.nvim-puppeteer "nvim-puppeteer")
     (mkNvimPlugin inputs.nvim-rooter "nvim-rooter")
     (mkNvimPlugin inputs.outline-nvim "outline-nvim")
