@@ -1,3 +1,5 @@
+vim.cmd("colorscheme kanagawa")
+
 local dashboard = require("alpha.themes.dashboard")
 local logo = [[
 $$\   $$\                    $$\    $$\ $$\
@@ -32,18 +34,11 @@ dashboard.opts.layout[1].val = 8
 
 require("alpha").setup(dashboard.opts)
 
-require("gitsigns").setup()
-
-require("nordic").load()
 require("lualine").setup({
 	options = {
-		theme = "nordic",
+		theme = "auto",
 	},
 })
-
-vim.opt.timeout = true
-vim.opt.timeoutlen = 300
-require("which-key").setup()
 
 require("zen-mode").setup({
 	window = {

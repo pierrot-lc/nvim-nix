@@ -15,19 +15,6 @@ with final.pkgs.lib; let
   mkNeovim = pkgs.callPackage ./mkNeovim.nix {};
 
   all-plugins = with pkgs.vimPlugins; [
-    # Treesitter.
-    nvim-treesitter.withAllGrammars
-    nvim-treesitter-context
-    nvim-treesitter-refactor
-    nvim-treesitter-textobjects
-    hmts-nvim
-
-    # LSPs.
-    nvim-lspconfig
-    fidget-nvim
-    lsp_signature-nvim
-    neodev-nvim
-
     # Completers.
     nvim-cmp
     cmp-calc
@@ -50,22 +37,36 @@ with final.pkgs.lib; let
       type = "lua";
     }
 
-    # Miscs.
+    # Folds.
+    nvim-ufo
+
+    # Formatters.
     conform-nvim
+
+    # Gits.
+    gitsigns-nvim
+    neogit
+    vim-fugitive
+
+    # Linters.
+    nvim-lint
+
+    # LSPs.
+    nvim-lspconfig
+    fidget-nvim
+    lsp_signature-nvim
+    neodev-nvim
+    (mkNvimPlugin inputs.outline-nvim "outline-nvim")
+
+    # Miscs.
     copilot-lua
     dial-nvim
     leap-nvim
-    neogit
-    nvim-autopairs
-    nvim-lint
     nvim-spider
-    nvim-surround
-    nvim-ufo
     todo-comments-nvim
     toggleterm-nvim
     (mkNvimPlugin inputs.nvim-puppeteer "nvim-puppeteer")
     (mkNvimPlugin inputs.nvim-rooter "nvim-rooter")
-    (mkNvimPlugin inputs.outline-nvim "outline-nvim")
     (mkNvimPlugin inputs.vim-characterize "vim-characterize")
     (mkNvimPlugin inputs.vim-kitty "vim-kitty")
 
@@ -74,9 +75,24 @@ with final.pkgs.lib; let
 
     # Neorg.
     neorg
+    diffview-nvim
+
+    # Pairs.
+    nvim-autopairs
+    nvim-surround
+
+    # Pencil.
+    vim-pencil
 
     # Tree.
     nvim-tree-lua
+
+    # Treesitter.
+    nvim-treesitter.withAllGrammars
+    nvim-treesitter-context
+    nvim-treesitter-refactor
+    nvim-treesitter-textobjects
+    hmts-nvim
 
     # Telescope.
     telescope-nvim
@@ -86,22 +102,19 @@ with final.pkgs.lib; let
     # UI.
     alpha-nvim
     dressing-nvim
-    gitsigns-nvim
+    kanagawa-nvim
     lualine-nvim
-    which-key-nvim
     zen-mode-nvim
-    (mkNvimPlugin inputs.nordic-nvim "nordic-nvim")
 
-    # Dependencies.
-    diffview-nvim  # For Neogit.
+    # Which-key.
+    which-key-nvim
+
+    # General dependencies.
     nvim-web-devicons
     plenary-nvim
   ];
 
   extraPackages = with pkgs; [
-    # Neovim dependency.
-    luajit
-
     # Extra packages for your plugins.
     isort
     jq

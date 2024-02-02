@@ -79,7 +79,7 @@ require("nvim-treesitter.configs").setup({
 		-- Peek definition code using built-in LSP.
 		lsp_interop = {
 			enable = true,
-			border = "none",
+			border = "rounded",
 			peek_definition_code = {
 				["<Leader>lf"] = { query = "@function.outer", desc = "Show function definition" },
 				["<Leader>lc"] = { query = "@class.outer", desc = "Show class definition" },

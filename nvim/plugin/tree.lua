@@ -21,7 +21,7 @@ require("nvim-tree").setup({
 		float = {
 			enable = true,
 			quit_on_focus_loss = true,
-			open_win_config = { border = "none" },
+			open_win_config = { border = "rounded" },  -- See :h nvim_open_win.
 		},
 	},
 })

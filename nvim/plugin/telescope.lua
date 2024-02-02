@@ -27,9 +27,3 @@ vim.keymap.set("n", "<leader>tc", builtin.commands, { desc = "Commands" })
 vim.keymap.set("n", "<leader>tm", builtin.marks, { desc = "Marks" })
 vim.keymap.set("n", "<leader>tp", builtin.resume, { desc = "Resume previous search" })
 vim.keymap.set("n", "<leader>tr", "<cmd>Telescope repo list<cr>", { desc = "Local repositories" })
-
-if pcall(require, "which-key") then
-	require("which-key").register({
-		["<Leader>t"] = { name = "+Telescope" },
-	})
-end

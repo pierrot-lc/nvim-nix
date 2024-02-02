@@ -1,5 +1,7 @@
 local lspconfig = require("lspconfig")
 
+vim.diagnostic.config({ update_in_insert = false })
+
 -- Load LSP servers.
 lspconfig["pylsp"].setup({
 	settings = {
@@ -84,7 +86,7 @@ require("lsp_signature").setup(signature_opts)
 
 -- LSP keymappings.
 vim.keymap.set("n", "gl", function()
-	return vim.diagnostic.open_float(nil, { focus = false })
+	return vim.diagnostic.open_float(nil, { focus = false, border = "rounded" })
 end, { desc = "Show diagnostics" })
 
 -- Use LspAttach autocommand to only map the following keys
@@ -169,14 +171,12 @@ vim.api.nvim_create_autocmd("LspAttach", {
 	end,
 })
 
-if pcall(require, "which-key") then
-	require("which-key").register({
-		["<Leader>l"] = { name = "+LSP" },
-	})
-end
-
 require("fidget").setup({
 	-- window = { blend = 0 },
 })
 
 require("neodev").setup()
+
+require("outline").setup({})
+-- Use "!" operator to not change the window focus.
+vim.keymap.set("n", "<leader>lo", "<cmd>Outline!<cr>", { desc = "Toggle symbols outline" })
