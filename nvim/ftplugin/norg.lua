@@ -1,9 +1,12 @@
 -- ========================================================================== --
 -- ==                          NEORG SPECIFICS                             == --
 -- ========================================================================== --
-vim.wo.wrap = true
-vim.bo.tabstop = 2
 vim.bo.shiftwidth = 2
+vim.bo.tabstop = 2
+vim.wo.colorcolumn = vim.g.text_colorcolumn
+vim.wo.wrap = false
+
+vim.cmd("call pencil#init()")
 
 vim.keymap.set("n", "<LocalLeader>c", "<cmd>Neorg toggle-concealer<CR>", { desc = "Toggle conceiler", buffer = 0 })
 vim.keymap.set("n", "<LocalLeader>im", "<cmd>Neorg inject-metadata<CR>", { desc = "Metadata", buffer = 0 })

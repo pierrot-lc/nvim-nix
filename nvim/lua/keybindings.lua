@@ -19,5 +19,5 @@ vim.keymap.set("n", "<C-h>", "<C-w>h", { desc = "Quick move to left buffer" })
 vim.keymap.set("n", "<C-l>", "<C-w>l", { desc = "Quick move to right buffer" })
 
 -- Moves
-vim.keymap.set({ "n", "o", "x" }, "k", "gk", { desc = "Up on wrapped lines" })
-vim.keymap.set({ "n", "o", "x" }, "j", "gj", { desc = "Down on wrapped lines" })
+-- vim.keymap.set({ "n", "o", "x" }, "k", "gk", { desc = "Up on wrapped lines" })
+-- vim.keymap.set({ "n", "o", "x" }, "j", "gj", { desc = "Down on wrapped lines" })
