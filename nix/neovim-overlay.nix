@@ -45,7 +45,6 @@ with final.pkgs.lib; let
 
     # Gits.
     gitsigns-nvim
-    neogit
     vim-fugitive
 
     # Linters.
