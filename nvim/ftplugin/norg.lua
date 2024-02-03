@@ -6,7 +6,8 @@ vim.bo.tabstop = 2
 vim.wo.colorcolumn = vim.g.text_colorcolumn
 vim.wo.wrap = false
 
-vim.cmd("call pencil#init()")
+local textwidth = tonumber(vim.g.text_colorcolumn)
+vim.cmd("call pencil#init({'wrap': 'hard', 'textwidth': " .. textwidth .. "})")
 
 vim.keymap.set("n", "<LocalLeader>c", "<cmd>Neorg toggle-concealer<CR>", { desc = "Toggle conceiler", buffer = 0 })
 vim.keymap.set("n", "<LocalLeader>im", "<cmd>Neorg inject-metadata<CR>", { desc = "Metadata", buffer = 0 })

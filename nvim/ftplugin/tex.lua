@@ -6,4 +6,5 @@ vim.bo.tabstop = 2
 vim.wo.colorcolumn = vim.g.text_colorcolumn
 vim.wo.wrap = false
 
-vim.cmd("call pencil#init()")
+local textwidth = tonumber(vim.g.text_colorcolumn)
+vim.cmd("call pencil#init({'wrap': 'hard', 'textwidth': " .. textwidth .. "})")
