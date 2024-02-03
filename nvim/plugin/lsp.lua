@@ -88,6 +88,7 @@ require("lsp_signature").setup(signature_opts)
 vim.keymap.set("n", "gl", function()
 	return vim.diagnostic.open_float(nil, { focus = false, border = "rounded" })
 end, { desc = "Show diagnostics" })
+vim.keymap.set("n", "gs", vim.lsp.buf.signature_help, { desc = "Show signature" })
 
 -- Use LspAttach autocommand to only map the following keys
 -- after the language server attaches to the current buffer.

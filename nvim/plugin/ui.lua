@@ -51,8 +51,14 @@ require("zen-mode").setup({
 		},
 	},
 	plugins = {
+		options = {
+			enabled = true,
+			ruler = false,
+			laststatus = 0,
+		},
 		tmux = {
 			enabled = true,
+			ruler = false,
 		},
 		gitsigns = {
 			enabled = true,
@@ -60,8 +66,10 @@ require("zen-mode").setup({
 	},
 	on_open = function(_)
 		vim.diagnostic.disable()
+		vim.opt.colorcolumn = ""
 	end,
 	on_close = function()
 		vim.diagnostic.enable()
+		vim.opt.colorcolumn = "88"
 	end,
 })
