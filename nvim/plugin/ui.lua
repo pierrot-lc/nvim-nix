@@ -66,10 +66,8 @@ require("zen-mode").setup({
 	},
 	on_open = function(_)
 		vim.diagnostic.disable()
-		vim.opt.colorcolumn = ""
 	end,
 	on_close = function()
 		vim.diagnostic.enable()
-		vim.opt.colorcolumn = "88"
 	end,
 })
