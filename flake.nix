@@ -15,10 +15,6 @@
       url = "github:Dynge/gitmoji.nvim";
       flake = false;
     };
-    nordic-nvim = {
-      url = "github:AlexvZyl/nordic.nvim";
-      flake = false;
-    };
     nvim-puppeteer = {
       url = "github:chrisgrieser/nvim-puppeteer";
       flake = false;
