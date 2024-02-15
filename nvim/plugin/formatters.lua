@@ -1,10 +1,12 @@
 require("conform").setup({
 	formatters_by_ft = {
+		json = { "jq" },
+		just = { "just" },
+		latex = { "latexindent" },
 		lua = { "stylua" },
+		nix = { "alejandra" },
 		python = { "isort" },
 		sh = { "shfmt" },
-		json = { "jq" },
-		latex = { "latexindent" },
 		tex = { "latexindent" },
 	},
 })

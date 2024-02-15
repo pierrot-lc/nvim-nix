@@ -115,8 +115,10 @@ with final.pkgs.lib; let
 
   extraPackages = with pkgs; [
     # Extra packages for your plugins.
+    alejandra
     isort
     jq
+    just
     lua-language-server
     marksman
     nil
