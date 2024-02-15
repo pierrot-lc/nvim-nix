@@ -116,6 +116,7 @@ with final.pkgs.lib; let
   extraPackages = with pkgs; [
     # Extra packages for your plugins.
     alejandra
+    bibtex-tidy
     isort
     jq
     just
@@ -125,7 +126,6 @@ with final.pkgs.lib; let
     nodePackages_latest.bash-language-server
     nodePackages_latest.markdownlint-cli
     nodePackages_latest.nodejs
-    perl538Packages.LatexIndent
     proselint
     python311Packages.python-lsp-server
     pythonWithDebugpy
@@ -134,6 +134,7 @@ with final.pkgs.lib; let
     shellcheck
     shfmt
     stylua
+    texlab
     yamllint
 
     # Telescope repo dependencies.

@@ -54,6 +54,25 @@ lspconfig["lua_ls"].setup({
 		},
 	},
 })
+lspconfig["texlab"].setup({
+	auxDirectory = ".",
+	bibtexFormatter = "texlab",
+	build = {
+		executable = "latexmk",
+		forwardSearchAfter = false,
+		onSave = true,
+	},
+	chktex = {
+		onEdit = false,
+		onOpenAndSave = true,
+	},
+	diagnosticsDelay = 300,
+	formatterLineLength = 0,
+	latexFormatter = "latexindent",
+	latexindent = {
+		modifyLineBreaks = false,
+	},
+})
 lspconfig["bashls"].setup({})
 lspconfig["marksman"].setup({})
 lspconfig["nil_ls"].setup({})
