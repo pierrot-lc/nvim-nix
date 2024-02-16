@@ -2,7 +2,7 @@
 with final.pkgs.lib; let
   pkgs = final;
 
-  pythonWithDebugpy = pkgs.python311.withPackages (ps: with ps; [ debugpy ]);
+  pythonWithDebugpy = pkgs.python311.withPackages (ps: with ps; [debugpy]);
 
   # Use this to create a plugin from a flake input
   mkNvimPlugin = src: pname:
@@ -21,6 +21,7 @@ with final.pkgs.lib; let
     cmp-nvim-lsp
     cmp-path
     cmp-rg
+    cmp_luasnip
     (mkNvimPlugin inputs.gitmoji-nvim "gitmoji-nvim")
 
     # DAP.
@@ -30,9 +31,9 @@ with final.pkgs.lib; let
     {
       plugin = nvim-dap-python;
       config = ''
-      lua << EOF
-        require('dap-python').setup('${pythonWithDebugpy}/bin/python')
-      EOF
+        lua << EOF
+          require('dap-python').setup('${pythonWithDebugpy}/bin/python')
+        EOF
       '';
       type = "lua";
     }
@@ -83,6 +84,9 @@ with final.pkgs.lib; let
     # Pencil.
     vim-pencil
 
+    # Snippets.
+    luasnip
+
     # Tree.
     nvim-tree-lua
 
@@ -113,29 +117,40 @@ with final.pkgs.lib; let
     plenary-nvim
   ];
 
+  # Extra packages for your plugins.
   extraPackages = with pkgs; [
-    # Extra packages for your plugins.
+    nodePackages_latest.nodejs
+    ripgrep
+
+    # DAPs.
+    pythonWithDebugpy
+
+    # Formatters.
     alejandra
     bibtex-tidy
     isort
     jq
     just
+    shfmt
+    stylua
+
+    # Linters.
+    nodePackages_latest.markdownlint-cli
+    proselint
+    shellcheck
+    yamllint
+
+    # LSPs.
     lua-language-server
     marksman
     nil
     nodePackages_latest.bash-language-server
-    nodePackages_latest.markdownlint-cli
-    nodePackages_latest.nodejs
-    proselint
     python311Packages.python-lsp-server
-    pythonWithDebugpy
-    ripgrep
     ruff-lsp
-    shellcheck
-    shfmt
-    stylua
     texlab
-    yamllint
+
+    # LuaSnip dependencies.
+    luajitPackages.jsregexp
 
     # Telescope repo dependencies.
     bat

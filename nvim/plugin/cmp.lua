@@ -2,6 +2,7 @@ local lspconfig = require("lspconfig")
 local lspdefaults = lspconfig.util.default_config
 local capabilities = require("cmp_nvim_lsp").default_capabilities()
 local cmp = require("cmp")
+local luasnip = require("luasnip")
 
 require("gitmoji").setup({
 	filetypes = { "gitcommit", "gitrebase", "NeogitCommitMessage" },
@@ -21,49 +22,56 @@ local has_words_before = function()
 end
 
 local kind_icons = {
-	Text = " ",
-	Method = "󰆧 ",
-	Function = "󰊕 ",
-	Constructor = " ",
-	Field = "󰇽 ",
-	Variable = "󰂡 ",
 	Class = "󰠱 ",
+	Color = "󰏘 ",
+	Constant = "󰏿 ",
+	Constructor = " ",
+	Enum = " ",
+	EnumMember = " ",
+	Event = " ",
+	Field = "󰇽 ",
+	File = "󰈙 ",
+	Folder = "󰉋 ",
+	Function = "󰊕 ",
 	Interface = " ",
+	Keyword = "󰌋 ",
+	Method = "󰆧 ",
 	Module = " ",
+	Operator = "󰆕 ",
 	Property = "󰜢 ",
+	Reference = " ",
+	Snippet = " ",
+	Struct = " ",
+	Text = " ",
+	TypeParameter = "󰅲 ",
 	Unit = " ",
 	Value = "󰎠 ",
-	Enum = " ",
-	Keyword = "󰌋 ",
-	Snippet = " ",
-	Color = "󰏘 ",
-	File = "󰈙 ",
-	Reference = " ",
-	Folder = "󰉋 ",
-	EnumMember = " ",
-	Constant = "󰏿 ",
-	Struct = " ",
-	Event = " ",
-	Operator = "󰆕 ",
-	TypeParameter = "󰅲 ",
+	Variable = "󰂡 ",
 }
 local menu_icons = {
-	nvim_lsp = "λ ",
 	calc = " ",
+	gitmoji = " ",
+	luasnip = " ",
+	neorg = " ",
+	nvim_lsp = "λ ",
 	path = " ",
 	rg = " ",
-	gitmoji = " ",
-	neorg = " ",
 }
 
 cmp.setup({
+	snippet = {
+		expand = function(args)
+			luasnip.lsp_expand(args.body)
+		end,
+	},
 	sources = {
-		{ name = "path" },
-		{ name = "nvim_lsp" },
 		{ name = "calc" },
-		{ name = "rg" },
 		{ name = "gitmoji" },
-		{ name = "neorg" }, -- Optional, used in Neorg files.
+		{ name = "luasnip" },
+		{ name = "neorg" },
+		{ name = "nvim_lsp" },
+		{ name = "path" },
+		{ name = "rg" },
 	},
 	window = {
 		completion = cmp.config.window.bordered(),
@@ -96,6 +104,8 @@ cmp.setup({
 				-- We make sure there's a word before the cursor,
 				-- otherwise `cmp` could be triggered when we don't want to.
 				cmp.select_next_item()
+			elseif luasnip.expand_or_locally_jumpable() then
+				luasnip.expand_or_jump()
 			else
 				fallback()
 			end
@@ -103,6 +113,8 @@ cmp.setup({
 		["<S-TAB>"] = cmp.mapping(function(fallback)
 			if cmp.visible() then
 				cmp.select_prev_item()
+			elseif luasnip.jumpable(-1) then
+				luasnip.jump(-1)
 			else
 				fallback()
 			end
