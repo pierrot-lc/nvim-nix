@@ -24,7 +24,7 @@ with final.pkgs.lib; let
     cmp_luasnip
     (mkNvimPlugin inputs.gitmoji-nvim "gitmoji-nvim")
 
-    # DAP.
+    # DAPs.
     nvim-dap
     nvim-dap-ui
     nvim-dap-virtual-text
@@ -65,6 +65,8 @@ with final.pkgs.lib; let
     nvim-spider
     todo-comments-nvim
     toggleterm-nvim
+    undotree
+    vimtex
     (mkNvimPlugin inputs.nvim-puppeteer "nvim-puppeteer")
     (mkNvimPlugin inputs.nvim-rooter "nvim-rooter")
     (mkNvimPlugin inputs.vim-characterize "vim-characterize")

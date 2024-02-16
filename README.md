@@ -29,17 +29,23 @@ nix run "github:pierrot-lc/nvim-nix"
 1. Add this flake and the neovim-nightly flake to your NixOS flake inputs.
 
 ```nix
-inputs = {
-  nixpkgs.url = "nixpkgs/nixos-unstable";
+{
+  inputs = {
+    nixpkgs.url = "nixpkgs/nixos-unstable";
 
-  nvim-nix = {
-    url = "github:pierrot-lc/nvim-nix";
-    inputs.nixpkgs.follows = "nixpkgs";
+    nvim-nix = {
+      url = "github:pierrot-lc/nvim-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    neovim-nightly = {
+      url = "github:nix-community/neovim-nightly-overlay";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    # ...
   };
-  neovim-nightly = {
-    url = "github:nix-community/neovim-nightly-overlay";
-    inputs.nixpkgs.follows = "nixpkgs";
-  };
+
+  # ...
 }
 ```
 
