@@ -1,6 +1,9 @@
 require("nvim-treesitter.configs").setup({
 	-- Highlight based on treesitter.
-	highlight = { enable = true },
+	highlight = {
+		enable = true,
+		disable = { "latex" },  -- Handled by vimtex.
+	},
 	-- Indentation based on treesitter (use `=` operator).
 	ident = { enable = true },
 	-- Incremental selection in the parsed tree.
