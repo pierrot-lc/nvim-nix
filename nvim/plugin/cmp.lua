@@ -56,6 +56,7 @@ local menu_icons = {
 	nvim_lsp = "λ ",
 	path = " ",
 	rg = " ",
+	vimtex = " "
 }
 
 cmp.setup({
@@ -72,6 +73,7 @@ cmp.setup({
 		{ name = "nvim_lsp" },
 		{ name = "path" },
 		{ name = "rg" },
+		{ name = "vimtex"}
 	},
 	window = {
 		completion = cmp.config.window.bordered(),

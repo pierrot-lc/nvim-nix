@@ -66,7 +66,6 @@ with final.pkgs.lib; let
     todo-comments-nvim
     toggleterm-nvim
     undotree
-    vimtex
     (mkNvimPlugin inputs.nvim-puppeteer "nvim-puppeteer")
     (mkNvimPlugin inputs.nvim-rooter "nvim-rooter")
     (mkNvimPlugin inputs.vim-characterize "vim-characterize")
@@ -103,6 +102,10 @@ with final.pkgs.lib; let
     telescope-nvim
     telescope-fzf-native-nvim
     (mkNvimPlugin inputs.telescope-repo-nvim "telescope-repo-nvim")
+
+    # Tex.
+    vimtex
+    (mkNvimPlugin inputs.cmp-vimtex "cmp-vimtex")
 
     # UI.
     alpha-nvim

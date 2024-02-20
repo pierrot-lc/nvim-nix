@@ -20,6 +20,10 @@
 
     # Add bleeding-edge plugins here.
     # They can be updated with `nix flake update` (make sure to commit the generated flake.lock)
+    cmp-vimtex = {
+      url = "github:micangl/cmp-vimtex";
+      flake = false;
+    };
     gitmoji-nvim = {
       url = "github:Dynge/gitmoji.nvim";
       flake = false;
