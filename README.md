@@ -13,6 +13,9 @@ Some of the features:
 - DAP for Python.
 - Use [Neorg](https://github.com/nvim-neorg/neorg) for note taking.
 
+Note: `latexindent` and `latexmk` for latex are not provided in this flake
+as they are usually downloaded along with the `texliveFull` package.
+
 ## Installation
 
 ### Test drive
