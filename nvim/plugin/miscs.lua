@@ -43,3 +43,7 @@ require("toggleterm").setup({
 	direction = "float",
 	shade_terminals = true,
 })
+
+require("nvim-biscuits").setup({
+	cursor_line_only = true
+})

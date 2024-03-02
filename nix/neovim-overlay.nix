@@ -62,6 +62,7 @@ with final.pkgs.lib; let
     copilot-lua
     dial-nvim
     leap-nvim
+    nvim-biscuits
     nvim-spider
     todo-comments-nvim
     toggleterm-nvim
