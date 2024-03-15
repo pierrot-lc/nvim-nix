@@ -61,7 +61,6 @@ with final.pkgs.lib; let
     # Miscs.
     copilot-lua
     dial-nvim
-    leap-nvim
     nvim-biscuits
     nvim-spider
     todo-comments-nvim
