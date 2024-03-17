@@ -52,6 +52,10 @@
       url = "github:fladson/vim-kitty";
       flake = false;
     };
+    vim-minizinc = {
+      url = "github:vale1410/vim-minizinc";
+      flake = false;
+    };
   };
 
   outputs = inputs @ {

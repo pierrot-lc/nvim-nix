@@ -70,6 +70,7 @@ with final.pkgs.lib; let
     (mkNvimPlugin inputs.nvim-rooter "nvim-rooter")
     (mkNvimPlugin inputs.vim-characterize "vim-characterize")
     (mkNvimPlugin inputs.vim-kitty "vim-kitty")
+    (mkNvimPlugin inputs.vim-minizinc "vim-minizinc")
 
     # Mini plugins.
     mini-nvim
@@ -146,6 +147,7 @@ with final.pkgs.lib; let
     yamllint
 
     # LSPs.
+    fswatch  # See https://github.com/neovim/neovim/pull/27347. 
     lua-language-server
     marksman
     nil
