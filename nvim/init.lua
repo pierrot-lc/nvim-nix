@@ -43,3 +43,4 @@ vim.wo.signcolumn = "yes" -- Always shows the sign column (where we put gitsigns
 
 require("keybindings")
 require("commands")
+require("pencil")
