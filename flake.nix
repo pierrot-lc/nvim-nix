@@ -100,6 +100,9 @@
           stylua
           luajitPackages.luacheck
         ];
+        shellHook = ''
+          ln -fs ${pkgs.nvim-luarc-json} .luarc.json
+        '';
       };
     in {
       packages = rec {

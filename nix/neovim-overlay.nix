@@ -176,7 +176,9 @@ in {
 
   # This can be symlinked in the devShell's shellHook.
   nvim-luarc-json = final.mk-luarc-json {
+    nvim = final.neovim-nightly;
     plugins = all-plugins;
+    neodev-types = "nightly";
   };
 
   # You can add as many derivations as you like.
