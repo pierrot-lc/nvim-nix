@@ -1,3 +1,4 @@
+# This overlay, when applied to nixpkgs, adds the final neovim derivation to nixpkgs.
 {inputs}: final: prev:
 with final.pkgs.lib; let
   pkgs = final;
@@ -147,7 +148,7 @@ with final.pkgs.lib; let
     yamllint
 
     # LSPs.
-    fswatch  # See https://github.com/neovim/neovim/pull/27347. 
+    fswatch # See https://github.com/neovim/neovim/pull/27347.
     lua-language-server
     marksman
     nil
@@ -167,11 +168,20 @@ with final.pkgs.lib; let
   ];
 in {
   # This is the neovim derivation
-  # returned by the overlay
+  # returned by the overlay.
   nvim-pkg = mkNeovim {
     plugins = all-plugins;
     inherit extraPackages;
   };
 
+  # This can be symlinked in the devShell's shellHook.
+  nvim-luarc-json = final.mk-luarc-json {
+    nvim = final.neovim-nightly;
+    plugins = all-plugins;
+    neodev-types = "nightly";
+  };
+
   # You can add as many derivations as you like.
+  # Use `ignoreConfigRegexes` to filter out config
+  # files you would not like to include.
 }
