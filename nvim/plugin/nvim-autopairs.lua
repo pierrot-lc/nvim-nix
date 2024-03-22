@@ -1,5 +1,3 @@
-require("nvim-surround").setup({})
-
 require("nvim-autopairs").setup()
 
 -- If you want insert `(` after select function or method item.

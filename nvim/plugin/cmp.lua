@@ -4,10 +4,6 @@ local capabilities = require("cmp_nvim_lsp").default_capabilities()
 local cmp = require("cmp")
 local luasnip = require("luasnip")
 
-require("gitmoji").setup({
-	filetypes = { "gitcommit", "gitrebase", "NeogitCommitMessage" },
-})
-
 vim.opt.completeopt = { "menu", "menuone", "noselect" }
 
 -- Add completion capabilities to default LSP capabilities.
@@ -56,7 +52,7 @@ local menu_icons = {
 	nvim_lsp = "λ ",
 	path = " ",
 	rg = " ",
-	vimtex = " "
+	vimtex = " ",
 }
 
 cmp.setup({
@@ -73,7 +69,7 @@ cmp.setup({
 		{ name = "nvim_lsp" },
 		{ name = "path" },
 		{ name = "rg" },
-		{ name = "vimtex"}
+		{ name = "vimtex" },
 	},
 	window = {
 		completion = cmp.config.window.bordered(),

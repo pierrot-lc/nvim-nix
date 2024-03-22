@@ -6,4 +6,6 @@ require("which-key").setup()
 require("which-key").register({
 	["<Leader>l"] = { name = "+LSP" },
 	["<Leader>t"] = { name = "+Telescope" },
+	["<leader>z"] = { name = "+Tabs" },
+	["gc"] = { name = "+Comment" },
 })

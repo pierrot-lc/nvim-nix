@@ -62,10 +62,10 @@ with final.pkgs.lib; let
     # Miscs.
     copilot-lua
     dial-nvim
+    nvim-autopairs
     nvim-spider
     todo-comments-nvim
     toggleterm-nvim
-    undotree
     (mkNvimPlugin inputs.nvim-puppeteer "nvim-puppeteer")
     (mkNvimPlugin inputs.nvim-rooter "nvim-rooter")
     (mkNvimPlugin inputs.vim-characterize "vim-characterize")
@@ -78,10 +78,6 @@ with final.pkgs.lib; let
     # Neorg.
     neorg
     diffview-nvim
-
-    # Pairs.
-    nvim-autopairs
-    nvim-surround
 
     # Snippets.
     luasnip
