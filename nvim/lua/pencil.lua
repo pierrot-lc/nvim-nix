@@ -1,3 +1,7 @@
+--- Uses Treesitter to get the scope of the current node of the cursor.
+--- Based on this we can automatically truncate the lines of the given
+--- context. Mainly, it truncate the lines of the `paragraph` nodes.
+--- It can also truncate lines for the inline comments.
 local pencil = {}
 local ts = require("nvim-treesitter")
 local parsers = require("nvim-treesitter.parsers")
@@ -29,6 +33,31 @@ pencil.truncate = function()
 
 	-- Write the truncated lines to the buffer.
 	vim.api.nvim_buf_set_lines(0, 0, 1, false, truncateds)
+end
+
+
+--- Check if the cursor is in a treesitter paragraph.
+--- If this is the case, this function returns the whole paragraph lines.
+pencil.get_paragraph = function()
+	-- Make sure the tree is parsed first.
+	vim.treesitter.get_parser():parse()
+
+	local ts_node = vim.treesitter.get_node()
+
+	-- The node can be nil either because no node has be found initially
+	-- or because we have reached the parent of the root node.
+	while ts_node ~= nil do
+		if ts_node:type() == "paragraph" then
+			local start_row  = ts_node:start()
+			local end_row = ts_node:end_()
+			local lines = vim.api.nvim_buf_get_lines(0, start_row, end_row, false)
+			return lines
+		end
+
+		ts_node = ts_node:parent()
+	end
+
+	return nil
 end
 
 pencil.get_commentstring = function()
