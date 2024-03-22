@@ -1,11 +1,21 @@
 require("nvim-treesitter.configs").setup({
+	modules = {},
+
+	-- All parsers are installed with nix.
+	ensure_installed = {},
+	sync_install = false,
+	auto_install = false,
+	ignore_install = {},
+
 	-- Highlight based on treesitter.
 	highlight = {
 		enable = true,
-		disable = { "latex" },  -- Handled by vimtex.
+		disable = { "latex" }, -- Handled by vimtex.
 	},
+
 	-- Indentation based on treesitter (use `=` operator).
 	ident = { enable = true },
+
 	-- Incremental selection in the parsed tree.
 	incremental_selection = {
 		enable = true,
@@ -16,6 +26,7 @@ require("nvim-treesitter.configs").setup({
 			scope_incremental = false,
 		},
 	},
+
 	-- Refactor modules.
 	refactor = {
 		highlight_definitions = {
@@ -28,6 +39,7 @@ require("nvim-treesitter.configs").setup({
 			keymaps = { smart_rename = "gR" },
 		},
 	},
+
 	-- Manipulate text-objects.
 	textobjects = {
 		-- Adding text-objects to select operators.
@@ -45,9 +57,10 @@ require("nvim-treesitter.configs").setup({
 				["ai"] = { query = "@conditional.outer", desc = "Select conditional outer" },
 				["ii"] = { query = "@conditional.inner", desc = "Select conditional inner" },
 				["ap"] = { query = "@parameter.outer", desc = "Select parameter outer" },
-				["ai"] = { query = "@parameter.inner", desc = "Select parameter inner" },
+				["ip"] = { query = "@parameter.inner", desc = "Select parameter inner" },
 			},
 		},
+
 		-- Swap two text-objects.
 		swap = {
 			enable = true,
@@ -58,6 +71,7 @@ require("nvim-treesitter.configs").setup({
 				["<Leader>lS"] = { query = "@parameter.inner", desc = "Swap with the previous parameter" },
 			},
 		},
+
 		-- Move around text-objects.
 		move = {
 			enable = true,
@@ -79,6 +93,7 @@ require("nvim-treesitter.configs").setup({
 				["[]"] = "@class.outer",
 			},
 		},
+
 		-- Peek definition code using built-in LSP.
 		lsp_interop = {
 			enable = true,
