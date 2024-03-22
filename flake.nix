@@ -41,10 +41,6 @@
       url = "github:hedyhli/outline.nvim";
       flake = false;
     };
-    telescope-repo-nvim = {
-      url = "github:cljoly/telescope-repo.nvim";
-      flake = false;
-    };
     vim-characterize = {
       url = "github:tpope/vim-characterize";
       flake = false;
