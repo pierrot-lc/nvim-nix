@@ -38,3 +38,9 @@ vim.keymap.set("n", "<C-j>", "<C-w>j", { desc = "Quick move to bottom buffer" })
 vim.keymap.set("n", "<C-k>", "<C-w>k", { desc = "Quick move to upper buffer" })
 vim.keymap.set("n", "<C-h>", "<C-w>h", { desc = "Quick move to left buffer" })
 vim.keymap.set("n", "<C-l>", "<C-w>l", { desc = "Quick move to right buffer" })
+
+-- Tab management
+-- Quick tip: you can zoom-in and zoom-out using tab split and tab close!
+vim.keymap.set("n", "<leader>zn", "<cmd>tabnew<cr>", { desc = "New tab" })
+vim.keymap.set("n", "<leader>zs", "<cmd>tab split<cr>", { desc = "Split tab" })
+vim.keymap.set("n", "<leader>zc", "<cmd>tab close<cr>", { desc = "Close tab" })
