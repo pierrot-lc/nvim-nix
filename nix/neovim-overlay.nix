@@ -84,9 +84,6 @@ with final.pkgs.lib; let
     nvim-autopairs
     nvim-surround
 
-    # Pencil.
-    vim-pencil
-
     # Snippets.
     luasnip
 
