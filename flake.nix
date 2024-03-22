@@ -13,6 +13,7 @@
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     flake-utils.url = "github:numtide/flake-utils";
+    gen-luarc.url = "github:mrcjkb/nix-gen-luarc-json";
     neovim-nightly = {
       url = "github:nix-community/neovim-nightly-overlay";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -52,12 +53,17 @@
       url = "github:fladson/vim-kitty";
       flake = false;
     };
+    vim-minizinc = {
+      url = "github:vale1410/vim-minizinc";
+      flake = false;
+    };
   };
 
   outputs = inputs @ {
     self,
     nixpkgs,
     flake-utils,
+    gen-luarc,
     neovim-nightly,
     ...
   }: let
@@ -75,20 +81,28 @@
       pkgs = import nixpkgs {
         inherit system;
         overlays = [
-          # Import the overlay, so that the final Neovim derivation(s) can be accessed via pkgs.<nvim-pkg>
+          # Import the overlay, so that the final Neovim derivation(s) can be accessed via pkgs.<nvim-pkg>.
           neovim-overlay
+          # This adds a function can be used to generate a .luarc.json
+          # containing the Neovim API all plugins in the workspace directory.
+          # The generated file can be symlinked in the devShell's shellHook.
+          gen-luarc.overlays.default
+          # Add the nightly package as an installable available wrapper.
           neovim-nightly.overlay
         ];
       };
       shell = pkgs.mkShell {
         name = "nvim-devShell";
         buildInputs = with pkgs; [
-          # Tools for Lua and Nix development, useful for editing files in this repo
+          # Tools for Lua and Nix development, useful for editing files in this repo.
           lua-language-server
           nil
           stylua
           luajitPackages.luacheck
         ];
+        shellHook = ''
+          ln -fs ${pkgs.nvim-luarc-json} .luarc.json
+        '';
       };
     in {
       packages = rec {

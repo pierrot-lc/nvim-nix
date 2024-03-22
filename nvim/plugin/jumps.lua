@@ -10,7 +10,5 @@ vim.keymap.set("n", "e", spider_jump("e"), { desc = "Spider-e" })
 vim.keymap.set("n", "b", spider_jump("b"), { desc = "Spider-b" })
 vim.keymap.set("n", "ge", spider_jump("ge"), { desc = "Spider-ge" })
 
-local leap_jump = function()
-	require("leap").leap({ target_windows = { vim.fn.win_getid() } })
-end
-vim.keymap.set("n", "<leader>s", leap_jump, { desc = "Leap jump" })
+require("mini.jump2d").setup()
+vim.keymap.set("n", "<leader>s", MiniJump2d.start, { desc = "MiniJump2d" })
