@@ -6,15 +6,9 @@ require("telescope").setup({
 			ovveride_file_sorter = true,
 			case_mode = "smart_case",
 		},
-		repo = {
-			list = {
-				file_ignore_patterns = { "/%.cache/", "/%.cargo/", "/share/" },
-			},
-		},
 	},
 })
 require("telescope").load_extension("fzf") -- telescope-fzf-native.nvim
-require("telescope").load_extension("repo") -- telescope-repo.nvim
 
 local builtin = require("telescope.builtin")
 vim.keymap.set("n", "<leader>f", builtin.find_files, { desc = "Find files" })
@@ -26,4 +20,3 @@ vim.keymap.set("n", "<leader>tl", builtin.lsp_document_symbols, { desc = "LSP do
 vim.keymap.set("n", "<leader>tc", builtin.commands, { desc = "Commands" })
 vim.keymap.set("n", "<leader>tm", builtin.marks, { desc = "Marks" })
 vim.keymap.set("n", "<leader>tp", builtin.resume, { desc = "Resume previous search" })
-vim.keymap.set("n", "<leader>tr", "<cmd>Telescope repo list<cr>", { desc = "Local repositories" })

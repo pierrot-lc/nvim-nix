@@ -11,4 +11,3 @@ vim.keymap.set("n", "b", spider_jump("b"), { desc = "Spider-b" })
 vim.keymap.set("n", "ge", spider_jump("ge"), { desc = "Spider-ge" })
 
 require("mini.jump2d").setup()
-vim.keymap.set("n", "<leader>s", MiniJump2d.start, { desc = "MiniJump2d" })

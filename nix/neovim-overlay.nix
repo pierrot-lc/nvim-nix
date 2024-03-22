@@ -62,7 +62,6 @@ with final.pkgs.lib; let
     # Miscs.
     copilot-lua
     dial-nvim
-    nvim-biscuits
     nvim-spider
     todo-comments-nvim
     toggleterm-nvim
@@ -100,7 +99,6 @@ with final.pkgs.lib; let
     # Telescope.
     telescope-nvim
     telescope-fzf-native-nvim
-    (mkNvimPlugin inputs.telescope-repo-nvim "telescope-repo-nvim")
 
     # Tex.
     vimtex
@@ -156,12 +154,6 @@ with final.pkgs.lib; let
 
     # LuaSnip dependencies.
     luajitPackages.jsregexp
-
-    # Telescope repo dependencies.
-    bat
-    fd
-    glow
-    mlocate
   ];
 in {
   # This is the neovim derivation

@@ -43,13 +43,3 @@ require("toggleterm").setup({
 	direction = "float",
 	shade_terminals = true,
 })
-
-require("nvim-biscuits").setup({
-	cursor_line_only = true,
-	language_config = {
-		-- Vimdoc files are too long and makes nvim-biscuits crash.
-		vimdoc = {
-			disabled = true,
-		},
-	},
-})
