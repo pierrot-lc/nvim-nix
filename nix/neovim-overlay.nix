@@ -1,5 +1,9 @@
 # This overlay, when applied to nixpkgs, adds the final neovim derivation to nixpkgs.
-{inputs}: final: prev:
+{
+  inputs,
+  use_minizinc ? false, # Use minizinc plugins?
+  use_vimtex ? false, # Use vimtex plugins?
+}: final: prev:
 with final.pkgs.lib; let
   pkgs = final;
 
@@ -14,6 +18,25 @@ with final.pkgs.lib; let
 
   # This is the helper function that builds the Neovim derivation.
   mkNeovim = pkgs.callPackage ./mkNeovim.nix {};
+
+  # This is some default plugin which is already installed anyway.
+  defaultPlugin = pkgs.vimPlugins.nvim-lspconfig;
+
+  # Optional tex plugins.
+  vimtex =
+    if use_vimtex
+    then pkgs.vimPlugins.vimtex
+    else defaultPlugin;
+  cmp-vimtex =
+    if use_vimtex
+    then (mkNvimPlugin inputs.cmp-vimtex "cmp-vimtex")
+    else defaultPlugin;
+
+  # Optional minizinc plugins.
+  vim-minizinc =
+    if use_minizinc
+    then (mkNvimPlugin inputs.vim-minizinc "vim-minizinc")
+    else defaultPlugin;
 
   all-plugins = with pkgs.vimPlugins; [
     # Completers.
@@ -70,7 +93,9 @@ with final.pkgs.lib; let
     (mkNvimPlugin inputs.nvim-rooter "nvim-rooter")
     (mkNvimPlugin inputs.vim-characterize "vim-characterize")
     (mkNvimPlugin inputs.vim-kitty "vim-kitty")
-    (mkNvimPlugin inputs.vim-minizinc "vim-minizinc")
+
+    # Minizinc.
+    vim-minizinc
 
     # Mini plugins.
     mini-nvim
@@ -98,17 +123,15 @@ with final.pkgs.lib; let
 
     # Tex.
     vimtex
-    (mkNvimPlugin inputs.cmp-vimtex "cmp-vimtex")
+    cmp-vimtex
 
     # UI.
     alpha-nvim
     dressing-nvim
     kanagawa-nvim
     lualine-nvim
-    zen-mode-nvim
-
-    # Which-key.
     which-key-nvim
+    zen-mode-nvim
 
     # General dependencies.
     nvim-web-devicons
