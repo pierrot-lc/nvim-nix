@@ -8,7 +8,16 @@ vim.wo.wrap = false
 
 -- Autoformat paragraphs.
 vim.bo.textwidth = 79
--- vim.bo.formatoptions = vim.bo.formatoptions .. "a"
+
+local augroup = vim.api.nvim_create_augroup("neorg", { clear = true })
+vim.api.nvim_create_autocmd("InsertLeave", {
+	desc = "Autoformat paragraphs when leaving insert mode",
+	group = augroup,
+	pattern = "<buffer>", -- Only for this local buffer.
+	callback = function()
+		require("pencil").autoformat_paragraph()
+	end,
+})
 
 vim.keymap.set(
 	"n",
