@@ -17,23 +17,33 @@ local function get_paragraph_node()
 	return nil
 end
 
-local function autoformat_paragraph()
+local function autoformat_paragraph(textwidth)
 	local ts_node = get_paragraph_node()
 
 	if ts_node == nil then
 		return
 	end
 
+	-- Mark the current cursor position.
 	local cursor_position = vim.api.nvim_win_get_cursor(0)
+	vim.api.nvim_buf_set_mark(0, "C", cursor_position[1], cursor_position[2], {})
 
-	-- Select the paragraph pointed by the ts node and format
-	-- with `gq`.
+	-- Modify the textwidth temporarily.
+	local prev_textwidth = vim.bo.textwidth
+	vim.bo.textwidth = textwidth
+
+	-- Select the paragraph pointed by the ts node and format with `gq`.
 	local start_row, start_col, end_row, end_col = ts_node:range()
 	vim.api.nvim_buf_set_mark(0, "<", start_row + 1, start_col, {})
 	vim.api.nvim_buf_set_mark(0, ">", end_row + 1, end_col, {})
 	vim.cmd("normal! gvgq")
 
-	vim.api.nvim_win_set_cursor(0, cursor_position)
+	-- Place the cursor back to the original mark.
+	local new_cursor_position = vim.api.nvim_buf_get_mark(0, "C")
+	vim.api.nvim_win_set_cursor(0, new_cursor_position)
+
+	-- Reset the textwidth.
+	vim.bo.textwidth = prev_textwidth
 end
 
 return {
