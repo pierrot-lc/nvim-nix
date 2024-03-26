@@ -315,22 +315,6 @@
         "type": "github"
       }
     },
-    "outline-nvim": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1710548037,
-        "narHash": "sha256-Il27Z/vQVJ3WSrFnTOUwBeAFCjopXwDhdsi7A5v1gzU=",
-        "owner": "hedyhli",
-        "repo": "outline.nvim",
-        "rev": "bdfd2da90e9a7686d00e55afa9f772c4b6809413",
-        "type": "github"
-      },
-      "original": {
-        "owner": "hedyhli",
-        "repo": "outline.nvim",
-        "type": "github"
-      }
-    },
     "root": {
       "inputs": {
         "cmp-vimtex": "cmp-vimtex",
@@ -341,7 +325,7 @@
         "nixpkgs": "nixpkgs_2",
         "nvim-puppeteer": "nvim-puppeteer",
         "nvim-rooter": "nvim-rooter",
-        "outline-nvim": "outline-nvim",
+        "telescope-helpgrep-nvim": "telescope-helpgrep-nvim",
         "vim-characterize": "vim-characterize",
         "vim-kitty": "vim-kitty",
         "vim-minizinc": "vim-minizinc"
@@ -374,6 +358,22 @@
       "original": {
         "owner": "nix-systems",
         "repo": "default",
+        "type": "github"
+      }
+    },
+    "telescope-helpgrep-nvim": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1711414281,
+        "narHash": "sha256-371d8YVwQBr8WEGK4lK1TzYUm8Gcr47MzTPcS6UAFBA=",
+        "owner": "catgoose",
+        "repo": "telescope-helpgrep.nvim",
+        "rev": "f9b39ce9dd7ef3a5ca353a5e3b9a7a9b691f1141",
+        "type": "github"
+      },
+      "original": {
+        "owner": "catgoose",
+        "repo": "telescope-helpgrep.nvim",
         "type": "github"
       }
     },

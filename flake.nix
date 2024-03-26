@@ -37,8 +37,8 @@
       url = "github:notjedi/nvim-rooter.lua";
       flake = false;
     };
-    outline-nvim = {
-      url = "github:hedyhli/outline.nvim";
+    telescope-helpgrep-nvim = {
+      url = "github:catgoose/telescope-helpgrep.nvim";
       flake = false;
     };
     vim-characterize = {

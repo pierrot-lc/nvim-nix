@@ -57,7 +57,7 @@ with final.pkgs.lib; let
     fidget-nvim
     lsp_signature-nvim
     neodev-nvim
-    (mkNvimPlugin inputs.outline-nvim "outline-nvim")
+    outline-nvim
 
     # Miscs.
     copilot-lua
@@ -97,6 +97,7 @@ with final.pkgs.lib; let
     # Telescope.
     telescope-nvim
     telescope-fzf-native-nvim
+    (mkNvimPlugin inputs.telescope-helpgrep-nvim "telescope-helpgrep-nvim")
 
     # Tex.
     vimtex

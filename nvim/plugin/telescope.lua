@@ -9,6 +9,7 @@ require("telescope").setup({
 	},
 })
 require("telescope").load_extension("fzf") -- telescope-fzf-native.nvim
+require("telescope").load_extension("helpgrep") -- telescope-helpgrep.nvim
 
 local builtin = require("telescope.builtin")
 vim.keymap.set("n", "<leader>f", builtin.find_files, { desc = "Find files" })
