@@ -9,6 +9,7 @@
 --- position.
 local function select_all()
 	local cursor_position = vim.api.nvim_win_get_cursor(0)
+	vim.api.nvim_buf_set_mark(0, "C", cursor_position[1], cursor_position[2], {})
 
 	vim.cmd("normal! ggVG")
 
@@ -16,7 +17,8 @@ local function select_all()
 	-- the cursor is put back to its original position.
 	vim.api.nvim_create_autocmd("ModeChanged", {
 		callback = function()
-			vim.api.nvim_win_set_cursor(0, cursor_position)
+			local new_cursor_position = vim.api.nvim_buf_get_mark(0, "C")
+			vim.api.nvim_win_set_cursor(0, new_cursor_position)
 		end,
 		once = true,
 	})
