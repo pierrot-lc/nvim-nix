@@ -127,7 +127,6 @@ with final.pkgs.lib; let
     # Formatters.
     alejandra
     bibtex-tidy
-    isort
     jq
     just
     shfmt

@@ -7,7 +7,6 @@ require("conform").setup({
 		markdown = { "injected" },
 		neorg = { "injected" },
 		nix = { "alejandra" },
-		python = { "isort" },
 		sh = { "shfmt" },
 	},
 })
