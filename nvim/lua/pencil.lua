@@ -32,17 +32,28 @@ local function autoformat_paragraph(textwidth)
 	local prev_textwidth = vim.bo.textwidth
 	vim.bo.textwidth = textwidth
 
-	-- Select the paragraph pointed by the ts node and format with `gq`.
+	-- Mark the paragraph pointed by the ts node.
 	local start_row, start_col, end_row, end_col = ts_node:range()
+
+	if end_col == 0 then
+		-- The end_col is 0 when the paragraph ends with a newline.
+		-- In this case, we need to adjust the end_row and end_col.
+		local end_line = vim.api.nvim_buf_get_lines(0, end_row - 1, end_row, false)[1]
+		end_col = #end_line
+		end_row = end_row - 1
+	end
+
 	vim.api.nvim_buf_set_mark(0, "<", start_row + 1, start_col, {})
 	vim.api.nvim_buf_set_mark(0, ">", end_row + 1, end_col, {})
+
+	-- Format with `gq`.
 	vim.cmd("normal! gvgq")
 
 	-- Place the cursor back to the original mark.
 	local new_cursor_position = vim.api.nvim_buf_get_mark(0, "C")
 	vim.api.nvim_win_set_cursor(0, new_cursor_position)
 
-	-- Reset the textwidth.
+	-- Restore original textwidth.
 	vim.bo.textwidth = prev_textwidth
 end
 
