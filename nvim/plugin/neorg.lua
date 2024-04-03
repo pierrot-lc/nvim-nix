@@ -8,7 +8,7 @@ require("neorg").setup({
 		["core.dirman"] = {
 			config = {
 				workspaces = {
-					notes = "~/my-notes/",
+					notes = "~/notes/",
 				},
 			},
 		},
@@ -28,3 +28,6 @@ require("neorg").setup({
 		["core.export"] = {},
 	},
 })
+
+-- Command for quick access to the journal entry.
+vim.api.nvim_create_user_command("Journal", "Neorg journal today", { desc = "Open today journal" })

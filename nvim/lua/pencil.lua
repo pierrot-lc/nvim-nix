@@ -47,6 +47,8 @@ local function autoformat_paragraph(textwidth)
 	vim.api.nvim_buf_set_mark(0, ">", end_row + 1, end_col, {})
 
 	-- Format with `gq`.
+	-- NOTE: Maybe using `gw` instead of `gq` would be easier as
+	-- the cursor is already being put back to its original place.
 	vim.cmd("normal! gvgq")
 
 	-- Place the cursor back to the original mark.
