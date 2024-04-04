@@ -21,7 +21,6 @@ in {
   };
 
   config = {
-    # Add the package as an available package in `pkgs`.
-    pkgs = pkgs // {nvim-nix = package.nvim-pkg;};
+    home.packages = [package.nvim-pkg];
   };
 }
