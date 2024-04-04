@@ -106,10 +106,11 @@ with final.pkgs.lib; let
     # UI.
     alpha-nvim
     dressing-nvim
-    kanagawa-nvim
+    catppuccin-nvim
     lualine-nvim
     which-key-nvim
     zen-mode-nvim
+    (mkNvimPlugin inputs.everforest-nvim "everforest-nvim")
 
     # General dependencies.
     nvim-web-devicons

@@ -16,6 +16,22 @@
         "type": "github"
       }
     },
+    "everforest-nvim": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1710847361,
+        "narHash": "sha256-qKyPqkcf420eMbgGNXmMgF3i9GZ71NpoqeK3+Gz0fzc=",
+        "owner": "neanias",
+        "repo": "everforest-nvim",
+        "rev": "5e0e32a569fb464911342f0d421721cc1c94cf25",
+        "type": "github"
+      },
+      "original": {
+        "owner": "neanias",
+        "repo": "everforest-nvim",
+        "type": "github"
+      }
+    },
     "flake-compat": {
       "flake": false,
       "locked": {
@@ -318,6 +334,7 @@
     "root": {
       "inputs": {
         "cmp-vimtex": "cmp-vimtex",
+        "everforest-nvim": "everforest-nvim",
         "flake-utils": "flake-utils",
         "gen-luarc": "gen-luarc",
         "gitmoji-nvim": "gitmoji-nvim",

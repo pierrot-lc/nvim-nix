@@ -25,6 +25,10 @@
       url = "github:micangl/cmp-vimtex";
       flake = false;
     };
+    everforest-nvim = {
+      url = "github:neanias/everforest-nvim";
+      flake = false;
+    };
     gitmoji-nvim = {
       url = "github:Dynge/gitmoji.nvim";
       flake = false;
