@@ -26,6 +26,7 @@ with lib;
     # if the appName is something different than "nvim"
     viAlias ? appName == "nvim", # Add a "vi" binary to the build output as an alias?
     vimAlias ? appName == "nvim", # Add a "vim" binary to the build output as an alias?
+    extraLuaConfig ? "", # Extra Lua configuration
   }: let
     # This is the structure of a plugin definition.
     # Each plugin in the `plugins` argument list can also be defined as this attrset
@@ -132,6 +133,10 @@ with lib;
       + ''
         vim.opt.rtp:append('${nvimRtp}/nvim')
         vim.opt.rtp:append('${nvimRtp}/after')
+      ''
+      + ''
+        -- Extra lua config.
+        ${extraLuaConfig}
       '';
 
     # Add arguments to the Neovim wrapper script

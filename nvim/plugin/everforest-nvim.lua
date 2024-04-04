@@ -4,4 +4,4 @@ require("everforest").setup({
 	float_style = "dim",
 })
 
-vim.cmd("colorscheme everforest")
+-- vim.cmd("colorscheme everforest")

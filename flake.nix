@@ -75,7 +75,12 @@
     ];
 
     # This is where the Neovim derivation is built.
-    neovim-overlay = import ./nix/neovim-overlay.nix {inherit inputs;};
+    neovim-overlay = import ./nix/neovim-overlay.nix {
+      inherit inputs;
+      config = {
+        theme = "everforest";
+      };
+    };
   in
     flake-utils.lib.eachSystem supportedSystems (system: let
       pkgs = import nixpkgs {
@@ -116,5 +121,6 @@
     // {
       # You can add this overlay to your NixOS configuration
       overlays.default = neovim-overlay;
+      nixosModules.default = import ./nix/modules.nix;
     };
 }

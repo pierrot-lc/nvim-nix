@@ -1,9 +1,20 @@
 # This overlay, when applied to nixpkgs, adds the final neovim derivation to nixpkgs.
-{inputs}: final: prev:
+{
+  inputs,
+  config,
+}: final: prev:
 with final.pkgs.lib; let
   pkgs = final;
 
   pythonWithDebugpy = pkgs.python311.withPackages (ps: with ps; [debugpy]);
+
+  # The theme is selected based on the "config.theme" value.
+  # This set serves as a switch statement, where the vim command is called
+  # to load the theme.
+  themeCommands = {
+    "everforest" = "colorscheme everforest";
+    "catppuccin" = "colorscheme catppuccin-frappe";
+  };
 
   # Use this to create a plugin from a flake input
   mkNvimPlugin = src: pname:
@@ -84,6 +95,10 @@ with final.pkgs.lib; let
     # Snippets.
     luasnip
 
+    # Themes.
+    catppuccin-nvim
+    (mkNvimPlugin inputs.everforest-nvim "everforest-nvim")
+
     # Tree.
     nvim-tree-lua
 
@@ -106,11 +121,9 @@ with final.pkgs.lib; let
     # UI.
     alpha-nvim
     dressing-nvim
-    catppuccin-nvim
     lualine-nvim
     which-key-nvim
     zen-mode-nvim
-    (mkNvimPlugin inputs.everforest-nvim "everforest-nvim")
 
     # General dependencies.
     nvim-web-devicons
@@ -158,6 +171,14 @@ in {
   nvim-pkg = mkNeovim {
     plugins = all-plugins;
     inherit extraPackages;
+    extraLuaConfig = ''
+      -- Select the theme only after the config have been loaded.
+      vim.api.nvim_create_autocmd("VimEnter", {
+        group = vim.api.nvim_create_augroup("nvim_nix", { clear = true }),
+        desc = "Load theme",
+        command = '${themeCommands.${config.theme}}',
+      })
+    '';
   };
 
   # This can be symlinked in the devShell's shellHook.
