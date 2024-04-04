@@ -114,8 +114,10 @@
       };
     })
     // {
-      # You can add this overlay to your NixOS configuration
+      # You can add this overlay to your NixOS configuration.
       overlays.default = neovim-overlay;
-      nixosModules.default = import ./nix/modules.nix inputs;
+      # Or you can add this module in your home manager module, allowing you
+      # to manually set the configuration.
+      nixosModules.default = import ./nix/module.nix inputs;
     };
 }
