@@ -1,7 +1,9 @@
 {
   pkgs,
   lib,
-  config,
+  config ? {
+    theme = "everforest";
+  },
   inputs,
 }:
 with lib; let

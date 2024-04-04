@@ -1,13 +1,8 @@
 # This overlay, when applied to nixpkgs, adds the final neovim derivation to nixpkgs.
-{
-  inputs,
-  config,
-}: final: prev: let
-  pkgs = final;
-
+{inputs}: final: prev: let
+  # This is how the package is built. It uses the the default config.
   package = import ./package.nix {
-    inherit pkgs;
-    inherit config;
+    pkgs = final;
     inherit inputs;
     lib = final;
   };
@@ -18,8 +13,4 @@ in {
 
   # This can be symlinked in the devShell's shellHook.
   nvim-luarc-json = package.nvim-luarc-json;
-
-  # You can add as many derivations as you like.
-  # Use `ignoreConfigRegexes` to filter out config
-  # files you would not like to include.
 }

@@ -16,14 +16,17 @@ inputs: {
   };
 in {
   options = {
-    nvim-nix.theme = lib.mkOption {
-      type = lib.types.str;
-      default = "everforest";
-      description = "The theme to use for nvim";
+    nvim-nix = {
+      enable = lib.mkEnableOption "Enable nvim-nix";
+      theme = lib.mkOption {
+        type = lib.types.str;
+        default = "everforest";
+        description = "The theme to use for nvim";
+      };
     };
   };
 
-  config = {
+  config = lib.mkIf config.nvim-nix.enable {
     home.packages = [package.nvim-pkg];
   };
 }
