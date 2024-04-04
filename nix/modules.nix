@@ -9,7 +9,9 @@ inputs: {
   package = import ./package.nix {
     inherit pkgs;
     inherit lib;
-    inherit config;
+    config = {
+      theme = config.nvim-nix.theme;
+    };
     inherit inputs;
   };
 in {
