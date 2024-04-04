@@ -1,8 +1,9 @@
-{
+# The input is declared outside so that it is possible to define a partial
+# activation of the module, parameterized by the inputs.
+inputs: {
   pkgs,
   lib,
   config,
-  inputs,
   ...
 }: let
   package = import ./package.nix {

@@ -121,6 +121,6 @@
     // {
       # You can add this overlay to your NixOS configuration
       overlays.default = neovim-overlay;
-      nixosModules.default = import ./nix/modules.nix;
+      nixosModules.default = import ./nix/modules.nix inputs;
     };
 }
