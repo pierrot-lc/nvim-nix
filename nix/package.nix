@@ -7,8 +7,6 @@
   inputs,
 }:
 with lib; let
-  pythonWithDebugpy = pkgs.python311.withPackages (ps: with ps; [debugpy]);
-
   # The theme is selected based on the "config.theme" value.
   # This set serves as a switch statement, where the vim command is called
   # to load the theme.
@@ -38,20 +36,6 @@ with lib; let
     cmp-rg
     cmp_luasnip
     (mkNvimPlugin inputs.gitmoji-nvim "gitmoji-nvim")
-
-    # DAPs.
-    nvim-dap
-    nvim-dap-ui
-    nvim-dap-virtual-text
-    {
-      plugin = nvim-dap-python;
-      config = ''
-        lua << EOF
-          require('dap-python').setup('${pythonWithDebugpy}/bin/python')
-        EOF
-      '';
-      type = "lua";
-    }
 
     # Folds.
     nvim-ufo
@@ -139,9 +123,6 @@ with lib; let
   extraPackages = with pkgs; [
     nodePackages_latest.nodejs
     ripgrep
-
-    # DAPs.
-    pythonWithDebugpy
 
     # Formatters.
     alejandra
