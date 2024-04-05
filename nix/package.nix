@@ -2,7 +2,7 @@
   pkgs,
   lib,
   config ? {
-    theme = "everforest";
+    theme = "kanagawa";
   },
   inputs,
 }:
@@ -15,6 +15,7 @@ with lib; let
   themeCommands = {
     "everforest" = "colorscheme everforest";
     "catppuccin" = "colorscheme catppuccin-frappe";
+    "kanagawa" = "colorscheme kanagawa-dragon";
   };
 
   # Use this to create a plugin from a flake input
@@ -96,8 +97,18 @@ with lib; let
     # Snippets.
     luasnip
 
+    # Telescope.
+    telescope-nvim
+    telescope-fzf-native-nvim
+    (mkNvimPlugin inputs.telescope-helpgrep-nvim "telescope-helpgrep-nvim")
+
+    # Tex.
+    vimtex
+    (mkNvimPlugin inputs.cmp-vimtex "cmp-vimtex")
+
     # Themes.
     catppuccin-nvim
+    kanagawa-nvim
     (mkNvimPlugin inputs.everforest-nvim "everforest-nvim")
 
     # Tree.
@@ -109,15 +120,6 @@ with lib; let
     nvim-treesitter-refactor
     nvim-treesitter-textobjects
     hmts-nvim
-
-    # Telescope.
-    telescope-nvim
-    telescope-fzf-native-nvim
-    (mkNvimPlugin inputs.telescope-helpgrep-nvim "telescope-helpgrep-nvim")
-
-    # Tex.
-    vimtex
-    (mkNvimPlugin inputs.cmp-vimtex "cmp-vimtex")
 
     # UI.
     alpha-nvim

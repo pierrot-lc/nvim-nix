@@ -3,5 +3,3 @@ require("everforest").setup({
 	italics = true,
 	float_style = "dim",
 })
-
--- vim.cmd("colorscheme everforest")
