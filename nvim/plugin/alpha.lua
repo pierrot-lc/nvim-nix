@@ -12,10 +12,31 @@ $$ | \$$ |\$$$$$$$\ \$$$$$$  |  \$  /   $$ |$$ | $$ | $$ |
 
 ]]
 
+local logo = [[
+                ****                  
+            -  *++++*                 
+ ****   -   -  *++++*  -              
+*++++*  -   -   ****   -              
+*++++*  -   -                         
+ ****       -   ****       -   ****   
+               *++++*  -   -  *++++*  
+ ****   -   -  *++++*  -      *++++*  
+*++++*  -   -   ****           ****   
+*++++*  -   -              -          
+ ****   -   -   ****           ****   
+               *++++*  -      *++++*  
+ ****          *++++*  -   -  *++++*  
+*++++*  -   -   ****       -   ****   
+*++++*  -   -                         
+ ****   -   -   ****   -              
+            -  *++++*  -              
+               *++++*                 
+                ****                  
+]]
+
 dashboard.section.header.val = vim.split(logo, "\n")
 dashboard.section.buttons.val = {
 	dashboard.button("n", " " .. " New file", "<cmd>ene <bar> startinsert<cr>"),
-	dashboard.button("p", " " .. " Projects", "<cmd>Telescope repo list<cr>"),
 	dashboard.button("r", "󱋡 " .. " Recent files", "<cmd>Telescope oldfiles<cr>"),
 	dashboard.button("f", "󰈢 " .. " Find file", "<cmd>Telescope find_files<cr>"),
 	dashboard.button("g", "󰺮 " .. " Find text", "<cmd>Telescope live_grep<cr>"),
@@ -28,6 +49,6 @@ end
 dashboard.section.footer.opts.hl = "Type"
 dashboard.section.header.opts.hl = "AlphaHeader"
 dashboard.section.buttons.opts.hl = "AlphaButtons"
-dashboard.opts.layout[1].val = 8
+dashboard.opts.layout[1].val = 4
 
 require("alpha").setup(dashboard.opts)
