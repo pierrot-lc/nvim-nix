@@ -2,7 +2,7 @@
   pkgs,
   lib,
   config ? {
-    theme = "kanagawa";
+    theme = "gruvbox";
   },
   inputs,
 }:
@@ -13,8 +13,9 @@ with lib; let
   # This set serves as a switch statement, where the vim command is called
   # to load the theme.
   themeCommands = {
-    "everforest" = "colorscheme everforest";
     "catppuccin" = "colorscheme catppuccin-frappe";
+    "everforest" = "colorscheme everforest";
+    "gruvbox" = "colorscheme gruvbox";
     "kanagawa" = "colorscheme kanagawa-dragon";
   };
 
@@ -108,6 +109,7 @@ with lib; let
 
     # Themes.
     catppuccin-nvim
+    gruvbox-nvim
     kanagawa-nvim
     (mkNvimPlugin inputs.everforest-nvim "everforest-nvim")
 
@@ -190,8 +192,4 @@ in {
     plugins = all-plugins;
     neodev-types = "nightly";
   };
-
-  # You can add as many derivations as you like.
-  # Use `ignoreConfigRegexes` to filter out config
-  # files you would not like to include.
 }
