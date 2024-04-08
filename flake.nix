@@ -33,12 +33,20 @@
       url = "github:Dynge/gitmoji.nvim";
       flake = false;
     };
+    lua-utils-nvim = {
+      url = "github:nvim-neorg/lua-utils.nvim";
+      flake = false;
+    };
     nvim-puppeteer = {
       url = "github:chrisgrieser/nvim-puppeteer";
       flake = false;
     };
     nvim-rooter = {
       url = "github:notjedi/nvim-rooter.lua";
+      flake = false;
+    };
+    pathlib-nvim = {
+      url = "github:pysan3/pathlib.nvim";
       flake = false;
     };
     telescope-helpgrep-nvim = {

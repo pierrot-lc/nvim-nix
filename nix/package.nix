@@ -78,6 +78,10 @@ with lib; let
     # Neorg.
     neorg
     diffview-nvim
+    nui-nvim
+    nvim-nio
+    (mkNvimPlugin inputs.lua-utils-nvim "lua-utils-nvim")
+    (mkNvimPlugin inputs.pathlib-nvim "pathlib-nvim")
 
     # Snippets.
     luasnip
