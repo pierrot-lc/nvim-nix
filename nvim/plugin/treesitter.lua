@@ -34,10 +34,7 @@ require("nvim-treesitter.configs").setup({
 			clear_on_cursor_move = true,
 		},
 		highlight_current_scope = { enable = false },
-		smart_rename = {
-			enable = false,
-			keymaps = { smart_rename = "gR" },
-		},
+		smart_rename = { enable = false },
 	},
 
 	-- Manipulate text-objects.
@@ -77,20 +74,16 @@ require("nvim-treesitter.configs").setup({
 			enable = true,
 			set_jumps = true,
 			goto_next_start = {
-				["]m"] = "@function.outer",
-				["]]"] = { query = "@class.outer", desc = "Next class start" },
+				["]]"] = "@function.outer",
 			},
 			goto_next_end = {
-				["]M"] = "@function.outer",
-				["]["] = "@class.outer",
+				["]["] = "@function.outer",
 			},
 			goto_previous_start = {
-				["[m"] = "@function.outer",
-				["[["] = "@class.outer",
+				["[["] = "@function.outer",
 			},
 			goto_previous_end = {
-				["[M"] = "@function.outer",
-				["[]"] = "@class.outer",
+				["[]"] = "@function.outer",
 			},
 		},
 
