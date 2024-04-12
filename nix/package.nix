@@ -151,9 +151,11 @@ with lib; let
     python311Packages.python-lsp-server
     ruff-lsp
     texlab
+  ];
 
+  extraLuaPackages = ps: with ps; [
     # LuaSnip dependencies.
-    luajitPackages.jsregexp
+    jsregexp
   ];
 in {
   # This is the neovim derivation
@@ -161,6 +163,7 @@ in {
   nvim-pkg = mkNeovim {
     plugins = all-plugins;
     inherit extraPackages;
+    inherit extraLuaPackages;
     extraLuaConfig = ''
       -- Select the theme only after the config have been loaded.
       vim.api.nvim_create_autocmd("VimEnter", {

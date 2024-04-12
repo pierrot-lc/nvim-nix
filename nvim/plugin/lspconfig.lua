@@ -2,80 +2,104 @@ local lspconfig = require("lspconfig")
 
 vim.diagnostic.config({ update_in_insert = false })
 
--- Load LSP servers.
-lspconfig["pylsp"].setup({
-	settings = {
-		pylsp = {
-			plugins = {
-				preload = { enabled = true },
-				autopep8 = { enabled = false },
-				flake8 = { enabled = false },
-				pycodestyle = { enabled = false },
-				pydocstyle = { enabled = false },
-				mccabe = { enabled = false },
-				yapf = { enabled = false },
-				pylint = { enabled = false },
-				pyflakes = { enabled = false },
-			},
-		},
-	},
-})
-lspconfig["ruff_lsp"].setup({
-	init_options = {
+-- Load LSP servers. Only load them if they're available.
+if vim.fn.executable("pylsp") == 1 then
+	lspconfig["pylsp"].setup({
 		settings = {
-			args = { "--ignore", "E501" },
-		},
-	},
-})
-lspconfig["lua_ls"].setup({
-	settings = {
-		Lua = {
-			runtime = {
-				-- Tell the language server which version of Lua you're using
-				-- (most likely LuaJIT in the case of Neovim).
-				version = "LuaJIT",
-			},
-			diagnostics = {
-				-- Get the language server to recognize the `vim` global.
-				globals = { "vim" },
-			},
-			workspace = {
-				-- Make the server aware of Neovim runtime files
-				library = vim.api.nvim_get_runtime_file("", true),
-				-- Remove annoying popup when editing standalone lua files.
-				checkThirdParty = false,
-			},
-			telemetry = {
-				enable = true, -- That's fine.
-			},
-			format = {
-				enable = false,
+			pylsp = {
+				plugins = {
+					preload = { enabled = true },
+					autopep8 = { enabled = false },
+					flake8 = { enabled = false },
+					pycodestyle = { enabled = false },
+					pydocstyle = { enabled = false },
+					mccabe = { enabled = false },
+					yapf = { enabled = false },
+					pylint = { enabled = false },
+					pyflakes = { enabled = false },
+				},
 			},
 		},
-	},
-})
-lspconfig["texlab"].setup({
-	auxDirectory = ".",
-	bibtexFormatter = "texlab",
-	build = {
-		executable = "latexmk",
-		forwardSearchAfter = false,
-		onSave = true,
-	},
-	chktex = {
-		onEdit = false,
-		onOpenAndSave = true,
-	},
-	diagnosticsDelay = 300,
-	formatterLineLength = 0,
-	latexFormatter = "latexindent",
-	latexindent = {
-		modifyLineBreaks = false,
-	},
-})
-lspconfig["bashls"].setup({})
-lspconfig["marksman"].setup({})
-lspconfig["nil_ls"].setup({})
+	})
+end
+
+if vim.fn.executable("ruff-lsp") == 1 then
+	lspconfig["ruff_lsp"].setup({
+		init_options = {
+			settings = {
+				args = { "--ignore", "E501" },
+			},
+		},
+	})
+end
+
+if vim.fn.executable("lua-language-server") then
+	lspconfig["lua_ls"].setup({
+		settings = {
+			Lua = {
+				runtime = {
+					-- Tell the language server which version of Lua you're using
+					-- (most likely LuaJIT in the case of Neovim).
+					version = "LuaJIT",
+				},
+				diagnostics = {
+					-- Get the language server to recognize the `vim` global.
+					globals = { "vim" },
+				},
+				workspace = {
+					-- Make the server aware of Neovim runtime files
+					library = vim.api.nvim_get_runtime_file("", true),
+					-- Remove annoying popup when editing standalone lua files.
+					checkThirdParty = false,
+				},
+				telemetry = {
+					enable = true, -- That's fine.
+				},
+				format = {
+					enable = false,
+				},
+			},
+		},
+	})
+end
+
+if vim.fn.executable("texlab") == 1 then
+	lspconfig["texlab"].setup({
+		auxDirectory = ".",
+		bibtexFormatter = "bibtex-tidy",
+		build = {
+			executable = "latexmk",
+			forwardSearchAfter = false,
+			onSave = true,
+		},
+		chktex = {
+			onEdit = false,
+			onOpenAndSave = true,
+		},
+		diagnosticsDelay = 300,
+		formatterLineLength = 0,
+		latexFormatter = "latexindent",
+		latexindent = {
+			modifyLineBreaks = true,
+		},
+	})
+end
+
+if vim.fn.executable("bash-language-server") == 1 then
+	lspconfig["bashls"].setup({})
+end
+
+if vim.fn.executable("marksman") == 1 then
+	lspconfig["marksman"].setup({})
+end
+
+if vim.fn.executable("nil") == 1 then
+	lspconfig["nil_ls"].setup({})
+end
+
+if vim.fn.executable("gleam") == 1 then
+	lspconfig["gleam"].setup()
+end
 
 -- Bind the `lsp_signature` to the LSP servers.
 -- This has to be called after the setup of LSPs.
