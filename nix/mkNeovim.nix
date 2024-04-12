@@ -28,7 +28,8 @@ with lib;
     vimAlias ? appName == "nvim", # Add a "vim" binary to the build output as an alias?
     extraLuaConfig ? "", # Extra Lua configuration
   }: let
-    # The neovim package used for the build.
+    # The neovim package used for the build. We use the nightly build thanks to the added
+    # overlay.
     nvimPkg = pkgs.neovim-nightly;
 
     # This is the structure of a plugin definition.
@@ -158,29 +159,21 @@ with lib;
         ''--set LIBSQLITE "${pkgs.sqlite.out}/lib/libsqlite3.so"'')
     );
 
-    # See https://github.com/nix-community/home-manager/blob/master/modules/programs/neovim.nix.
+    # See https://github.com/nix-community/home-manager/blob/master/modules/programs/neovim.nix
+    # and https://github.com/NixOS/nixpkgs/blob/623ac957cb99a5647c9cf127ed6b5b9edfbba087/pkgs/applications/editors/neovim/utils.nix#L81.
     luaPackages = nvimPkg.lua.pkgs;
     resolvedExtraLuaPackages = extraLuaPackages luaPackages;
 
-    # Native Lua libraries
-    extraMakeWrapperLuaCArgs = optionalString (resolvedExtraLuaPackages != []) ''
-      --suffix LUA_CPATH ";" "${
-        lib.concatMapStringsSep ";" pkgs.luaPackages.getLuaCPath
-        resolvedExtraLuaPackages
-      }"'';
-
-    # Lua libraries
+    extraMakeWrapperLuaCArgs =
+      optionalString (resolvedExtraLuaPackages != []) ''
+        --suffix LUA_CPATH ";" "${concatMapStringsSep ";" luaPackages.getLuaCPath resolvedExtraLuaPackages}"'';
     extraMakeWrapperLuaArgs =
-      optionalString (resolvedExtraLuaPackages != [])
-      ''
-        --suffix LUA_PATH ";" "${
-          concatMapStringsSep ";" pkgs.luaPackages.getLuaPath
-          resolvedExtraLuaPackages
-        }"'';
+      optionalString (resolvedExtraLuaPackages != []) ''
+        --suffix LUA_PATH ";" "${concatMapStringsSep ";" luaPackages.getLuaPath resolvedExtraLuaPackages}"'';
   in
     # wrapNeovimUnstable is the nixpkgs utility function for building a Neovim derivation.
-    # The nightly build is used here, thanks to the added overlay in the flake.nix.
-    pkgs.wrapNeovimUnstable nvimPkg (neovimConfig
+    pkgs.wrapNeovimUnstable nvimPkg (
+      neovimConfig
       // {
         luaRcContent = initLua;
         wrapperArgs =
@@ -192,4 +185,5 @@ with lib;
           + " "
           + extraMakeWrapperLuaArgs;
         wrapRc = true;
-      })
+      }
+    )

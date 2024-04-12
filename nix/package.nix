@@ -153,10 +153,11 @@ with lib; let
     texlab
   ];
 
-  extraLuaPackages = ps: with ps; [
-    # LuaSnip dependencies.
-    jsregexp
-  ];
+  extraLuaPackages = ps:
+    with ps; [
+      # LuaSnip dependency.
+      jsregexp
+    ];
 in {
   # This is the neovim derivation
   # returned by the overlay.
