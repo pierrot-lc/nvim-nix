@@ -155,12 +155,9 @@ with lib; let
 
   extraLuaPackages = ps:
     with ps; [
-      # LuaSnip dependency.
-      jsregexp
     ];
 in {
-  # This is the neovim derivation
-  # returned by the overlay.
+  # This is the neovim derivation returned by the overlay.
   nvim-pkg = mkNeovim {
     plugins = all-plugins;
     inherit extraPackages;
@@ -176,8 +173,8 @@ in {
   };
 
   # This can be symlinked in the devShell's shellHook.
-  nvim-luarc-json = final.mk-luarc-json {
-    nvim = final.neovim-nightly;
+  nvim-luarc-json = mk-luarc-json {
+    nvim = pkgs.neovim-nightly;
     plugins = all-plugins;
     neodev-types = "nightly";
   };

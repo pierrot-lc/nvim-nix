@@ -6,7 +6,9 @@
 }:
 with lib;
   {
-    appName ? null, # NVIM_APPNAME - Defaults to 'nvim'
+    # NVIM_APPNAME - Defaults to 'nvim' if not set.
+    # If set to something else, this will also rename the binary.
+    appName ? null,
     plugins ? [], # List of plugins
     # List of dev plugins (will be bootstrapped) - useful for plugin developers
     # { name = <plugin-name>; url = <git-url>; }
@@ -16,7 +18,9 @@ with lib;
     ignoreConfigRegexes ? [],
     extraPackages ? [], # Extra runtime dependencies (e.g. ripgrep, ...)
     # The below arguments can typically be left as their defaults
-    extraLuaPackages ? ps: [], # Additional lua packages (not plugins), e.g. from luarocks.org
+    # Additional lua packages (not plugins), e.g. from luarocks.org.
+    # e.g. p: [p.jsregexp]
+    extraLuaPackages ? p: [],
     extraPython3Packages ? p: [], # Additional python 3 packages
     withPython3 ? true, # Build Neovim with Python 3 support?
     withRuby ? false, # Build Neovim with Ruby support?
@@ -164,15 +168,18 @@ with lib;
     luaPackages = nvimPkg.lua.pkgs;
     resolvedExtraLuaPackages = extraLuaPackages luaPackages;
 
+    # Native Lua libraries.
     extraMakeWrapperLuaCArgs =
-      optionalString (resolvedExtraLuaPackages != []) ''
-        --suffix LUA_CPATH ";" "${concatMapStringsSep ";" luaPackages.getLuaCPath resolvedExtraLuaPackages}"'';
+      optionalString (resolvedExtraLuaPackages != [])
+      ''--suffix LUA_CPATH ";" "${concatMapStringsSep ";" luaPackages.getLuaCPath resolvedExtraLuaPackages}"'';
+
+    # Lua libraries.
     extraMakeWrapperLuaArgs =
-      optionalString (resolvedExtraLuaPackages != []) ''
-        --suffix LUA_PATH ";" "${concatMapStringsSep ";" luaPackages.getLuaPath resolvedExtraLuaPackages}"'';
-  in
+      optionalString (resolvedExtraLuaPackages != [])
+      ''--suffix LUA_PATH ";" "${concatMapStringsSep ";" luaPackages.getLuaPath resolvedExtraLuaPackages}"'';
+
     # wrapNeovimUnstable is the nixpkgs utility function for building a Neovim derivation.
-    pkgs.wrapNeovimUnstable nvimPkg (
+    neovim-wrapped = pkgs.wrapNeovimUnstable nvimPkg (
       neovimConfig
       // {
         luaRcContent = initLua;
@@ -186,4 +193,15 @@ with lib;
           + extraMakeWrapperLuaArgs;
         wrapRc = true;
       }
-    )
+    );
+
+    isCustomAppName = appName != null && appName != "nvim";
+  in
+    neovim-wrapped.overrideAttrs (oa: {
+      buildPhase =
+        oa.buildPhase
+        # If a custom NVIM_APPNAME has been set, rename the `nvim` binary
+        + lib.optionalString isCustomAppName ''
+          mv $out/bin/nvim $out/bin/${lib.escapeShellArg appName}
+        '';
+    })
