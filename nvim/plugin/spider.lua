@@ -2,6 +2,7 @@ local spider = require("spider")
 
 -- Same line jump.
 -- If the cursor moves to a different line, the cursor will be moved back to the original line.
+-- Credits: https://github.com/yutkat/wb-only-current-line.nvim
 --
 -- @param direction string: The direction to move the cursor.
 -- @param move_fn function: The function to move the cursor.
