@@ -22,3 +22,7 @@ vim.api.nvim_create_autocmd("BufReadPost", {
 	pattern = "*",
 	command = 'silent! normal! g`"zv',
 })
+
+return {
+	augroup = augroup,
+}

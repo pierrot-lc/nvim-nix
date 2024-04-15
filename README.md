@@ -1,8 +1,8 @@
 # My Neovim flake
 
-This is my neovim configuration implemented as a flake.
-Thanks to the power of nix and flakes, my whole neovim configuration
-can be built with a single command.
+This is my neovim configuration implemented as a flake. Thanks to the power of
+nix and flakes, my whole neovim configuration can be built with a single
+command.
 
 Based on the template from [kickstart-nix.nvim](https://github.com/mrcjkb/kickstart-nix.nvim).
 
@@ -10,7 +10,6 @@ Some of the features:
 
 - Neovim nightly.
 - LSPs, linters, formatters for Python.
-- DAP for Python.
 - Use [Neorg](https://github.com/nvim-neorg/neorg) for note taking.
 
 Note: `latexindent` and `latexmk` for latex are not provided in this flake
