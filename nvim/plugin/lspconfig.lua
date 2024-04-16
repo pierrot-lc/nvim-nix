@@ -23,6 +23,10 @@ if vim.fn.executable("pylsp") == 1 then
 	})
 end
 
+if vim.fn.executable("pylyzer") == 1 then
+	lspconfig["pylyzer"].setup()
+end
+
 if vim.fn.executable("ruff-lsp") == 1 then
 	lspconfig["ruff_lsp"].setup({
 		init_options = {

@@ -47,9 +47,6 @@ with lib; let
     gitsigns-nvim
     vim-fugitive
 
-    # Linters.
-    nvim-lint
-
     # LSPs.
     nvim-lspconfig
     fidget-nvim
@@ -123,34 +120,15 @@ with lib; let
     plenary-nvim
   ];
 
-  # Extra packages for your plugins.
+  # Extra packages for your plugins. I decided not to provide LSPs and other
+  # formatters, but you can add theme here.
+  #
+  # See this debate for more: https://www.reddit.com/r/NixOS/comments/18oai2a/should_lsp_servers_be_in_the_project_flake/
   extraPackages = with pkgs; [
+    fswatch # See https://github.com/neovim/neovim/pull/27347.
     nodePackages_latest.nodejs
     ripgrep
-
-    # Formatters.
-    alejandra
-    bibtex-tidy
-    jq
-    just
-    shfmt
-    stylua
-
-    # Linters.
-    nodePackages_latest.markdownlint-cli
-    proselint
-    shellcheck
-    yamllint
-
-    # LSPs.
-    fswatch # See https://github.com/neovim/neovim/pull/27347.
-    lua-language-server
-    marksman
-    nil
-    nodePackages_latest.bash-language-server
-    python311Packages.python-lsp-server
-    ruff-lsp
-    texlab
+    # lua-language-server
   ];
 
   extraLuaPackages = ps:
