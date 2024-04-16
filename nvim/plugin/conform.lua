@@ -29,7 +29,7 @@ end
 
 
 require("conform").setup({
-	formatters = formatters_by_ft,
+	formatters_by_ft = formatters_by_ft,
 })
 
 vim.keymap.set("n", "<leader>F", require("conform").format, { desc = "Format" })
