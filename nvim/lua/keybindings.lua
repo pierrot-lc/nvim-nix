@@ -3,10 +3,9 @@
 -- ========================================================================== --
 
 --- Select all text in the current buffer.
---- This function is used to select all text in the current buffer.
----
---- Once the visual mode is left, the cursor is put back to its original
---- position.
+--- This function is used to select all text in the current buffer. Once the
+--- visual mode is left, the cursor is put back to its original position.
+--- @return nil
 local function select_all()
 	local cursor_position = vim.api.nvim_win_get_cursor(0)
 	vim.api.nvim_buf_set_mark(0, "C", cursor_position[1], cursor_position[2], {})

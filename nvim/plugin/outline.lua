@@ -1,7 +1,7 @@
 require("outline").setup({})
 
--- Override the default `gO` functionality only when not
--- inside a "help" or "man" page.
+-- Override the default `gO` functionality only when not inside a "help" or
+-- "man" page.
 local function outline()
 	local original_filetypes = { "help", ":Man" }
 	if vim.tbl_contains(original_filetypes, vim.bo.filetype) then

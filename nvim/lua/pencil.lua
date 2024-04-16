@@ -1,3 +1,10 @@
+--- Pencil is a Lua module that provides utilities for writing text in Neovim.
+--- It is inspired by the Vim plugin [vim-pencil](https://github.com/preservim/vim-pencil).
+
+--- Use treesitter to find the node that represents the paragraph where the
+--- cursor is. This function returns the paragraph node if found, otherwise it
+--- returns nil.
+--- @return userdata|nil
 local function get_paragraph_node()
 	-- Make sure the tree is parsed first.
 	vim.treesitter.get_parser():parse()
@@ -17,6 +24,10 @@ local function get_paragraph_node()
 	return nil
 end
 
+--- Autoformat the paragraph where the cursor is. The paragraph is formatted
+--- according to the given `textwidth`. The cursor is placed back to its
+--- original position after the formatting.
+--- @param textwidth number: The textwidth to use for formatting.
 local function autoformat_paragraph(textwidth)
 	local ts_node = get_paragraph_node()
 
