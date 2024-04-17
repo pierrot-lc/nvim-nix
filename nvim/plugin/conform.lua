@@ -3,10 +3,6 @@ local formatters_by_ft = {
 	neorg = { "injected" },
 }
 
-if vim.fn.executable("bibtex-tidy") == 1 then
-	formatters_by_ft.bib = { "bibtex-tidy" }
-end
-
 if vim.fn.executable("jq") == 1 then
 	formatters_by_ft.json = { "jq" }
 end
