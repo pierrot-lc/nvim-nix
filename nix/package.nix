@@ -107,6 +107,7 @@ with lib; let
     nvim-treesitter-refactor
     nvim-treesitter-textobjects
     hmts-nvim
+    (mkNvimPlugin inputs.nvim-tree-pairs "nvim-tree-pairs")
 
     # UI.
     alpha-nvim

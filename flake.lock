@@ -227,11 +227,11 @@
       },
       "locked": {
         "dir": "contrib",
-        "lastModified": 1713138374,
-        "narHash": "sha256-YBgTm3a9lBch8AYo6k6qzyE1r/xMBAEObXAck3uu8t8=",
+        "lastModified": 1713392591,
+        "narHash": "sha256-k7d4HX+HZgRGy6bGtZ5VjuhCrrBd3PoYvdwbeT34Mrs=",
         "owner": "neovim",
         "repo": "neovim",
-        "rev": "0f5c94c04b95a2d942b380be48708d3cf097de0c",
+        "rev": "562719033ec8bec9f6d56c166b9aef13f8a50a96",
         "type": "github"
       },
       "original": {
@@ -252,11 +252,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1713139466,
-        "narHash": "sha256-wxrLcto3oOVlTEA3Kodd1qUiREQcWkuF49TsNBI9DoI=",
+        "lastModified": 1713398630,
+        "narHash": "sha256-mTW1HDy3630zZU/1TiKRmDi/TjiVLtg3BQlQD3hukJQ=",
         "owner": "nix-community",
         "repo": "neovim-nightly-overlay",
-        "rev": "320661405475a889e702f8bcb65807d200f75075",
+        "rev": "0357dd0ccc62d66bf3b916fb5c7409c92b5dbec7",
         "type": "github"
       },
       "original": {
@@ -301,11 +301,11 @@
     },
     "nixpkgs_2": {
       "locked": {
-        "lastModified": 1712963716,
-        "narHash": "sha256-WKm9CvgCldeIVvRz87iOMi8CFVB1apJlkUT4GGvA0iM=",
+        "lastModified": 1713248628,
+        "narHash": "sha256-NLznXB5AOnniUtZsyy/aPWOk8ussTuePp2acb9U+ISA=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "cfd6b5fc90b15709b780a5a1619695a88505a176",
+        "rev": "5672bc9dbf9d88246ddab5ac454e82318d094bb8",
         "type": "github"
       },
       "original": {
@@ -347,6 +347,22 @@
         "type": "github"
       }
     },
+    "nvim-tree-pairs": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1713449003,
+        "narHash": "sha256-EHjVrHls5+QjuCsyAgKcphL9D9UuZV2/u0j3iP0VLcA=",
+        "owner": "yorickpeterse",
+        "repo": "nvim-tree-pairs",
+        "rev": "2a6198c66116ea18b8c64a5d0f049c5dab83aa96",
+        "type": "github"
+      },
+      "original": {
+        "owner": "yorickpeterse",
+        "repo": "nvim-tree-pairs",
+        "type": "github"
+      }
+    },
     "pathlib-nvim": {
       "flake": false,
       "locked": {
@@ -375,6 +391,7 @@
         "nixpkgs": "nixpkgs_2",
         "nvim-puppeteer": "nvim-puppeteer",
         "nvim-rooter": "nvim-rooter",
+        "nvim-tree-pairs": "nvim-tree-pairs",
         "pathlib-nvim": "pathlib-nvim",
         "telescope-helpgrep-nvim": "telescope-helpgrep-nvim",
         "vim-characterize": "vim-characterize",

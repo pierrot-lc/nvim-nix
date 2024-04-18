@@ -1,0 +1,1 @@
+require("tree-pairs").setup()

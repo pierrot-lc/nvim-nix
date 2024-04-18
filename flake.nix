@@ -45,6 +45,10 @@
       url = "github:notjedi/nvim-rooter.lua";
       flake = false;
     };
+    nvim-tree-pairs = {
+      url = "github:yorickpeterse/nvim-tree-pairs";
+      flake = false;
+    };
     pathlib-nvim = {
       url = "github:pysan3/pathlib.nvim";
       flake = false;
