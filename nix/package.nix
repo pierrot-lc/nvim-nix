@@ -11,7 +11,7 @@ with lib; let
   # This set serves as a switch statement, where the vim command is called
   # to load the theme.
   themeCommands = {
-    "catppuccin" = "colorscheme catppuccin-frappe";
+    "catppuccin" = "colorscheme catppuccin-macchiato";
     "everforest" = "colorscheme everforest";
     "gruvbox" = "colorscheme gruvbox";
     "kanagawa" = "colorscheme kanagawa-dragon";
