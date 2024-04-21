@@ -2,20 +2,17 @@
   pkgs,
   lib,
   config ? {
-    theme = "gruvbox";
+    theme = "everforest";
+    transparentBackground = false;
   },
   inputs,
 }:
 with lib; let
-  # The theme is selected based on the "config.theme" value.
-  # This set serves as a switch statement, where the vim command is called
-  # to load the theme.
-  themeCommands = {
-    "catppuccin" = "colorscheme catppuccin-macchiato";
-    "everforest" = "colorscheme everforest";
-    "gruvbox" = "colorscheme gruvbox";
-    "kanagawa" = "colorscheme kanagawa-dragon";
-  };
+  # Parse the boolean into its vim boolean string value.
+  transparentBackgroundStr =
+    if config.transparentBackground
+    then "true"
+    else "false";
 
   # Use this to create a plugin from a flake input
   mkNvimPlugin = src: pname:
@@ -142,12 +139,11 @@ in {
     inherit extraPackages;
     inherit extraLuaPackages;
     extraLuaConfig = ''
-      -- Select the theme only after the config have been loaded.
-      vim.api.nvim_create_autocmd("VimEnter", {
-        group = vim.api.nvim_create_augroup("nvim_nix", { clear = true }),
-        desc = "Load theme",
-        command = '${themeCommands.${config.theme}}',
-      })
+      -- Global theme of the config. The UI plugins use this to set the theme.
+      vim.g.theme = "${config.theme}"
+
+      -- Whether to use a transparent background or not.
+      vim.g.transparent_background = ${transparentBackgroundStr}
     '';
   };
 

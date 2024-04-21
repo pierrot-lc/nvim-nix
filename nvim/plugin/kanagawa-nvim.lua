@@ -1,6 +1,6 @@
 require("kanagawa").setup({
 	compile = false,
-	transparent = true,
+	transparent = vim.g.transparent_background,
 	overrides = function(colors)
 		local theme = colors.theme
 		return {
@@ -21,3 +21,7 @@ require("kanagawa").setup({
 		}
 	end,
 })
+
+if vim.g.theme == "kanagawa" then
+	vim.cmd("colorscheme kanagawa-dragon")
+end

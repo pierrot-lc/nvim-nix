@@ -11,6 +11,7 @@ inputs: {
     inherit lib;
     config = {
       theme = config.nvim-nix.theme;
+      transparentBackground = config.nvim-nix.transparentBackground;
     };
     inherit inputs;
   };
@@ -21,7 +22,12 @@ in {
       theme = lib.mkOption {
         type = lib.types.str;
         default = "everforest";
-        description = "The theme to use for nvim";
+        description = "The theme to use for nvim, choose from the list of themes in the README.md";
+      };
+      transparentBackground = lib.mkOption {
+        type = lib.types.bool;
+        default = false;
+        description = "Whether to use a transparent background";
       };
     };
   };
