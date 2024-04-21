@@ -3,7 +3,8 @@ require("kanagawa").setup({
 	transparent = vim.g.transparent_background,
 	overrides = function(colors)
 		local theme = colors.theme
-		return {
+
+		local transparent_floats = {
 			NormalFloat = { bg = "none" },
 			FloatBorder = { bg = "none" },
 			FloatTitle = { bg = "none" },
@@ -19,6 +20,8 @@ require("kanagawa").setup({
 			LazyNormal = { bg = theme.ui.bg_m3, fg = theme.ui.fg_dim },
 			MasonNormal = { bg = theme.ui.bg_m3, fg = theme.ui.fg_dim },
 		}
+
+		return vim.g.transparent_background and transparent_floats or {}
 	end,
 })
 
