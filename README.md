@@ -241,3 +241,22 @@ This means that modules in `nvim/lua` can be `require`d in `init.lua` and `nvim/
 Modules in `nvim/plugin/` are sourced automatically, as if they were plugins.
 Because they are added to the runtime path at the end of the resulting `init.lua`,
 Neovim sources them _after_ loading plugins.
+
+## Bonus: bundle the neovim package into an executable
+
+You can use
+[nix-portable](https://github.com/DavHau/nix-portable?tab=readme-ov-file#bundle-programs)
+to bundle the derivation into a dependency-free executable.
+
+```nix
+nix bundle --bundler github:DavHau/nix-portable -o bundle
+```
+
+You still need nix to generate the bundle, but then you can simply pass around
+the generated `./bundle/bin/nvim` wherever you want and execute your nvim
+package!
+
+Make sure that the target machine has no conflicting nvim configuration. Have a
+look at `~/.config/nvim`, `~/.local/share/nvim` and `~/.local/state/nvim`, and
+remove those directories if you have any conflict (make sure to make a backup
+before if you have important data there).
