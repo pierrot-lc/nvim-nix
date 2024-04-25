@@ -85,11 +85,18 @@
       "x86_64-darwin"
       "aarch64-darwin"
     ];
-
-    # This is where the Neovim derivation is built.
-    neovim-overlay = import ./nix/neovim-overlay.nix {inherit inputs;};
   in
     flake-utils.lib.eachSystem supportedSystems (system: let
+      # This is the neovim nightly package from the neovim-nightly flake.
+      nightly-package = neovim-nightly.defaultPackage.${system};
+
+      # This is where the Neovim derivation is built.
+      neovim-overlay = import ./nix/neovim-overlay.nix {
+        inherit inputs;
+        # Use neovim nightly package.
+        neovim-unwrapped = nightly-package;
+      };
+
       pkgs = import nixpkgs {
         inherit system;
         overlays = [
@@ -99,8 +106,6 @@
           # containing the Neovim API all plugins in the workspace directory.
           # The generated file can be symlinked in the devShell's shellHook.
           gen-luarc.overlays.default
-          # Add the nightly package as an installable available wrapper.
-          neovim-nightly.overlay
         ];
       };
       shell = pkgs.mkShell {
@@ -118,18 +123,22 @@
       };
     in {
       packages = rec {
-        default = nvim;
         nvim = pkgs.nvim-pkg;
+        default = nvim;
       };
+
       devShells = {
         default = shell;
       };
-    })
-    // {
+
       # You can add this overlay to your NixOS configuration.
       overlays.default = neovim-overlay;
+
       # Or you can add this module in your home manager module, allowing you
       # to manually set the configuration.
-      nixosModules.default = import ./nix/module.nix inputs;
-    };
+      nixosModules.default = import ./nix/module.nix {
+        inherit inputs;
+        neovim-unwrapped = nightly-package;
+      };
+    });
 }

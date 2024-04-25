@@ -1,11 +1,12 @@
 {
   pkgs,
   lib,
+  inputs,
+  neovim-unwrapped,
   config ? {
     theme = "everforest";
     transparentBackground = false;
   },
-  inputs,
 }:
 with lib; let
   # Parse the boolean into its vim boolean string value.
@@ -123,7 +124,6 @@ with lib; let
   #
   # See this debate for more: https://www.reddit.com/r/NixOS/comments/18oai2a/should_lsp_servers_be_in_the_project_flake/
   extraPackages = with pkgs; [
-    fswatch # See https://github.com/neovim/neovim/pull/27347.
     nodePackages_latest.nodejs
     ripgrep
     # lua-language-server
@@ -135,6 +135,7 @@ with lib; let
 in {
   # This is the neovim derivation returned by the overlay.
   nvim-pkg = mkNeovim {
+    inherit neovim-unwrapped;
     plugins = all-plugins;
     inherit extraPackages;
     inherit extraLuaPackages;

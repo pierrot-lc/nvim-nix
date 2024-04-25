@@ -9,6 +9,7 @@ with lib;
     # NVIM_APPNAME - Defaults to 'nvim' if not set.
     # If set to something else, this will also rename the binary.
     appName ? null,
+    neovim-unwrapped ? pkgs.neovim-unwrapped,  # The neovim package to use.
     plugins ? [], # List of plugins
     # List of dev plugins (will be bootstrapped) - useful for plugin developers
     # { name = <plugin-name>; url = <git-url>; }
@@ -32,10 +33,6 @@ with lib;
     vimAlias ? appName == "nvim", # Add a "vim" binary to the build output as an alias?
     extraLuaConfig ? "", # Extra Lua configuration
   }: let
-    # The neovim package used for the build. We use the nightly build thanks to the added
-    # overlay.
-    nvimPkg = pkgs.neovim-nightly;
-
     # This is the structure of a plugin definition.
     # Each plugin in the `plugins` argument list can also be defined as this attrset
     defaultPlugin = {
@@ -165,7 +162,7 @@ with lib;
 
     # See https://github.com/nix-community/home-manager/blob/master/modules/programs/neovim.nix
     # and https://github.com/NixOS/nixpkgs/blob/623ac957cb99a5647c9cf127ed6b5b9edfbba087/pkgs/applications/editors/neovim/utils.nix#L81.
-    luaPackages = nvimPkg.lua.pkgs;
+    luaPackages = neovim-unwrapped.lua.pkgs;
     resolvedExtraLuaPackages = extraLuaPackages luaPackages;
 
     # Native Lua libraries.
@@ -179,7 +176,7 @@ with lib;
       ''--suffix LUA_PATH ";" "${concatMapStringsSep ";" luaPackages.getLuaPath resolvedExtraLuaPackages}"'';
 
     # wrapNeovimUnstable is the nixpkgs utility function for building a Neovim derivation.
-    neovim-wrapped = pkgs.wrapNeovimUnstable nvimPkg (
+    neovim-wrapped = pkgs.wrapNeovimUnstable neovim-unwrapped (
       neovimConfig
       // {
         luaRcContent = initLua;

@@ -1,6 +1,9 @@
 # The input is declared outside so that it is possible to define a partial
 # activation of the module, parameterized by the inputs.
-inputs: {
+{
+  inputs,
+  neovim-unwrapped,
+}: {
   pkgs,
   lib,
   config,
@@ -9,11 +12,12 @@ inputs: {
   package = import ./package.nix {
     inherit pkgs;
     inherit lib;
+    inherit inputs;
+    inherit neovim-unwrapped;
     config = {
       theme = config.nvim-nix.theme;
       transparentBackground = config.nvim-nix.transparentBackground;
     };
-    inherit inputs;
   };
 in {
   options = {
