@@ -39,8 +39,8 @@ using the `config.transparentBackground` value.
 
 ### Test drive
 
-If you have Nix installed (with [flakes](https://nixos.wiki/wiki/Flakes) enabled),
-you can test drive this by running:
+If you have Nix installed (with [flakes](https://nixos.wiki/wiki/Flakes)
+enabled), you can test drive this by running:
 
 ```console
 nix run "github:pierrot-lc/nvim-nix"
@@ -48,7 +48,7 @@ nix run "github:pierrot-lc/nvim-nix"
 
 ### NixOS and Home Manager (with flakes)
 
-Add this flake and the neovim-nightly flake to your NixOS flake inputs.
+Add this flake to your NixOS flake inputs.
 
 ```nix
 {
@@ -59,11 +59,6 @@ Add this flake and the neovim-nightly flake to your NixOS flake inputs.
       url = "github:pierrot-lc/nvim-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    neovim-nightly = {
-      url = "github:nix-community/neovim-nightly-overlay";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     # ...
   };
 
@@ -75,10 +70,7 @@ Add this flake and the neovim-nightly flake to your NixOS flake inputs.
 
 Overlays are a way to provide additional packages to the list of available
 `pkgs`. This flake output such overlay to add our `nvim-pkg` derivation to
-`pkgs`. Since this flake also rely on neovim nightly, you also have to add the
-overlay from the neovim nightly flake.
-
-Here is a minimal example with home-manager:
+`pkgs`. Here is a minimal example with home-manager:
 
 ```nix
 # flake.nix
@@ -88,10 +80,6 @@ Here is a minimal example with home-manager:
 
     nvim-nix = {
       url = "github:pierrot-lc/nvim-nix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    neovim-nightly = {
-      url = "github:nix-community/neovim-nightly-overlay";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
@@ -111,9 +99,8 @@ Here is a minimal example with home-manager:
         allowUnfree = true;
       };
       overlays = [
-        # We provide additional packages by giving the overlays here.
-        inputs.nvim-nix.overlays.default
-        inputs.neovim-nightly.overlay
+        # We provide our `nvim-pkg` package by giving the overlay here.
+        inputs.nvim-nix.overlays.${system}.default
       ];
     };
   in {
@@ -158,10 +145,6 @@ provide the module. Here is a minimal example:
       url = "github:pierrot-lc/nvim-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    neovim-nightly = {
-      url = "github:nix-community/neovim-nightly-overlay";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
   };
 
   outputs = inputs @ {
@@ -178,9 +161,6 @@ provide the module. Here is a minimal example:
       config = {
         allowUnfree = true;
       };
-      overlays = [
-        inputs.neovim-nightly.overlay # This overlay is still necessary as the module rely on it.
-      ];
     };
   in {
     homeConfigurations = {
@@ -190,7 +170,7 @@ provide the module. Here is a minimal example:
         modules = [
           ./home.nix
           # Add the module here.
-          inputs.nvim-nix.nixosModules.default
+          inputs.nvim-nix.nixosModules.${system}.default
         ];
       };
     };
