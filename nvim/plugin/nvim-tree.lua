@@ -17,6 +17,7 @@ require("nvim-tree").setup({
 		enable = false,
 		update_cwd = false,
 	},
+	hijack_netrw = false,
 	view = {
 		float = {
 			enable = false,
@@ -26,4 +27,4 @@ require("nvim-tree").setup({
 	},
 })
 
-vim.keymap.set("n", "<leader>e", "<cmd>NvimTreeToggle<cr>", { desc = "Toggle file explorer" })
+-- vim.keymap.set("n", "<leader>e", "<cmd>NvimTreeToggle<cr>", { desc = "Toggle file explorer" })
