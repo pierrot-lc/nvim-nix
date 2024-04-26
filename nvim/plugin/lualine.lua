@@ -3,6 +3,7 @@ local theme_parser = {
 	["everforest"] = "everforest",
 	["gruvbox"] = "gruvbox",
 	["kanagawa"] = "seoul256",
+	["rose-pine"] = "rose-pine",
 }
 
 require("lualine").setup({
