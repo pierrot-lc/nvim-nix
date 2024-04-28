@@ -2,9 +2,6 @@
 -- ==                               COMMANDS                               == --
 -- ========================================================================== --
 
--- User commands
-vim.api.nvim_create_user_command("ReloadConfig", "source $MYVIMRC", { desc = "Reload the vim configuration" })
-
 -- Auto commands
 local augroup = vim.api.nvim_create_augroup("user_cmds", { clear = true })
 
