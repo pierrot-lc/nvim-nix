@@ -3,6 +3,9 @@ require("mini.files").setup({
 		permanent_delete = true,
 		use_as_default_explorer = true,
 	},
+	mappings = {
+		synchronize = "<cr>",
+	},
 })
 
 local minifiles_toggle = function()
@@ -12,4 +15,4 @@ local minifiles_toggle = function()
 end
 
 vim.api.nvim_create_user_command("MiniFiles", minifiles_toggle, { desc = "Toggle MiniFiles" })
-vim.keymap.set("n", "<leader>e", minifiles_toggle, { desc = "Toggle file explorer" })
+vim.keymap.set("n", "<leader>gf", minifiles_toggle, { desc = "Toggle MiniFiles" })

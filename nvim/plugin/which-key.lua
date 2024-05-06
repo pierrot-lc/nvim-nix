@@ -4,8 +4,9 @@ vim.opt.timeoutlen = 300
 require("which-key").setup()
 
 require("which-key").register({
+	["<Leader>g"] = { name = "+Others" },
 	["<Leader>l"] = { name = "+LSP" },
+	["<Leader>s"] = { name = "+Treesitter" },
 	["<Leader>t"] = { name = "+Telescope" },
-	["<leader>z"] = { name = "+Tabs" },
-	["gc"] = { name = "+Comment" },
+	["<Leader>z"] = { name = "+Tabs" },
 })

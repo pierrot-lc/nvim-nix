@@ -1,5 +1,5 @@
 require("mini.splitjoin").setup({
 	mappings = {
-		toggle = "gS",
+		toggle = "<Leader>gs",
 	},
 })

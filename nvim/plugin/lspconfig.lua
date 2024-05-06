@@ -121,11 +121,11 @@ require("lsp_signature").setup(signature_opts)
 local show_diagnostics = true
 local function toggle_diagnostics()
 	show_diagnostics = not show_diagnostics
+	vim.diagnostic.enable(show_diagnostics)
+
 	if show_diagnostics then
-		vim.diagnostic.enable()
 		vim.notify("Diagnostics activated.")
 	else
-		vim.diagnostic.disable()
 		vim.notify("Diagnostics hidden.")
 	end
 end
@@ -159,18 +159,14 @@ local function on_attach(ev)
 		vim.keymap.set("n", "gD", vim.lsp.buf.declaration, { desc = "Go to declaration", buffer = bufnr })
 	end
 
-	if client.server_capabilities.codeActionProvider then
-		vim.keymap.set("n", "<leader>la", vim.lsp.buf.code_action, { desc = "Show code actions", buffer = bufnr })
-	end
-
 	if client.server_capabilities.documentFormattingProvider then
-		vim.keymap.set("n", "<leader>lF", function()
+		vim.keymap.set("n", "<leader>lf", function()
 			vim.lsp.buf.format({ async = true })
 		end, { desc = "Format", buffer = bufnr })
 	end
 
 	if client.server_capabilities.documentRangeFormattingProvider then
-		vim.keymap.set("v", "<leader>lF", function()
+		vim.keymap.set("v", "<leader>lf", function()
 			vim.lsp.buf.range_formatting({ async = true })
 		end, { desc = "Format", buffer = bufnr })
 	end
@@ -184,16 +180,8 @@ local function on_attach(ev)
 		vim.keymap.set("n", "gs", vim.lsp.buf.signature_help, { desc = "Show signature", buffer = bufnr })
 	end
 
-	if client.server_capabilities.hoverProvider then
-		vim.keymap.set("n", "K", vim.lsp.buf.hover, { desc = "Hover", buffer = bufnr })
-	end
-
 	if client.server_capabilities.implementationProvider then
 		vim.keymap.set("n", "gi", vim.lsp.buf.implementation, { desc = "Go to implementation", buffer = bufnr })
-	end
-
-	if client.server_capabilities.renameProvider then
-		vim.keymap.set("n", "<leader>lr", vim.lsp.buf.rename, { desc = "Rename symbol", buffer = bufnr })
 	end
 
 	if client.server_capabilities.workspaceSymbolProvider then
