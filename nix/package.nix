@@ -4,7 +4,7 @@
   inputs,
   neovim-unwrapped,
   config ? {
-    theme = "rose-pine";
+    theme = "nord";
     transparentBackground = false;
   },
 }:
@@ -94,6 +94,7 @@ with lib; let
     catppuccin-nvim
     gruvbox-nvim
     kanagawa-nvim
+    nord-nvim
     rose-pine
     (mkNvimPlugin inputs.everforest-nvim "everforest-nvim")
 

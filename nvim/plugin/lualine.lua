@@ -3,6 +3,7 @@ local theme_parser = {
 	["everforest"] = "everforest",
 	["gruvbox"] = "gruvbox",
 	["kanagawa"] = "seoul256",
+	["nord"] = "nord",
 	["rose-pine"] = "rose-pine-alt",
 	["rose-pine-dawn"] = "rose-pine",
 }

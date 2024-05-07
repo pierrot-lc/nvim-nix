@@ -27,10 +27,12 @@ There are multiple themes available and you can activate a specific theme by
 passing the `config.theme` value to the nix package at build time. You can
 choose between the following themes:
 
-- `catppuccin`
-- `everforest`
-- `gruvbox`
-- `kanagawa`
+- [`catppuccin`](https://catppuccin.com/)
+- [`everforest`](https://github.com/sainnhe/everforest/wiki)
+- [`gruvbox`](https://github.com/gruvbox-community/gruvbox-contrib)
+- [`kanagawa`](https://github.com/rebelot/kanagawa.nvim)
+- [`nord`](https://www.nordtheme.com/)
+- [`rose-pine`](https://rosepinetheme.com/)
 
 You can also configure whether you want the background to be transparent or not
 using the `config.transparentBackground` value.
