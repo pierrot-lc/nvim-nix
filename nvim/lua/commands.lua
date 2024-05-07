@@ -20,6 +20,14 @@ vim.api.nvim_create_autocmd("BufReadPost", {
 	command = 'silent! normal! g`"zv',
 })
 
+-- Courtesy of https://github.com/Abstract-IDE/abstract-autocmds/blob/main/lua/abstract-autocmds/autocmds.lua.
+vim.api.nvim_create_autocmd("BufEnter", {
+	desc = "Disable ctrl+z",
+	group = augroup,
+	pattern = "*",
+	command = "nnoremap <buffer> <C-z> <nop>",
+})
+
 return {
 	augroup = augroup,
 }
