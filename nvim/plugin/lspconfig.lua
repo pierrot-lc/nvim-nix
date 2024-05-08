@@ -102,7 +102,7 @@ if vim.fn.executable("nil") == 1 then
 end
 
 if vim.fn.executable("gleam") == 1 then
-	lspconfig["gleam"].setup()
+	lspconfig["gleam"].setup({})
 end
 
 -- Bind the `lsp_signature` to the LSP servers.
