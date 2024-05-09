@@ -1,10 +1,10 @@
---- Pencil is a Lua module that provides utilities for writing text in Neovim.
---- It is inspired by the Vim plugin [vim-pencil](https://github.com/preservim/vim-pencil).
+---Pencil is a Lua module that provides utilities for writing text in Neovim.
+---It is inspired by the Vim plugin [vim-pencil](https://github.com/preservim/vim-pencil).
 
---- Use treesitter to find the node that represents the paragraph where the
---- cursor is. This function returns the paragraph node if found, otherwise it
---- returns nil.
---- @return userdata|nil
+---Use treesitter to find the node that represents the paragraph where the
+---cursor is. This function returns the paragraph node if found, otherwise it
+---returns nil.
+---@return userdata|nil
 local function get_paragraph_node()
 	-- Make sure the tree is parsed first.
 	vim.treesitter.get_parser():parse()
@@ -24,20 +24,18 @@ local function get_paragraph_node()
 	return nil
 end
 
---- Autoformat the paragraph where the cursor is. The paragraph is formatted
---- according to the given `textwidth`. The cursor is placed back to its
---- original position after the formatting.
---- @param textwidth number: The textwidth to use for formatting.
-local function autoformat_paragraph(textwidth)
+---Format the paragraph where the cursor is. The paragraph is formatted
+---according to the given `textwidth` (local buffer value if not provided).
+---@param textwidth? number: The textwidth to use for formatting, defaults to
+---buffer value if not provided.
+---@return boolean: Whether the paragraph has been formatted or not.
+local function format_paragraph(textwidth)
+	textwidth = textwidth or vim.bo.textwidth
 	local ts_node = get_paragraph_node()
 
 	if ts_node == nil then
-		return
+		return false
 	end
-
-	-- Mark the current cursor position.
-	local cursor_position = vim.api.nvim_win_get_cursor(0)
-	vim.api.nvim_buf_set_mark(0, "C", cursor_position[1], cursor_position[2], {})
 
 	-- Modify the textwidth temporarily.
 	local prev_textwidth = vim.bo.textwidth
@@ -58,18 +56,14 @@ local function autoformat_paragraph(textwidth)
 	vim.api.nvim_buf_set_mark(0, ">", end_row + 1, end_col, {})
 
 	-- Format with `gq`.
-	-- NOTE: Maybe using `gw` instead of `gq` would be easier as
-	-- the cursor is already being put back to its original place.
 	vim.cmd("normal! gvgq")
-
-	-- Place the cursor back to the original mark.
-	local new_cursor_position = vim.api.nvim_buf_get_mark(0, "C")
-	vim.api.nvim_win_set_cursor(0, new_cursor_position)
 
 	-- Restore original textwidth.
 	vim.bo.textwidth = prev_textwidth
+
+	return true
 end
 
 return {
-	autoformat_paragraph = autoformat_paragraph,
+	format_paragraph = format_paragraph,
 }

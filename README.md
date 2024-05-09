@@ -218,11 +218,12 @@ This derivation creates an `init.lua` as follows:
 1. Add `nvim/*` to the `runtimepath`.
 1. Add `nvim/after` to the `runtimepath`.
 
-This means that modules in `nvim/lua` can be `require`d in `init.lua` and `nvim/*/*.lua`.
+This means that modules in `nvim/lua` can be `require`d in `init.lua` and
+`nvim/*/*.lua`.
 
 Modules in `nvim/plugin/` are sourced automatically, as if they were plugins.
-Because they are added to the runtime path at the end of the resulting `init.lua`,
-Neovim sources them _after_ loading plugins.
+Because they are added to the runtime path at the end of the resulting
+`init.lua`, Neovim sources them _after_ loading plugins.
 
 ## Bonus: bundle the neovim package into an executable
 

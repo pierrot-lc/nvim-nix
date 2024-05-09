@@ -36,6 +36,7 @@ vim.opt.splitright = true
 vim.opt.swapfile = false -- Deactivate swap file.
 vim.opt.tabstop = 4 -- Amount of spaces a 'tab' character occupy.
 vim.opt.termguicolors = true -- Enable 24-bit RGB color in the TUI.
+vim.opt.textwidth = 79 -- Size of the lines when formatting with `gq`.
 vim.opt.undofile = true -- Save undo history.
 vim.opt.updatetime = 1000 -- Decrease update time (default is 4000).
 vim.opt.virtualedit = "block"
