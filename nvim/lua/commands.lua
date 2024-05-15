@@ -28,6 +28,21 @@ vim.api.nvim_create_autocmd("BufEnter", {
 	command = "nnoremap <buffer> <C-z> <nop>",
 })
 
+-- Setting a non-zero value to `textwidth` will make vim use the autoformat (t)
+-- component of formatoptions.
+vim.api.nvim_create_autocmd("FileType", {
+	desc = "Remove 't' from formatoptions",
+	group = augroup,
+	pattern = "*",
+	command = "setlocal formatoptions-=t",
+})
+vim.api.nvim_create_autocmd("FileType", {
+	desc = "Add 'q' from formatoptions",
+	group = augroup,
+	pattern = "*",
+	command = "setlocal formatoptions-=t",
+})
+
 return {
 	augroup = augroup,
 }

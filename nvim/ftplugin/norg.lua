@@ -1,7 +1,6 @@
 -- ========================================================================== --
 -- ==                          NEORG SPECIFICS                             == --
 -- ========================================================================== --
-vim.bo.formatoptions = string.gsub(vim.bo.formatoptions, "t", "")
 vim.bo.shiftwidth = 2
 vim.bo.tabstop = 2
 vim.wo.colorcolumn = ""
