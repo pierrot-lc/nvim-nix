@@ -60,7 +60,6 @@ with lib; let
     todo-comments-nvim
     toggleterm-nvim
     (mkNvimPlugin inputs.nvim-puppeteer "nvim-puppeteer")
-    (mkNvimPlugin inputs.nvim-rooter "nvim-rooter")
     (mkNvimPlugin inputs.vim-characterize "vim-characterize")
     (mkNvimPlugin inputs.vim-kitty "vim-kitty")
 

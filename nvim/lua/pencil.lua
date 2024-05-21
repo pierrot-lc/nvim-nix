@@ -64,6 +64,15 @@ local function format_paragraph(textwidth)
 	return true
 end
 
+-- Smart gqq.
+vim.keymap.set("n", "gqq", function()
+	-- Try to format the paragraph under the cursor.
+	if not require("pencil").format_paragraph() then
+		-- Fallback to classical line formatting if no paragraph has been found.
+		vim.cmd("normal! gqq")
+	end
+end, { desc = "Format paragraph/line" })
+
 return {
 	format_paragraph = format_paragraph,
 }

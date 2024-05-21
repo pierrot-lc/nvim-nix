@@ -1,1 +1,1 @@
-require("nvim-rooter").setup({ manual = true })
+-- require("nvim-rooter").setup({ manual = true })

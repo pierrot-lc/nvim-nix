@@ -331,22 +331,6 @@
         "type": "github"
       }
     },
-    "nvim-rooter": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1714569059,
-        "narHash": "sha256-mFG+X48vsN6RJsHVPS8Z32GmBPLnUAJPTv35EmczEHA=",
-        "owner": "notjedi",
-        "repo": "nvim-rooter.lua",
-        "rev": "de7ffc3d704041cb4a65304229288a1329a2d298",
-        "type": "github"
-      },
-      "original": {
-        "owner": "notjedi",
-        "repo": "nvim-rooter.lua",
-        "type": "github"
-      }
-    },
     "pathlib-nvim": {
       "flake": false,
       "locked": {
@@ -374,7 +358,6 @@
         "neovim-nightly": "neovim-nightly",
         "nixpkgs": "nixpkgs_2",
         "nvim-puppeteer": "nvim-puppeteer",
-        "nvim-rooter": "nvim-rooter",
         "pathlib-nvim": "pathlib-nvim",
         "telescope-helpgrep-nvim": "telescope-helpgrep-nvim",
         "vim-characterize": "vim-characterize",

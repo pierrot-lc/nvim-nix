@@ -41,10 +41,6 @@
       url = "github:chrisgrieser/nvim-puppeteer";
       flake = false;
     };
-    nvim-rooter = {
-      url = "github:notjedi/nvim-rooter.lua";
-      flake = false;
-    };
     pathlib-nvim = {
       url = "github:pysan3/pathlib.nvim";
       flake = false;
