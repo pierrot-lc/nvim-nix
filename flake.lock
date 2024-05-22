@@ -201,22 +201,6 @@
         "type": "github"
       }
     },
-    "lua-utils-nvim": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1708177208,
-        "narHash": "sha256-9ildzQEMkXKZ3LHq+khGFgRQFxlIXQclQ7QU3fcU1C4=",
-        "owner": "nvim-neorg",
-        "repo": "lua-utils.nvim",
-        "rev": "e565749421f4bbb5d2e85e37c3cef9d56553d8bd",
-        "type": "github"
-      },
-      "original": {
-        "owner": "nvim-neorg",
-        "repo": "lua-utils.nvim",
-        "type": "github"
-      }
-    },
     "neovim-flake": {
       "inputs": {
         "flake-utils": "flake-utils_2",
@@ -331,22 +315,6 @@
         "type": "github"
       }
     },
-    "pathlib-nvim": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1714141112,
-        "narHash": "sha256-Hx7RGyVY3j4LvNWQuQI5Vq9mkq+U/ntxgDlw5VxbUII=",
-        "owner": "pysan3",
-        "repo": "pathlib.nvim",
-        "rev": "723f9cd0d12a4bb8961cff4c2ac7edbfcf50a280",
-        "type": "github"
-      },
-      "original": {
-        "owner": "pysan3",
-        "repo": "pathlib.nvim",
-        "type": "github"
-      }
-    },
     "root": {
       "inputs": {
         "cmp-vimtex": "cmp-vimtex",
@@ -354,11 +322,9 @@
         "flake-utils": "flake-utils",
         "gen-luarc": "gen-luarc",
         "gitmoji-nvim": "gitmoji-nvim",
-        "lua-utils-nvim": "lua-utils-nvim",
         "neovim-nightly": "neovim-nightly",
         "nixpkgs": "nixpkgs_2",
         "nvim-puppeteer": "nvim-puppeteer",
-        "pathlib-nvim": "pathlib-nvim",
         "telescope-helpgrep-nvim": "telescope-helpgrep-nvim",
         "vim-characterize": "vim-characterize",
         "vim-kitty": "vim-kitty",

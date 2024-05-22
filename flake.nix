@@ -20,7 +20,8 @@
     };
 
     # Add bleeding-edge plugins here.
-    # They can be updated with `nix flake update` (make sure to commit the generated flake.lock)
+    # They can be updated with `nix flake update` (make sure to commit the
+    # generated flake.lock).
     cmp-vimtex = {
       url = "github:micangl/cmp-vimtex";
       flake = false;
@@ -33,16 +34,8 @@
       url = "github:Dynge/gitmoji.nvim";
       flake = false;
     };
-    lua-utils-nvim = {
-      url = "github:nvim-neorg/lua-utils.nvim";
-      flake = false;
-    };
     nvim-puppeteer = {
       url = "github:chrisgrieser/nvim-puppeteer";
-      flake = false;
-    };
-    pathlib-nvim = {
-      url = "github:pysan3/pathlib.nvim";
       flake = false;
     };
     telescope-helpgrep-nvim = {
@@ -92,7 +85,8 @@
       pkgs = import nixpkgs {
         inherit system;
         overlays = [
-          # Import the overlay, so that the final Neovim derivation(s) can be accessed via pkgs.<nvim-pkg>.
+          # Import the overlay, so that the final Neovim derivation(s) can be
+          # accessed via pkgs.<nvim-pkg>.
           neovim-overlay
           # This adds a function can be used to generate a .luarc.json
           # containing the Neovim API all plugins in the workspace directory.
