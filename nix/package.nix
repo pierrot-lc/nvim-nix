@@ -35,6 +35,10 @@ with lib; let
     cmp_luasnip
     (mkNvimPlugin inputs.gitmoji-nvim "gitmoji-nvim")
 
+    # Files.
+    nvim-tree-lua
+    oil-nvim
+
     # Folds.
     nvim-ufo
 
@@ -96,9 +100,6 @@ with lib; let
     nord-nvim
     rose-pine
     (mkNvimPlugin inputs.everforest-nvim "everforest-nvim")
-
-    # Tree.
-    nvim-tree-lua
 
     # Treesitter.
     nvim-treesitter.withAllGrammars
