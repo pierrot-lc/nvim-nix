@@ -14,7 +14,7 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     flake-utils.url = "github:numtide/flake-utils";
     gen-luarc.url = "github:mrcjkb/nix-gen-luarc-json";
-    neovim-nightly = {
+    neovim-nightly-overlay = {
       url = "github:nix-community/neovim-nightly-overlay";
       inputs.nixpkgs.follows = "nixpkgs";
     };
@@ -61,7 +61,7 @@
     nixpkgs,
     flake-utils,
     gen-luarc,
-    neovim-nightly,
+    neovim-nightly-overlay,
     ...
   }: let
     supportedSystems = [
@@ -73,7 +73,7 @@
   in
     flake-utils.lib.eachSystem supportedSystems (system: let
       # This is the neovim nightly package from the neovim-nightly flake.
-      nightly-package = neovim-nightly.defaultPackage.${system};
+      nightly-package = neovim-nightly-overlay.packages.${system}.default;
 
       # This is where the Neovim derivation is built.
       neovim-overlay = import ./nix/neovim-overlay.nix {
