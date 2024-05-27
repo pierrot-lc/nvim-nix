@@ -24,17 +24,11 @@ if vim.fn.executable("pylsp") == 1 then
 end
 
 if vim.fn.executable("pylyzer") == 1 then
-	lspconfig["pylyzer"].setup()
+	lspconfig["pylyzer"].setup({})
 end
 
-if vim.fn.executable("ruff-lsp") == 1 then
-	lspconfig["ruff_lsp"].setup({
-		init_options = {
-			settings = {
-				args = { "--ignore", "E501" },
-			},
-		},
-	})
+if vim.fn.executable("ruff") == 1 then
+	lspconfig["ruff"].setup({})
 end
 
 if vim.fn.executable("lua-language-server") then
@@ -159,12 +153,6 @@ local function on_attach(ev)
 		vim.keymap.set("n", "gD", vim.lsp.buf.declaration, { desc = "Go to declaration", buffer = bufnr })
 	end
 
-	if client.server_capabilities.documentFormattingProvider then
-		vim.keymap.set("n", "<leader>lf", function()
-			vim.lsp.buf.format({ async = true })
-		end, { desc = "Format", buffer = bufnr })
-	end
-
 	if client.server_capabilities.documentRangeFormattingProvider then
 		vim.keymap.set("v", "<leader>lf", function()
 			vim.lsp.buf.range_formatting({ async = true })
@@ -200,3 +188,8 @@ vim.api.nvim_create_autocmd("LspAttach", {
 	group = vim.api.nvim_create_augroup("UserLspConfig", {}),
 	callback = on_attach,
 })
+
+-- Was the default momentarily. Maybe will be the defaults later on.
+vim.keymap.set("n", "crr", vim.lsp.buf.code_action, { desc = "Code actions" })
+vim.keymap.set("n", "crn", vim.lsp.buf.rename, { desc = "Code actions" })
+vim.keymap.set("n", "crf", vim.lsp.buf.format, { desc = "Format" })

@@ -9,4 +9,5 @@ require("which-key").register({
 	["<Leader>s"] = { name = "+Treesitter" },
 	["<Leader>t"] = { name = "+Telescope" },
 	["<Leader>z"] = { name = "+Tabs" },
+	["cr"] = { name = "+LSP" },
 })
