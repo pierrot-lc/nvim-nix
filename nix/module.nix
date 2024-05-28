@@ -19,14 +19,24 @@
       transparentBackground = config.nvim-nix.transparentBackground;
     };
   };
+
+  validThemes = [
+    "catppuccin"
+    "everforest"
+    "gruvbox"
+    "kanagawa"
+    "nord"
+    "rose-pine"
+    "rose-pine-dawn"
+  ];
 in {
   options = {
     nvim-nix = {
       enable = lib.mkEnableOption "Enable nvim-nix";
       theme = lib.mkOption {
-        type = lib.types.str;
-        default = "everforest";
-        description = "The theme to use for nvim, choose from the list of themes in the README.md";
+        type = lib.types.enum validThemes;
+        default = "gruvbox";
+        description = "The theme to use.";
       };
       transparentBackground = lib.mkOption {
         type = lib.types.bool;
