@@ -188,4 +188,4 @@ vim.api.nvim_create_autocmd("LspAttach", {
 -- Was the default momentarily. Maybe will be the defaults later on.
 vim.keymap.set("n", "crr", vim.lsp.buf.code_action, { desc = "Code actions" })
 vim.keymap.set("n", "crn", vim.lsp.buf.rename, { desc = "Code actions" })
-vim.keymap.set("n", "crf", vim.lsp.buf.format, { desc = "Format" })
+vim.keymap.set("n", "<leader>lf", vim.lsp.buf.format, { desc = "Format" })

@@ -4,7 +4,7 @@
   inputs,
   neovim-unwrapped,
   config ? {
-    theme = "nord";
+    theme = "gruvbox";
     transparentBackground = false;
   },
 }:
