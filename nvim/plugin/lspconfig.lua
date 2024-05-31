@@ -87,6 +87,10 @@ if vim.fn.executable("marksman") == 1 then
 	lspconfig["marksman"].setup({})
 end
 
+if vim.fn.executable("tinymist") == 1 then
+	lspconfig["tinymist"].setup({})
+end
+
 if vim.fn.executable("nil") == 1 then
 	lspconfig["nil_ls"].setup({})
 end
