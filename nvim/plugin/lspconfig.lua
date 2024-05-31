@@ -88,7 +88,11 @@ if vim.fn.executable("marksman") == 1 then
 end
 
 if vim.fn.executable("tinymist") == 1 then
-	lspconfig["tinymist"].setup({})
+	lspconfig["tinymist"].setup({
+		settings = {
+			formatterMode = "typstyle",
+		},
+	})
 end
 
 if vim.fn.executable("nil") == 1 then
