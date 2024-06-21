@@ -27,6 +27,10 @@ if vim.fn.executable("ruff") == 1 then
 	lspconfig["ruff"].setup({})
 end
 
+if vim.fn.executable("pyre") == 1 then
+	lspconfig["pyre"].setup({})
+end
+
 if vim.fn.executable("lua-language-server") then
 	lspconfig["lua_ls"].setup({
 		settings = {
