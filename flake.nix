@@ -34,10 +34,6 @@
       url = "github:Dynge/gitmoji.nvim";
       flake = false;
     };
-    just-nvim = {
-      url = "github:al1-ce/just.nvim";
-      flake = false;
-    };
     nvim-puppeteer = {
       url = "github:chrisgrieser/nvim-puppeteer";
       flake = false;
