@@ -34,6 +34,10 @@
       url = "github:Dynge/gitmoji.nvim";
       flake = false;
     };
+    just-nvim = {
+      url = "github:al1-ce/just.nvim";
+      flake = false;
+    };
     nvim-puppeteer = {
       url = "github:chrisgrieser/nvim-puppeteer";
       flake = false;
@@ -99,7 +103,7 @@
         buildInputs = with pkgs; [
           # Tools for Lua and Nix development, useful for editing files in this repo.
           lua-language-server
-          nil
+          nixd
           stylua
           luajitPackages.luacheck
         ];

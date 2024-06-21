@@ -52,8 +52,8 @@ with lib; let
     # LSPs.
     nvim-lspconfig
     fidget-nvim
+    lazydev-nvim
     lsp_signature-nvim
-    neodev-nvim
     outline-nvim
 
     # Miscs.
@@ -63,6 +63,7 @@ with lib; let
     nvim-spider
     todo-comments-nvim
     toggleterm-nvim
+    (mkNvimPlugin inputs.just-nvim "just-nvim")
     (mkNvimPlugin inputs.nvim-puppeteer "nvim-puppeteer")
     (mkNvimPlugin inputs.vim-characterize "vim-characterize")
     (mkNvimPlugin inputs.vim-kitty "vim-kitty")

@@ -248,6 +248,22 @@
         "type": "github"
       }
     },
+    "just-nvim": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1717617890,
+        "narHash": "sha256-Fr8vYcn8MJIUCitxRfhzXC8xiniiVZX51ogGUhN5VMc=",
+        "owner": "al1-ce",
+        "repo": "just.nvim",
+        "rev": "86d8aa60db69a5e69d129af3dc3ff7352b8fc70e",
+        "type": "github"
+      },
+      "original": {
+        "owner": "al1-ce",
+        "repo": "just.nvim",
+        "type": "github"
+      }
+    },
     "neovim-nightly-overlay": {
       "inputs": {
         "flake-compat": "flake-compat",
@@ -356,6 +372,7 @@
         "flake-utils": "flake-utils",
         "gen-luarc": "gen-luarc",
         "gitmoji-nvim": "gitmoji-nvim",
+        "just-nvim": "just-nvim",
         "neovim-nightly-overlay": "neovim-nightly-overlay",
         "nixpkgs": "nixpkgs_2",
         "nvim-puppeteer": "nvim-puppeteer",

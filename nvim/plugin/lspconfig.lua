@@ -99,8 +99,8 @@ if vim.fn.executable("tinymist") == 1 then
 	})
 end
 
-if vim.fn.executable("nil") == 1 then
-	lspconfig["nil_ls"].setup({})
+if vim.fn.executable("nixd") == 1 then
+	lspconfig["nixd"].setup({})
 end
 
 if vim.fn.executable("gleam") == 1 then
