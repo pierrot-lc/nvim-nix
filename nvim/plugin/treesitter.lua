@@ -53,8 +53,8 @@ require("nvim-treesitter.configs").setup({
 				["il"] = { query = "@loop.inner", desc = "Select loop innter" },
 				["ai"] = { query = "@conditional.outer", desc = "Select conditional outer" },
 				["ii"] = { query = "@conditional.inner", desc = "Select conditional inner" },
-				["ap"] = { query = "@parameter.outer", desc = "Select parameter outer" },
-				["ip"] = { query = "@parameter.inner", desc = "Select parameter inner" },
+				["aa"] = { query = "@parameter.outer", desc = "Select argument outer" },
+				["ia"] = { query = "@parameter.inner", desc = "Select argument inner" },
 			},
 		},
 

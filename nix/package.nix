@@ -121,7 +121,6 @@ with lib; let
   #
   # See this debate for more: https://www.reddit.com/r/NixOS/comments/18oai2a/should_lsp_servers_be_in_the_project_flake/
   extraPackages = with pkgs; [
-    nodePackages_latest.nodejs
     ripgrep
     # lua-language-server
   ];
@@ -129,6 +128,9 @@ with lib; let
   extraLuaPackages = ps:
     with ps; [
       # Neorg dependencies. Probably dependencies of other plugins as well.
+      # Ideally the plugin dependencies are managed by nix but it is not the
+      # case right now. See here:
+      # https://github.com/NixOS/nixpkgs/issues/306367.
       lua-utils-nvim
       nui-nvim
       nvim-nio
