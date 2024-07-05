@@ -20,7 +20,7 @@ require("nvim-treesitter.configs").setup({
 	incremental_selection = {
 		enable = true,
 		keymaps = {
-			init_selection = "<Leader>ss",
+			init_selection = "<Leader>ls",
 			node_incremental = "<TAB>",
 			node_decremental = "<S-TAB>",
 			scope_incremental = false,
@@ -62,10 +62,10 @@ require("nvim-treesitter.configs").setup({
 		swap = {
 			enable = true,
 			swap_next = {
-				["<Leader>sp"] = { query = "@parameter.inner", desc = "Swap with the next parameter" },
+				["<Leader>lp"] = { query = "@parameter.inner", desc = "Swap with the next parameter" },
 			},
 			swap_previous = {
-				["<Leader>sP"] = { query = "@parameter.inner", desc = "Swap with the previous parameter" },
+				["<Leader>lP"] = { query = "@parameter.inner", desc = "Swap with the previous parameter" },
 			},
 		},
 
@@ -92,8 +92,8 @@ require("nvim-treesitter.configs").setup({
 			enable = true,
 			border = "rounded",
 			peek_definition_code = {
-				["<Leader>sf"] = { query = "@function.outer", desc = "Show function definition" },
-				["<Leader>sc"] = { query = "@class.outer", desc = "Show class definition" },
+				["<Leader>lm"] = { query = "@function.outer", desc = "Show function definition" },
+				["<Leader>lc"] = { query = "@class.outer", desc = "Show class definition" },
 			},
 		},
 	},
