@@ -135,6 +135,9 @@ with lib; let
       nui-nvim
       nvim-nio
       pathlib-nvim
+
+      # Nvim-spider dependency to identify words with UTF-8 accents.
+      luautf8
     ];
 in {
   # This is the neovim derivation returned by the overlay.
