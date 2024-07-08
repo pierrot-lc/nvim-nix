@@ -57,7 +57,6 @@ with lib; let
     outline-nvim
 
     # Miscs.
-    copilot-lua
     dial-nvim
     nvim-autopairs
     nvim-spider
