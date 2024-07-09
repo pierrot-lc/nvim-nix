@@ -7,7 +7,7 @@ cachix-push:
 bundle:
     nix bundle --bundler github:DavHau/nix-portable -o bundle
 
-pin-lock:
+lockfile-pin:
     git add flake.lock
     git commit -m "pin: update flake.lock"
     git push
