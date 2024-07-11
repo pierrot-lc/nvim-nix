@@ -32,6 +32,7 @@ with lib; let
     cmp-nvim-lsp
     cmp-path
     cmp-rg
+    cmp-treesitter
     cmp_luasnip
     (mkNvimPlugin inputs.gitmoji-nvim "gitmoji-nvim")
 

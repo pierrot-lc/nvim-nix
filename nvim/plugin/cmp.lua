@@ -56,8 +56,10 @@ local menu_icons = {
 	nvim_lsp = "λ ",
 	path = " ",
 	rg = " ",
+	treesitter = " ",
 	vimtex = " ",
 }
+
 
 cmp.setup({
 	snippet = {
@@ -70,9 +72,10 @@ cmp.setup({
 		{ name = "gitmoji" },
 		{ name = "luasnip" },
 		{ name = "neorg" },
-		{ name = "nvim_lsp" },
+		{ name = "nvim_lsp", priority = 10 },
 		{ name = "path" },
-		{ name = "rg" },
+		{ name = "rg", priority = 0 },
+		{ name = "treesitter", priority = 5 },
 		{ name = "vimtex" },
 	},
 	window = {
@@ -81,6 +84,7 @@ cmp.setup({
 	},
 	formatting = {
 		fields = { "menu", "abbr", "kind" },
+		expandable_indicator = true,
 		format = function(entry, item)
 			item.menu = menu_icons[entry.source.name]
 			item.kind = string.format("%s %s", kind_icons[item.kind] or "󰠱 ", item.kind)
@@ -88,6 +92,7 @@ cmp.setup({
 			-- Remove duplicate entries from some sources.
 			local item_dup = {
 				rg = 0,
+				treesitter = 0,
 			}
 			item.dup = item_dup[entry.source.name] or 1
 
