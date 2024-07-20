@@ -1,6 +1,9 @@
 require("which-key").setup({
 	preset = "helix",
 	delay = 1000,
+	icons = {
+		mappings = false,
+	},
 })
 
 require("which-key").add({
