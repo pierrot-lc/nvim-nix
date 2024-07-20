@@ -1,12 +1,12 @@
-vim.opt.timeout = true
-vim.opt.timeoutlen = 300
+require("which-key").setup({
+	preset = "helix",
+	delay = 1000,
+})
 
-require("which-key").setup()
-
-require("which-key").register({
-	["<Leader>g"] = { name = "+Others" },
-	["<Leader>l"] = { name = "+LSP & Treesitter" },
-	["<Leader>t"] = { name = "+Telescope" },
-	["<Leader>z"] = { name = "+Tabs" },
-	["cr"] = { name = "+LSP" },
+require("which-key").add({
+	{ "<Leader>g", group = "Others" },
+	{ "<Leader>l", group = "LSP & Treesitter" },
+	{ "<Leader>t", group = "Telescope" },
+	{ "<Leader>z", group = "Tabs" },
+	{ "cr", group = "LSP" },
 })
