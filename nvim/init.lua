@@ -7,7 +7,7 @@ vim.g.mapleader = " " -- Redefine leader key.
 vim.g.maplocalleader = "," -- Redefine local leader key.
 vim.opt.breakindent = true -- Conserve indentation of virtual wrapped lines.
 vim.opt.colorcolumn = "" -- Formatting is generally already handled by external packages.
-vim.opt.conceallevel = 2 -- Show conceiled text (markdown, neorg, latex...).
+vim.opt.conceallevel = 0 -- Show conceiled text or not (markdown, neorg, latex...).
 vim.opt.cursorline = true -- Highlight cursor line.
 vim.opt.expandtab = true -- Whether or not we want to transform tabs to spaces.
 vim.opt.foldcolumn = "0"
@@ -45,7 +45,8 @@ vim.wo.number = true -- Show line numbers default.
 vim.wo.relativenumber = false
 vim.wo.signcolumn = "yes" -- Always shows the sign column (where we put gitsigns and warnings).
 
-require("keybindings")
 require("commands")
+require("commons")
+require("keybindings")
 require("pencil")
 require("rooter")
