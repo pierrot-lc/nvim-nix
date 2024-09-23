@@ -103,7 +103,6 @@ with lib; let
     nvim-treesitter-context
     nvim-treesitter-refactor
     nvim-treesitter-textobjects
-    hmts-nvim
 
     # UI.
     alpha-nvim
