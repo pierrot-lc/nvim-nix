@@ -127,16 +127,13 @@ with lib; let
 
   extraLuaPackages = ps:
     with ps; [
-      # Neorg dependencies. Probably dependencies of other plugins as well.
       # Ideally the plugin dependencies are managed by nix but it is not the
-      # case right now. See here:
+      # case for all plugins. See here for more:
       # https://github.com/NixOS/nixpkgs/issues/306367.
-      lua-utils-nvim
-      nui-nvim
-      nvim-nio
-      pathlib-nvim
+      # Note that at least right now, `luasnip` and neorg come with their
+      # dependencies!
 
-      # Nvim-spider dependency to identify words with UTF-8 accents.
+      # Nvim-spider's dependency to identify words with UTF-8 accents.
       luautf8
     ];
 in {
