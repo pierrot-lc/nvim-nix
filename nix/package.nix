@@ -83,6 +83,7 @@ with lib; let
     # Telescope.
     telescope-nvim
     telescope-fzf-native-nvim
+    telescope-symbols-nvim
     (mkNvimPlugin inputs.telescope-helpgrep-nvim "telescope-helpgrep-nvim")
 
     # Tex.
