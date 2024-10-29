@@ -1,4 +1,4 @@
-# My Neovim flake
+# My Neovim Flake
 
 This is my neovim configuration implemented as a flake. Thanks to the power of
 nix and flakes, my whole neovim configuration can be built with a single
@@ -42,7 +42,7 @@ See `./nix/module.nix` for the available option values.
 
 ## Installation
 
-### Test drive
+### Test Drive
 
 If you have Nix installed (with [flakes](https://nixos.wiki/wiki/Flakes)
 enabled), you can test drive this by running:
@@ -71,10 +71,10 @@ Add this flake to your NixOS flake inputs.
 }
 ```
 
-#### Using the overlay
+#### Using the Overlay
 
 Overlays are a way to provide additional packages to the list of available
-`pkgs`. This flake output such overlay to add our `nvim-pkg` derivation to
+`pkgs`. This flake output such overlay to add our `nvim-nix` derivation to
 `pkgs`. Here is a minimal example with home-manager:
 
 ```nix
@@ -82,6 +82,10 @@ Overlays are a way to provide additional packages to the list of available
 {
   inputs = {
     nixpkgs.url = "nixpkgs/nixos-unstable";
+    home-manager = {
+      url = "github:nix-community/home-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     nvim-nix = {
       url = "github:pierrot-lc/nvim-nix";
@@ -100,11 +104,9 @@ Overlays are a way to provide additional packages to the list of available
 
     pkgs = import nixpkgs {
       inherit system;
-      config = {
-        allowUnfree = true;
-      };
+
       overlays = [
-        # We provide our `nvim-pkg` package by giving the overlay here.
+        # We provide our `nvim-nix` package by giving the overlay here.
         inputs.nvim-nix.overlays.${system}.default
       ];
     };
@@ -126,14 +128,14 @@ Overlays are a way to provide additional packages to the list of available
 # home.nix
 {pkgs, ...}: {
   home.packages = with pkgs; [
-    nvim-pkg # This package will be found thanks to the added overlays.
+    nvim-nix # This package will be found thanks to the added overlays.
   ];
 }
 ```
 
-#### Using the module
+#### Using the Module
 
-This flake also provide a module. It provides an interface to provide options
+This flake also provide a module. It provides an interface to specify options
 before building the derivation. You can have a look into `./nix/module.nix` to
 see the available options for yourself, along with their default values.
 
@@ -145,6 +147,10 @@ provide the module. Here is a minimal example:
 {
   inputs = {
     nixpkgs.url = "nixpkgs/nixos-unstable";
+    home-manager = {
+      url = "github:nix-community/home-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     nvim-nix = {
       url = "github:pierrot-lc/nvim-nix";
@@ -163,9 +169,6 @@ provide the module. Here is a minimal example:
 
     pkgs = import nixpkgs {
       inherit system;
-      config = {
-        allowUnfree = true;
-      };
     };
   in {
     homeConfigurations = {
@@ -175,7 +178,7 @@ provide the module. Here is a minimal example:
         modules = [
           ./home.nix
           # Add the module here.
-          inputs.nvim-nix.nixosModules.${system}.default
+          inputs.nvim-nix.hmModules.${system}.default
         ];
       };
     };
@@ -212,7 +215,7 @@ provide the module. Here is a minimal example:
       If you were to copy the `nvim` directory to `$XDG_CONFIG_HOME`,
       and install the plugins, it would work out of the box.
 
-## Initialization order
+## Initialization Order
 
 This derivation creates an `init.lua` as follows:
 

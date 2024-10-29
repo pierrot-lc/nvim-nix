@@ -13,7 +13,7 @@
 in {
   # This is the neovim derivation
   # returned by the overlay.
-  nvim-pkg = package.nvim-pkg;
+  nvim-nix = package.nvim-nix;
 
   # This can be symlinked in the devShell's shellHook.
   nvim-luarc-json = package.nvim-luarc-json;

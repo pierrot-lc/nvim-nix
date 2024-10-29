@@ -139,7 +139,7 @@ with lib; let
     ];
 in {
   # This is the neovim derivation returned by the overlay.
-  nvim-pkg = mkNeovim {
+  nvim-nix = mkNeovim {
     inherit neovim-unwrapped;
     plugins = all-plugins;
     inherit extraPackages;

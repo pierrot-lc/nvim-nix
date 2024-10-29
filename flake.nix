@@ -3,6 +3,7 @@
 
   nixConfig = {
     extra-substituters = [
+      # The neovim nightly build is cached by the nix community.
       "https://nix-community.cachix.org"
     ];
     extra-trusted-public-keys = [
@@ -72,21 +73,23 @@
     ];
   in
     flake-utils.lib.eachSystem supportedSystems (system: let
-      # This is the neovim nightly package from the neovim-nightly flake.
-      nightly-package = neovim-nightly-overlay.packages.${system}.default;
+      neovim-nightly-unwrapped = neovim-nightly-overlay.packages.${system}.default;
 
-      # This is where the Neovim derivation is built.
       neovim-overlay = import ./nix/neovim-overlay.nix {
         inherit inputs;
-        # Use neovim nightly package.
-        neovim-unwrapped = nightly-package;
+        neovim-unwrapped = neovim-nightly-unwrapped;
+      };
+
+      neovim-module = import ./nix/module.nix {
+        inherit inputs;
+        neovim-unwrapped = neovim-nightly-unwrapped;
       };
 
       pkgs = import nixpkgs {
         inherit system;
         overlays = [
           # Import the overlay, so that the final Neovim derivation(s) can be
-          # accessed via pkgs.<nvim-pkg>.
+          # accessed via `pkgs.nvim-nix`.
           neovim-overlay
           # This adds a function can be used to generate a .luarc.json
           # containing the Neovim API all plugins in the workspace directory.
@@ -109,7 +112,7 @@
       };
     in {
       packages = rec {
-        nvim = pkgs.nvim-pkg;
+        nvim = pkgs.nvim-nix;
         default = nvim;
       };
 
@@ -118,13 +121,16 @@
       };
 
       # You can add this overlay to your NixOS configuration.
-      overlays.default = neovim-overlay;
+      overlays = rec {
+        nvim = neovim-overlay;
+        default = nvim;
+      };
 
       # Or you can add this module in your home manager module, allowing you
       # to manually set the configuration.
-      nixosModules.default = import ./nix/module.nix {
-        inherit inputs;
-        neovim-unwrapped = nightly-package;
+      hmModules = rec {
+        nvim = neovim-module;
+        default = nvim;
       };
     });
 }

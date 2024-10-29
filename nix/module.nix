@@ -50,6 +50,6 @@ in {
   };
 
   config = lib.mkIf config.nvim-nix.enable {
-    home.packages = [package.nvim-pkg];
+    home.packages = [package.nvim-nix];
   };
 }
