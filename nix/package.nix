@@ -5,16 +5,9 @@
   neovim-unwrapped,
   config ? {
     theme = "melange";
-    transparentBackground = false;
   },
 }:
 with lib; let
-  # Parse the boolean into its vim boolean string value.
-  transparentBackgroundStr =
-    if config.transparentBackground
-    then "true"
-    else "false";
-
   # Use this to create a plugin from a flake input
   mkNvimPlugin = src: pname:
     pkgs.vimUtils.buildVimPlugin {
@@ -147,9 +140,6 @@ in {
     extraLuaConfig = ''
       -- Global theme of the config. The UI plugins use this to set the theme.
       vim.g.theme = "${config.theme}"
-
-      -- Whether to use a transparent background or not.
-      vim.g.transparent_background = ${transparentBackgroundStr}
     '';
   };
 

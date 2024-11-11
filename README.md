@@ -35,9 +35,6 @@ choose between the following themes:
 - [`nord`](https://www.nordtheme.com/)
 - [`rose-pine`](https://rosepinetheme.com/)
 
-You can also configure whether you want the background to be transparent or not
-using the `config.transparentBackground` value.
-
 See `./nix/module.nix` for the available option values.
 
 ## Installation
@@ -192,7 +189,6 @@ provide the module. Here is a minimal example:
   nvim-nix = {
     enable = true;
     theme = "gruvbox";
-    transparentBackground = true;
   };
 }
 ```

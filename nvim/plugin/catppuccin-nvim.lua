@@ -1,6 +1,4 @@
-require("catppuccin").setup({
-	transparent_background = vim.g.transparent_background,
-})
+require("catppuccin").setup({})
 
 if vim.g.theme == "catppuccin" then
 	vim.cmd("colorscheme catppuccin")

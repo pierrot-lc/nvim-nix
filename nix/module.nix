@@ -16,7 +16,6 @@
     inherit neovim-unwrapped;
     config = {
       theme = config.nvim-nix.theme;
-      transparentBackground = config.nvim-nix.transparentBackground;
     };
   };
 
@@ -40,11 +39,6 @@ in {
         type = lib.types.enum validThemes;
         default = "gruvbox";
         description = "The theme to use.";
-      };
-      transparentBackground = lib.mkOption {
-        type = lib.types.bool;
-        default = false;
-        description = "Whether to use a transparent background";
       };
     };
   };

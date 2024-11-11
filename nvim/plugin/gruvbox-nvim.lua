@@ -1,6 +1,4 @@
-require("gruvbox").setup({
-	transparent_mode = vim.g.transparent_background,
-})
+require("gruvbox").setup({})
 
 if vim.g.theme == "gruvbox" then
 	vim.cmd("colorscheme gruvbox")
