@@ -26,20 +26,13 @@ end
 
 ---Format the paragraph where the cursor is. The paragraph is formatted
 ---according to the given `textwidth` (local buffer value if not provided).
----@param textwidth? number: The textwidth to use for formatting, defaults to
----buffer value if not provided.
 ---@return boolean: Whether the paragraph has been formatted or not.
-local function format_paragraph(textwidth)
-	textwidth = textwidth or vim.bo.textwidth
+local function format_paragraph()
 	local ts_node = get_paragraph_node()
 
 	if ts_node == nil then
 		return false
 	end
-
-	-- Modify the textwidth temporarily.
-	local prev_textwidth = vim.bo.textwidth
-	vim.bo.textwidth = textwidth
 
 	-- Mark the paragraph pointed by the ts node.
 	local start_row, start_col, end_row, end_col = ts_node:range()
@@ -52,14 +45,19 @@ local function format_paragraph(textwidth)
 		end_row = end_row - 1
 	end
 
+	-- Use a mark to watch follow the original position movement.
+	local cursor_position = vim.api.nvim_win_get_cursor(0)
+	vim.api.nvim_buf_set_mark(0, "C", cursor_position[1], cursor_position[2], {})
+
 	vim.api.nvim_buf_set_mark(0, "<", start_row + 1, start_col, {})
-	vim.api.nvim_buf_set_mark(0, ">", end_row + 1, end_col, {})
+	vim.api.nvim_buf_set_mark(0, ">", end_row + 1, end_col - 1, {})
 
 	-- Format with `gq`.
 	vim.cmd("normal! gvgq")
 
-	-- Restore original textwidth.
-	vim.bo.textwidth = prev_textwidth
+	-- Set the cursor to its new position.
+	local new_cursor_position = vim.api.nvim_buf_get_mark(0, "C")
+	vim.api.nvim_win_set_cursor(0, new_cursor_position)
 
 	return true
 end
