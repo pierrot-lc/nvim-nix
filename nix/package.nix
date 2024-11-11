@@ -2,9 +2,9 @@
   pkgs,
   lib,
   inputs,
-  neovim-unwrapped,
   config ? {
     theme = "melange";
+    version = "stable";
   },
 }:
 with lib; let
@@ -17,6 +17,14 @@ with lib; let
 
   # This is the helper function that builds the Neovim derivation.
   mkNeovim = pkgs.callPackage ./mkNeovim.nix {};
+
+  # Selects the right version of neovim we want to use. The pkgs must provide
+  # both `neovim-unwrapped` and `neovim-nightly-unwrapped`.
+  neovim-versions = {
+    "stable" = pkgs.neovim-unwrapped;
+    "nightly" = pkgs.neovim-nightly-unwrapped;
+  };
+  neovim-unwrapped = neovim-versions.${config.version};
 
   all-plugins = with pkgs.vimPlugins; [
     # Completers.
@@ -145,8 +153,7 @@ in {
 
   # This can be symlinked in the devShell's shellHook.
   nvim-luarc-json = mk-luarc-json {
-    nvim = pkgs.neovim-nightly;
+    nvim = neovim-unwrapped;
     plugins = all-plugins;
-    neodev-types = "nightly";
   };
 }

@@ -11,9 +11,9 @@ a little.
 
 Some of the features:
 
-- Neovim nightly.
 - LSPs, linters, formatters for Python.
 - Use [Neorg](https://github.com/nvim-neorg/neorg) for note taking.
+- Optionally use Neovim nightly.
 
 Note: Many LSPs, formatters and others are not packaged in this flake. You have
 to provide them yourself. See this [debate](
@@ -189,6 +189,7 @@ provide the module. Here is a minimal example:
   nvim-nix = {
     enable = true;
     theme = "gruvbox";
+    version = "nightly";
   };
 }
 ```

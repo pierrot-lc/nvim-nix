@@ -1,14 +1,13 @@
 # This overlay, when applied to nixpkgs, adds the final neovim derivation to nixpkgs.
 {
   inputs,
-  neovim-unwrapped,
+  pkgs,
 }: final: prev: let
   # This is how the package is built. It uses the the default config.
   package = import ./package.nix {
-    pkgs = final;
-    lib = final;
+    pkgs = pkgs;
+    lib = pkgs;
     inherit inputs;
-    inherit neovim-unwrapped;
   };
 in {
   # This is the neovim derivation
