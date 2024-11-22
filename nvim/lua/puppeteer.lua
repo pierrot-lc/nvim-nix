@@ -20,29 +20,18 @@ local function string_start_position()
 	end
 
 	-- Progressively move to the left to look for "string_start".
-	if node:type() == "string_end" then
+	while node:type() ~= "string_start" do
 		node = node:prev_sibling()
-
 		if not node then
 			return
 		end
 	end
 
-	if node:type() == "string_content" then
-		node = node:prev_sibling()
-
-		if not node then
-			return
-		end
-	end
-
-	if node:type() == "string_start" then
-		local start_row, start_col, _, _ = node:range()
-		return {
-			start_row = start_row,
-			start_col = start_col,
-		}
-	end
+	local start_row, start_col, _, _ = node:range()
+	return {
+		start_row = start_row,
+		start_col = start_col,
+	}
 end
 
 ---Add or remove the f-string under the current cursor.
