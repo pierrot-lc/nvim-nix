@@ -32,10 +32,6 @@
       url = "github:Dynge/gitmoji.nvim";
       flake = false;
     };
-    nvim-puppeteer = {
-      url = "github:chrisgrieser/nvim-puppeteer";
-      flake = false;
-    };
     telescope-helpgrep-nvim = {
       url = "github:catgoose/telescope-helpgrep.nvim";
       flake = false;
