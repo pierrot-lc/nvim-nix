@@ -1,5 +1,5 @@
 -- ========================================================================== --
--- ==                            COMMON FILETYPES SETTINS                 == --
+-- ==                          COMMON FILETYPES SETTINS                    == --
 -- ========================================================================== --
 local augroup = vim.api.nvim_create_augroup("user_common", { clear = true })
 
@@ -15,7 +15,7 @@ vim.api.nvim_create_autocmd("FileType", {
 		"just",
 		"nix",
 		"toml",
-		"typ",
+		"typst",
 		"yaml",
 	},
 	callback = function()
