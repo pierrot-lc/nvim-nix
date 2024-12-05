@@ -20,11 +20,16 @@ local function string_start_position()
 	end
 
 	-- Progressively move to the left to look for "string_start".
-	while node:type() ~= "string_start" do
-		node = node:prev_sibling()
-		if not node then
-			return
+	while node and node:type() ~= "string_start" do
+		if node:prev_sibling() then
+			node = node:prev_sibling()
+		else
+			node = node:parent()
 		end
+	end
+
+	if not node then
+		return
 	end
 
 	local start_row, start_col, _, _ = node:range()
