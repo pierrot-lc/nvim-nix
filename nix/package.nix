@@ -71,6 +71,9 @@ with lib; let
     # Neorg.
     neorg
 
+    # Snacks packages.
+    snacks-nvim
+
     # Snippets.
     luasnip
 
@@ -96,7 +99,6 @@ with lib; let
     nvim-treesitter-textobjects
 
     # UI.
-    alpha-nvim
     dressing-nvim
     lualine-nvim
     which-key-nvim
