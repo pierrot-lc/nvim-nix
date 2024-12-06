@@ -11,7 +11,7 @@ require("snacks").setup({
 	statuscolumn = {
 		enabled = true,
 		folds = {
-			open = true,
+			open = false,
 			git_hl = true,
 		},
 		git = {
