@@ -1,12 +1,12 @@
 local spider = require("spider")
 
---- Same line jump. If the cursor moves to a different line, the cursor will be
---- moved back to the original line.
---- Credits: https://github.com/yutkat/wb-only-current-line.nvim
---- NOTE: If the move is repeated using [count], the cursor will still be moved back to it's original position.
+---Same line jump. If the cursor moves to a different line, the cursor will be
+---moved back to the original line.
+---Credits: https://github.com/yutkat/wb-only-current-line.nvim
+---NOTE: If the move is repeated using [count], the cursor will still be moved back to it's original position.
 ---
---- @param direction string: The direction to move the cursor.
---- @param move_fn function: The function to move the cursor.
+---@param direction string: The direction to move the cursor.
+---@param move_fn function: The function to move the cursor.
 local function same_line_jump(direction, move_fn)
 	local cursor_position = vim.api.nvim_win_get_cursor(0)
 
@@ -18,10 +18,10 @@ local function same_line_jump(direction, move_fn)
 	end
 end
 
---- Returns a function that jumps to the next word in the given direction. The
---- jump is a "spider" jump.
---- @param direction string
---- @return function
+---Returns a function that jumps to the next word in the given direction. The
+---jump is a "spider" jump.
+---@param direction string
+---@return function
 local function spider_jump(direction)
 	local jump_function = function()
 		same_line_jump(direction, spider.motion)
@@ -29,9 +29,9 @@ local function spider_jump(direction)
 	return jump_function
 end
 
---- Returns a function that jumps to the next word in the given direction.
---- @param direction string
---- @return function
+---Returns a function that jumps to the next word in the given direction.
+---@param direction string
+---@return function
 local function normal_jump(direction)
 	local move_fn = function(direction_)
 		vim.cmd("normal! " .. direction_)
