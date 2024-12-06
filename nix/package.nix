@@ -46,9 +46,6 @@ with lib; let
     # Formatters.
     conform-nvim
 
-    # Gits.
-    vim-fugitive
-
     # LSPs.
     nvim-lspconfig
     fidget-nvim
@@ -59,7 +56,6 @@ with lib; let
     # Miscs.
     dial-nvim
     nvim-spider
-    todo-comments-nvim
     (mkNvimPlugin inputs.vim-characterize "vim-characterize")
 
     # Mini plugins.
@@ -68,7 +64,7 @@ with lib; let
     # Neorg.
     neorg
 
-    # Snacks packages.
+    # Snacks plugins.
     snacks-nvim
 
     # Snippets.
