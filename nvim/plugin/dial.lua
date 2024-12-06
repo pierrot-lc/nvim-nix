@@ -10,5 +10,5 @@ require("dial.config").augends:register_group({
 		augend.constant.new({ elements = { "True", "False" } }),
 	},
 })
-vim.api.nvim_set_keymap("n", "<C-a>", require("dial.map").inc_normal(), { noremap = true })
-vim.api.nvim_set_keymap("n", "<C-x>", require("dial.map").dec_normal(), { noremap = true })
+vim.keymap.set("n", "<C-a>", require("dial.map").inc_normal(), { noremap = true })
+vim.keymap.set("n", "<C-x>", require("dial.map").dec_normal(), { noremap = true })

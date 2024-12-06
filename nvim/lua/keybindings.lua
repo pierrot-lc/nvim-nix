@@ -48,12 +48,12 @@ vim.keymap.set("n", "<C-j>", "<C-w>j", { desc = "Quick move to bottom buffer" })
 vim.keymap.set("n", "<C-k>", "<C-w>k", { desc = "Quick move to upper buffer" })
 vim.keymap.set("n", "<C-h>", "<C-w>h", { desc = "Quick move to left buffer" })
 vim.keymap.set("n", "<C-l>", "<C-w>l", { desc = "Quick move to right buffer" })
-vim.api.nvim_set_keymap("n", "<C-d>", "<C-d>zz", { desc = "Scroll down from center", silent = true })
-vim.api.nvim_set_keymap("n", "<C-u>", "<C-u>zz", { desc = "Scroll up from center", silent = true })
+vim.keymap.set("n", "<C-d>", "<C-d>zz", { desc = "Scroll down from center", silent = true })
+vim.keymap.set("n", "<C-u>", "<C-u>zz", { desc = "Scroll up from center", silent = true })
 
 -- Move blocks
-vim.api.nvim_set_keymap("v", "J", ":m '>+1<CR>gv=gv", { desc = "Move block down", silent = true })
-vim.api.nvim_set_keymap("v", "K", ":m '<-2<CR>gv=gv", { desc = "Move block up", silent = true })
+vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv", { desc = "Move block down", silent = true })
+vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv", { desc = "Move block up", silent = true })
 
 -- Tab management
 -- Quick tip: you can zoom-in and zoom-out using tab split and tab close!

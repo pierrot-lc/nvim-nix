@@ -61,7 +61,6 @@ with lib; let
     nvim-autopairs
     nvim-spider
     todo-comments-nvim
-    toggleterm-nvim
     (mkNvimPlugin inputs.vim-characterize "vim-characterize")
 
     # Mini plugins.

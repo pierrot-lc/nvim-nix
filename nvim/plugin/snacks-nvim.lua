@@ -35,4 +35,13 @@ require("snacks").setup({
 			{ text = footer },
 		},
 	},
+
+	terminal = {
+		win = {
+			position = "float",
+			style = "terminal",
+		},
+	},
 })
+
+vim.keymap.set({ "n", "i", "t" }, "<C-g>", Snacks.terminal.toggle, { desc = "Toggle term" })
