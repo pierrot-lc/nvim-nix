@@ -58,7 +58,6 @@ with lib; let
 
     # Miscs.
     dial-nvim
-    nvim-autopairs
     nvim-spider
     todo-comments-nvim
     (mkNvimPlugin inputs.vim-characterize "vim-characterize")
