@@ -24,10 +24,6 @@
       url = "github:neanias/everforest-nvim";
       flake = false;
     };
-    telescope-helpgrep-nvim = {
-      url = "github:catgoose/telescope-helpgrep.nvim";
-      flake = false;
-    };
     vim-characterize = {
       url = "github:tpope/vim-characterize";
       flake = false;

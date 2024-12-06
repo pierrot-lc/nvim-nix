@@ -23,8 +23,8 @@ require("snacks").setup({
 		enabled = true,
 		preset = {
 			keys = {
-				{ icon = "󰈢 ", key = "f", desc = "Find file", action = ":Telescope find_files" },
-				{ icon = "󰺮 ", key = "l", desc = "Live grep", action = ":Telescope live_grep" },
+				{ icon = "󰈢 ", key = "f", desc = "Find file", action = MiniPick.builtin.files },
+				{ icon = "󰺮 ", key = "l", desc = "Live grep", action = MiniPick.builtin.grep_live },
 				{ icon = " ", key = "q", desc = "Quit", action = ":qa" },
 			},
 			header = header,
@@ -44,4 +44,4 @@ require("snacks").setup({
 	},
 })
 
-vim.keymap.set({ "n", "i", "t" }, "<C-g>", Snacks.terminal.toggle, { desc = "Toggle term" })
+-- vim.keymap.set({ "n", "i", "t" }, "<C-g>", Snacks.terminal.toggle, { desc = "Toggle term" })

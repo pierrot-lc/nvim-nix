@@ -19,6 +19,13 @@ require("mini.jump2d").setup({
 	allowed_windows = { not_current = false },
 })
 
+require("mini.pick").setup()
+vim.keymap.set("n", "<Leader>f", MiniPick.builtin.files, { desc = "Find files" })
+vim.keymap.set("n", "<Leader>tl", MiniPick.builtin.grep_live, { desc = "Live grep" })
+vim.keymap.set("n", "<Leader>tb", MiniPick.builtin.buffers, { desc = "Buffers" })
+vim.keymap.set("n", "<Leader>th", MiniPick.builtin.help, { desc = "Help tags" })
+vim.keymap.set("n", "<Leader>tp", MiniPick.builtin.resume, { desc = "Resume previous pick" })
+
 require("mini.splitjoin").setup({
 	mappings = {
 		toggle = "<Leader>gs",

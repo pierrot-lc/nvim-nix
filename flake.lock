@@ -418,7 +418,6 @@
         "gen-luarc": "gen-luarc",
         "neovim-nightly-overlay": "neovim-nightly-overlay",
         "nixpkgs": "nixpkgs_3",
-        "telescope-helpgrep-nvim": "telescope-helpgrep-nvim",
         "vim-characterize": "vim-characterize"
       }
     },
@@ -434,22 +433,6 @@
       "original": {
         "owner": "nix-systems",
         "repo": "default",
-        "type": "github"
-      }
-    },
-    "telescope-helpgrep-nvim": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1716032219,
-        "narHash": "sha256-ZVWNqXZngTIj9otiFt+/lUm7V8GA378FdlJG78+SJNY=",
-        "owner": "catgoose",
-        "repo": "telescope-helpgrep.nvim",
-        "rev": "641b2f1b4559a67731dc42fd84203817ebd6e2ce",
-        "type": "github"
-      },
-      "original": {
-        "owner": "catgoose",
-        "repo": "telescope-helpgrep.nvim",
         "type": "github"
       }
     },
