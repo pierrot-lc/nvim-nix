@@ -35,7 +35,6 @@ with lib; let
     cmp-rg
     cmp-treesitter
     cmp_luasnip
-    (mkNvimPlugin inputs.gitmoji-nvim "gitmoji-nvim")
 
     # Files.
     nvim-tree-lua
@@ -65,17 +64,12 @@ with lib; let
     todo-comments-nvim
     toggleterm-nvim
     (mkNvimPlugin inputs.vim-characterize "vim-characterize")
-    (mkNvimPlugin inputs.vim-kitty "vim-kitty")
-
-    # Minizinc.
-    (mkNvimPlugin inputs.vim-minizinc "vim-minizinc")
 
     # Mini plugins.
     mini-nvim
 
     # Neorg.
     neorg
-    diffview-nvim
 
     # Snippets.
     luasnip
@@ -85,10 +79,6 @@ with lib; let
     telescope-fzf-native-nvim
     telescope-symbols-nvim
     (mkNvimPlugin inputs.telescope-helpgrep-nvim "telescope-helpgrep-nvim")
-
-    # Tex.
-    vimtex
-    (mkNvimPlugin inputs.cmp-vimtex "cmp-vimtex")
 
     # Themes.
     catppuccin-nvim
@@ -131,7 +121,8 @@ with lib; let
       # Ideally the plugin dependencies are managed by nix but it is not the
       # case for all plugins. See here for more:
       # https://github.com/NixOS/nixpkgs/issues/306367.
-      # Note that at least right now, `luasnip` and neorg come with their
+
+      # Note that at least right now, `luasnip` and `neorg` come with their
       # dependencies!
 
       # Nvim-spider's dependency to identify words with UTF-8 accents.
