@@ -56,7 +56,6 @@ with lib; let
     # Miscs.
     dial-nvim
     nvim-spider
-    todo-comments-nvim
     (mkNvimPlugin inputs.vim-characterize "vim-characterize")
 
     # Mini plugins.

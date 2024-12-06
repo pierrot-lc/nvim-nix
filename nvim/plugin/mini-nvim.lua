@@ -6,6 +6,27 @@ require("mini.pairs").setup()
 require("mini.statusline").setup()
 require("mini.surround").setup()
 
+local hipatterns = require("mini.hipatterns")
+hipatterns.setup({
+	highlighters = {
+		-- Highlight standalone 'FIXME', 'HACK', 'TODO', 'NOTE'
+		fixme = {
+			pattern = {
+				"%f[%w]()FIXME()%f[%W]",
+				"%f[%w]()WARN()%f[%W]",
+				"%f[%w]()WARNING()%f[%W]",
+			},
+			group = "MiniHipatternsFixme",
+		},
+		hack = { pattern = "%f[%w]()HACK()%f[%W]", group = "MiniHipatternsHack" },
+		note = { pattern = "%f[%w]()NOTE()%f[%W]", group = "MiniHipatternsNote" },
+		todo = { pattern = "%f[%w]()TODO()%f[%W]", group = "MiniHipatternsTodo" },
+
+		-- Highlight hex color strings (`#rrggbb`) using that color
+		hex_color = hipatterns.gen_highlighter.hex_color(),
+	},
+})
+
 require("mini.indentscope").setup()
 vim.api.nvim_create_autocmd("FileType", {
 	pattern = { "NvimTree", "Trouble", "help", "snacks_dashboard" },
