@@ -46,9 +46,6 @@ with lib; let
     # Formatters.
     conform-nvim
 
-    # Gits.
-    vim-fugitive
-
     # LSPs.
     nvim-lspconfig
     fidget-nvim
@@ -68,7 +65,7 @@ with lib; let
     # Neorg.
     neorg
 
-    # Snacks packages.
+    # Snacks plugins.
     snacks-nvim
 
     # Snippets.
