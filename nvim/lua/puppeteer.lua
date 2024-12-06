@@ -3,6 +3,11 @@
 
 ---Find the starting position of the string under the current cursor. If the
 ---cursor is not hovering a string, this function returns nil.
+---
+---NOTE: A better version of this would be to search for the next string on the
+---right from the current position of the cursor. This could be done using a
+---treesitter query or simply a f-jump.
+---
 ---@return table|nil
 local function string_start_position()
 	local parser = vim.treesitter.get_parser(0, "python")
