@@ -100,7 +100,6 @@ with lib; let
 
     # UI.
     dressing-nvim
-    lualine-nvim
     which-key-nvim
     zen-mode-nvim
 
