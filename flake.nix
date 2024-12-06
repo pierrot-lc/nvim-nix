@@ -20,16 +20,8 @@
     # Add bleeding-edge plugins here.
     # They can be updated with `nix flake update` (make sure to commit the
     # generated flake.lock).
-    cmp-vimtex = {
-      url = "github:micangl/cmp-vimtex";
-      flake = false;
-    };
     everforest-nvim = {
       url = "github:neanias/everforest-nvim";
-      flake = false;
-    };
-    gitmoji-nvim = {
-      url = "github:Dynge/gitmoji.nvim";
       flake = false;
     };
     telescope-helpgrep-nvim = {
@@ -38,14 +30,6 @@
     };
     vim-characterize = {
       url = "github:tpope/vim-characterize";
-      flake = false;
-    };
-    vim-kitty = {
-      url = "github:fladson/vim-kitty";
-      flake = false;
-    };
-    vim-minizinc = {
-      url = "github:vale1410/vim-minizinc";
       flake = false;
     };
   };

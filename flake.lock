@@ -1,21 +1,5 @@
 {
   "nodes": {
-    "cmp-vimtex": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1722941837,
-        "narHash": "sha256-pD2dPdpyn5A/uwonDdAxCX138yBeDqbXDdlG/IKjVTU=",
-        "owner": "micangl",
-        "repo": "cmp-vimtex",
-        "rev": "5283bf9108ef33d41e704027b9ef22437ce7a15b",
-        "type": "github"
-      },
-      "original": {
-        "owner": "micangl",
-        "repo": "cmp-vimtex",
-        "type": "github"
-      }
-    },
     "everforest-nvim": {
       "flake": false,
       "locked": {
@@ -274,22 +258,6 @@
         "type": "github"
       }
     },
-    "gitmoji-nvim": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1700166943,
-        "narHash": "sha256-EZHclDtuyZWXTBOVU4C+Km/YNM1oAIazQT4wBI5K7vo=",
-        "owner": "Dynge",
-        "repo": "gitmoji.nvim",
-        "rev": "326ddf01cbf3425566a089126ece7e8bd2560601",
-        "type": "github"
-      },
-      "original": {
-        "owner": "Dynge",
-        "repo": "gitmoji.nvim",
-        "type": "github"
-      }
-    },
     "hercules-ci-effects": {
       "inputs": {
         "flake-parts": "flake-parts_3",
@@ -445,17 +413,13 @@
     },
     "root": {
       "inputs": {
-        "cmp-vimtex": "cmp-vimtex",
         "everforest-nvim": "everforest-nvim",
         "flake-utils": "flake-utils",
         "gen-luarc": "gen-luarc",
-        "gitmoji-nvim": "gitmoji-nvim",
         "neovim-nightly-overlay": "neovim-nightly-overlay",
         "nixpkgs": "nixpkgs_3",
         "telescope-helpgrep-nvim": "telescope-helpgrep-nvim",
-        "vim-characterize": "vim-characterize",
-        "vim-kitty": "vim-kitty",
-        "vim-minizinc": "vim-minizinc"
+        "vim-characterize": "vim-characterize"
       }
     },
     "systems": {
@@ -502,38 +466,6 @@
       "original": {
         "owner": "tpope",
         "repo": "vim-characterize",
-        "type": "github"
-      }
-    },
-    "vim-kitty": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1731077808,
-        "narHash": "sha256-zRjBMeDpsiMjAczZkJNQKEBPKcjQHR/+OGyx3q/ebGQ=",
-        "owner": "fladson",
-        "repo": "vim-kitty",
-        "rev": "ceaae754267f9578b6313890596ee34a19c00dad",
-        "type": "github"
-      },
-      "original": {
-        "owner": "fladson",
-        "repo": "vim-kitty",
-        "type": "github"
-      }
-    },
-    "vim-minizinc": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1646076705,
-        "narHash": "sha256-PLMeTZVn/17yC77qH7EiXguYUtENclrV+gWB95Kbsz0=",
-        "owner": "vale1410",
-        "repo": "vim-minizinc",
-        "rev": "83ac0d6b8ceab3417b43925a99894c0423e3c492",
-        "type": "github"
-      },
-      "original": {
-        "owner": "vale1410",
-        "repo": "vim-minizinc",
         "type": "github"
       }
     }

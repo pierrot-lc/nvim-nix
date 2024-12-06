@@ -10,7 +10,6 @@ require("nvim-treesitter.configs").setup({
 	-- Highlight based on treesitter.
 	highlight = {
 		enable = true,
-		disable = { "latex" }, -- Handled by vimtex.
 	},
 
 	-- Indentation based on treesitter (use `=` operator).
