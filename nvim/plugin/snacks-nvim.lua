@@ -5,10 +5,20 @@ local header = [[
 ○---○---○
    ⸌○⸍   
 ]]
-
 local footer = "Go deep!"
 
 require("snacks").setup({
+	statuscolumn = {
+		enabled = true,
+		folds = {
+			open = true,
+			git_hl = true,
+		},
+		git = {
+			patterns = { "MiniDiffSign" },
+		},
+	},
+
 	dashboard = {
 		enabled = true,
 		preset = {
@@ -19,7 +29,6 @@ require("snacks").setup({
 			},
 			header = header,
 		},
-
 		sections = {
 			{ section = "header" },
 			{ section = "keys", gap = 1, padding = 1 },

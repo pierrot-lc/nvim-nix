@@ -43,7 +43,6 @@ vim.opt.virtualedit = "block"
 vim.opt.wrap = false -- Whether or not we want to wrap long lines.
 vim.wo.number = true -- Show line numbers default.
 vim.wo.relativenumber = false
-vim.wo.signcolumn = "yes" -- Always shows the sign column (where we put gitsigns and warnings).
 
 require("commands")
 require("commons")

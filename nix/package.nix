@@ -47,7 +47,6 @@ with lib; let
     conform-nvim
 
     # Gits.
-    gitsigns-nvim
     vim-fugitive
 
     # LSPs.
