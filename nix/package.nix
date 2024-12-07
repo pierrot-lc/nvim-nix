@@ -3,7 +3,10 @@
   lib,
   inputs,
   config ? {
-    theme = "melange";
+    theme = {
+      name = "everforest";
+      flavour = "dark";
+    };
     version = "stable";
   },
 }:
@@ -73,9 +76,6 @@ with lib; let
     # Themes.
     catppuccin-nvim
     gruvbox-nvim
-    kanagawa-nvim
-    melange-nvim
-    nord-nvim
     rose-pine
     (mkNvimPlugin inputs.everforest-nvim "everforest-nvim")
 
@@ -123,10 +123,11 @@ in {
     plugins = all-plugins;
     inherit extraPackages;
     inherit extraLuaPackages;
-    extraLuaConfig = ''
-      -- Global theme of the config. The UI plugins use this to set the theme.
-      vim.g.theme = "${config.theme}"
-    '';
+    extraLuaConfig = /* lua */ ''
+        -- Global theme of the config. The UI plugins use this to set the theme.
+        vim.g.theme = "${config.theme.name}"
+        vim.opt.background = "${config.theme.flavour}"
+      '';
   };
 
   # This can be symlinked in the devShell's shellHook.

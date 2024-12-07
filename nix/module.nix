@@ -13,34 +13,33 @@
     inherit lib;
     inherit inputs;
     config = {
-      theme = config.nvim-nix.theme;
-      version = config.nvim-nix.version;
+      inherit (config.nvim-nix) theme;
+      inherit (config.nvim-nix) version;
     };
   };
-
-  validThemes = [
-    "catppuccin"
-    "everforest"
-    "gruvbox"
-    "gruvbox-light"
-    "kanagawa"
-    "melange"
-    "melange-light"
-    "nord"
-    "rose-pine"
-    "rose-pine-dawn"
-  ];
 in {
   options = {
     nvim-nix = {
       enable = lib.mkEnableOption "Enable nvim-nix";
 
-      theme = lib.mkOption {
-        type = lib.types.enum validThemes;
-        default = "gruvbox";
-        description = "The theme to use.";
+      theme = {
+        name = lib.mkOption {
+          type = lib.types.enum [
+            "catppuccin-macchiato"
+            "catppuccin-mocha"
+            "everforest"
+            "gruvbox"
+            "rose-pine"
+          ];
+          default = "catppuccin-mocha";
+          description = "The theme to use.";
+        };
+        flavour = lib.mkOption {
+          type = lib.types.enum ["dark" "light"];
+          default = "dark";
+          description = "Version of the theme to use";
+        };
       };
-
       version = lib.mkOption {
         type = lib.types.enum ["stable" "nightly"];
         default = "stable";

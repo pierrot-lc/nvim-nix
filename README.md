@@ -27,13 +27,10 @@ There are multiple themes available and you can activate a specific theme by
 passing the `config.theme` value to the nix package at build time. You can
 choose between the following themes:
 
-- [`catppuccin`](https://catppuccin.com/)
-- [`everforest`](https://github.com/sainnhe/everforest/wiki)
-- [`gruvbox`](https://github.com/gruvbox-community/gruvbox-contrib)
-- [`kanagawa`](https://github.com/rebelot/kanagawa.nvim)
-- [`melange`](https://github.com/savq/melange-nvim)
-- [`nord`](https://www.nordtheme.com/)
-- [`rose-pine`](https://rosepinetheme.com/)
+- [`catppuccin`](https://github.com/catppuccin/nvim)
+- [`everforest`](https://github.com/neanias/everforest-nvim)
+- [`gruvbox`](https://github.com/ellisonleao/gruvbox.nvim/)
+- [`rose-pine`](https://github.com/rose-pine/neovim)
 
 See `./nix/module.nix` for the available option values.
 
@@ -188,7 +185,8 @@ provide the module. Here is a minimal example:
 {pkgs, ...}: {
   nvim-nix = {
     enable = true;
-    theme = "gruvbox";
+    theme.name = "gruvbox";
+    theme.flavour = "light"; # Set vim.opt.background.
     version = "nightly";
   };
 }
