@@ -27,10 +27,6 @@ if vim.fn.executable("ruff") == 1 then
 	lspconfig["ruff"].setup({})
 end
 
-if vim.fn.executable("pyre") == 1 then
-	lspconfig["pyre"].setup({})
-end
-
 if vim.fn.executable("lua-language-server") then
 	lspconfig["lua_ls"].setup({
 		settings = {
@@ -107,31 +103,6 @@ if vim.fn.executable("gleam") == 1 then
 	lspconfig["gleam"].setup({})
 end
 
--- Bind the `lsp_signature` to the LSP servers. This has to be called after the
--- setup of LSPs.
-local signature_opts = {
-	bind = true,
-	floating_window = true,
-	handler_opts = { border = "rounded" },
-	hint_enable = false,
-	wrap = false,
-	hi_parameter = "Search",
-}
-require("lsp_signature").setup(signature_opts)
-
--- Toggle diagnostics. We keep track of the toggling state.
-local show_diagnostics = true
-local function toggle_diagnostics()
-	show_diagnostics = not show_diagnostics
-	vim.diagnostic.enable(show_diagnostics)
-
-	if show_diagnostics then
-		vim.notify("Diagnostics activated.")
-	else
-		vim.notify("Diagnostics hidden.")
-	end
-end
-
 -- LSP keymappings, triggered when the language server attaches to a buffer.
 local function on_attach(ev)
 	local bufnr = ev.buf
@@ -141,11 +112,6 @@ local function on_attach(ev)
 		vim.notify("No client attached to buffer " .. bufnr, vim.log.levels.ERROR)
 		return
 	end
-
-	vim.keymap.set("n", "gl", function()
-		return vim.diagnostic.open_float(nil, { focus = false, border = "rounded" })
-	end, { desc = "Show diagnostics" })
-	vim.keymap.set("n", "<leader>ld", toggle_diagnostics, { desc = "Toggle diagnostics" })
 
 	if client.server_capabilities.completionProvider then
 		-- Enable completion triggered by <c-x><c-o>.
@@ -167,11 +133,6 @@ local function on_attach(ev)
 		end, { desc = "Format", buffer = bufnr })
 	end
 
-	if client.server_capabilities.documentHighlightProvider then
-		vim.keymap.set("n", "<leader>lh", vim.lsp.buf.document_highlight, { desc = "Highlight", buffer = bufnr })
-		vim.keymap.set("n", "<leader>lH", vim.lsp.buf.clear_references, { desc = "Clear highlight", buffer = bufnr })
-	end
-
 	if client.server_capabilities.signatureHelpProvider then
 		vim.keymap.set("n", "gs", vim.lsp.buf.signature_help, { desc = "Show signature", buffer = bufnr })
 	end
@@ -180,14 +141,13 @@ local function on_attach(ev)
 		vim.keymap.set("n", "gi", vim.lsp.buf.implementation, { desc = "Go to implementation", buffer = bufnr })
 	end
 
-	if client.server_capabilities.workspaceSymbolProvider then
-		vim.keymap.set(
-			"n",
-			"<leader>lW",
-			vim.lsp.buf.workspace_symbol,
-			{ desc = "List workspace symbols", buffer = bufnr }
-		)
-	end
+	local signature_opts = {
+		handler_opts = { border = "rounded" },
+		hint_enable = false,
+		wrap = false,
+		hi_parameter = "Search",
+	}
+	require("lsp_signature").on_attach(signature_opts, bufnr)
 end
 
 -- Use LspAttach autocommand to only map the following keys
@@ -200,4 +160,17 @@ vim.api.nvim_create_autocmd("LspAttach", {
 -- Was the default momentarily. Maybe will be the defaults later on.
 vim.keymap.set("n", "crr", vim.lsp.buf.code_action, { desc = "Code actions" })
 vim.keymap.set("n", "crn", vim.lsp.buf.rename, { desc = "Code actions" })
-vim.keymap.set("n", "<leader>lf", vim.lsp.buf.format, { desc = "Format" })
+
+-- These keybindings are presents for all buffers.
+vim.keymap.set("n", "<leader>lf", function()
+	vim.lsp.buf.format()
+	require("conform").format()
+end, { desc = "Format" })
+
+vim.keymap.set("n", "gl", function()
+	return vim.diagnostic.open_float(nil, { focus = false, border = "rounded" })
+end, { desc = "Show diagnostics" })
+
+vim.keymap.set("n", "<leader>ld", function()
+	return vim.diagnostic.enable(not vim.diagnostic.is_enabled())
+end, { desc = "Toggle diagnostics" })

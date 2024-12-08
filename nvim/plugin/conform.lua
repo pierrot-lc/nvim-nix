@@ -23,9 +23,6 @@ if vim.fn.executable("shfmt") == 1 then
 	formatters_by_ft.sh = { "shfmt" }
 end
 
-
 require("conform").setup({
 	formatters_by_ft = formatters_by_ft,
 })
-
-vim.keymap.set("n", "<leader>F", require("conform").format, { desc = "Format" })

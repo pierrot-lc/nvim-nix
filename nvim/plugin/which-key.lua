@@ -9,7 +9,7 @@ require("which-key").setup({
 require("which-key").add({
 	{ "<Leader>g", group = "Others" },
 	{ "<Leader>l", group = "LSP & Treesitter" },
-	{ "<Leader>t", group = "Telescope" },
+	{ "<Leader>t", group = "Pick" },
 	{ "<Leader>z", group = "Tabs" },
 	{ "cr", group = "LSP" },
 })
