@@ -10,10 +10,12 @@ vim.opt.colorcolumn = "" -- Formatting is generally already handled by external 
 vim.opt.conceallevel = 0 -- Show conceiled text or not (markdown, neorg, latex...).
 vim.opt.cursorline = true -- Highlight cursor line.
 vim.opt.expandtab = true -- Whether or not we want to transform tabs to spaces.
+vim.opt.fillchars:append("fold: ")
 vim.opt.foldcolumn = "0"
 vim.opt.foldenable = true
 vim.opt.foldlevel = 99
 vim.opt.foldlevelstart = 99 -- Do not fold by default when opening a file.
+vim.opt.foldtext = ""
 vim.opt.hlsearch = true -- Set highlight on search.
 vim.opt.ignorecase = true -- Case insensitive searching.
 vim.opt.inccommand = "split"

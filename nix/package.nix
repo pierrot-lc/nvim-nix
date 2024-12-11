@@ -43,9 +43,6 @@ with lib; let
     nvim-tree-lua
     oil-nvim
 
-    # Folds.
-    nvim-ufo
-
     # Formatters.
     conform-nvim
 
