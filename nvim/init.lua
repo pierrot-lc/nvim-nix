@@ -31,6 +31,7 @@ vim.opt.listchars:append({
 vim.opt.mouse = "a" -- Enable mouse for all modes.
 vim.opt.scrolloff = 5 -- Offset before scrolling.
 vim.opt.shiftwidth = 4 -- Amount of spaces are used to indent a line.
+vim.opt.signcolumn = "yes"
 vim.opt.smartcase = true -- Case insensitive unless there is capital or /C in search.
 vim.opt.smoothscroll = true -- Scroll naturally on softwrapped lines.
 vim.opt.splitbelow = true -- Choose where splits are going.
