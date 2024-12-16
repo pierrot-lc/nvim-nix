@@ -12,7 +12,6 @@ vim.api.nvim_create_autocmd("FileType", {
 		"html",
 		"htmlangular",
 		"htmldjango",
-		"just",
 		"nix",
 		"toml",
 		"typst",
