@@ -27,35 +27,39 @@ if vim.fn.executable("ruff") == 1 then
 	lspconfig["ruff"].setup({})
 end
 
-if vim.fn.executable("lua-language-server") then
-	lspconfig["lua_ls"].setup({
-		settings = {
-			Lua = {
-				runtime = {
-					-- Tell the language server which version of Lua you're using
-					-- (most likely LuaJIT in the case of Neovim).
-					version = "LuaJIT",
-				},
-				diagnostics = {
-					-- Get the language server to recognize the `vim` global.
-					globals = { "vim" },
-				},
-				workspace = {
-					-- Make the server aware of Neovim runtime files
-					library = vim.api.nvim_get_runtime_file("", true),
-					-- Remove annoying popup when editing standalone lua files.
-					checkThirdParty = false,
-				},
-				telemetry = {
-					enable = true, -- That's fine.
-				},
-				format = {
-					enable = false,
-				},
-			},
-		},
-	})
+if vim.fn.executable("basedpyright") then
+	lspconfig["basedpyright"].setup({})
 end
+
+-- if vim.fn.executable("lua-language-server") then
+-- 	lspconfig["lua_ls"].setup({
+-- 		settings = {
+-- 			Lua = {
+-- 				runtime = {
+-- 					-- Tell the language server which version of Lua you're using
+-- 					-- (most likely LuaJIT in the case of Neovim).
+-- 					version = "LuaJIT",
+-- 				},
+-- 				diagnostics = {
+-- 					-- Get the language server to recognize the `vim` global.
+-- 					globals = { "vim" },
+-- 				},
+-- 				workspace = {
+-- 					-- Make the server aware of Neovim runtime files
+-- 					library = vim.api.nvim_get_runtime_file("", true),
+-- 					-- Remove annoying popup when editing standalone lua files.
+-- 					checkThirdParty = false,
+-- 				},
+-- 				telemetry = {
+-- 					enable = true, -- That's fine.
+-- 				},
+-- 				format = {
+-- 					enable = false,
+-- 				},
+-- 			},
+-- 		},
+-- 	})
+-- end
 
 if vim.fn.executable("texlab") == 1 then
 	lspconfig["texlab"].setup({
