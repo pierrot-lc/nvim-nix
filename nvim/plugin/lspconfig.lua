@@ -3,20 +3,30 @@ local lspconfig = require("lspconfig")
 vim.diagnostic.config({ update_in_insert = false })
 
 -- Load LSP servers. Only load them if they're available.
-if vim.fn.executable("pylsp") == 1 then
-	lspconfig["pylsp"].setup({
+if vim.fn.executable("lua-language-server") then
+	lspconfig["lua_ls"].setup({
 		settings = {
-			pylsp = {
-				plugins = {
-					preload = { enabled = true },
-					autopep8 = { enabled = false },
-					flake8 = { enabled = false },
-					pycodestyle = { enabled = false },
-					pydocstyle = { enabled = false },
-					mccabe = { enabled = false },
-					yapf = { enabled = false },
-					pylint = { enabled = false },
-					pyflakes = { enabled = false },
+			Lua = {
+				runtime = {
+					-- Tell the language server which version of Lua you're using
+					-- (most likely LuaJIT in the case of Neovim).
+					version = "LuaJIT",
+				},
+				diagnostics = {
+					-- Get the language server to recognize the `vim` global.
+					globals = { "vim" },
+				},
+				workspace = {
+					-- Make the server aware of Neovim runtime files
+					library = vim.api.nvim_get_runtime_file("", true),
+					-- Remove annoying popup when editing standalone lua files.
+					checkThirdParty = false,
+				},
+				telemetry = {
+					enable = true, -- That's fine.
+				},
+				format = {
+					enable = false,
 				},
 			},
 		},
