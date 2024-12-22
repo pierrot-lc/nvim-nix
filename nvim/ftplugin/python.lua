@@ -1,3 +1,4 @@
 vim.bo.textwidth = 88
 
-vim.keymap.set("n", "<LocalLeader>f", require("puppeteer").puppeteer, { desc = "Puppeteer", buffer = 0 })
+vim.keymap.set("n", "<LocalLeader>f", require("python-tools").puppeteer, { desc = "Puppeteer", buffer = 0 })
+vim.keymap.set("n", '<LocalLeader>"', require("python-tools").insert_docstrings, { desc = "Doc-string", buffer = 0 })

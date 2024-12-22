@@ -63,6 +63,21 @@ local function puppeteer()
 	end
 end
 
+--Insert a doc-strings below the current cursor and go to insert mode.
+local function insert_docstrings()
+	-- Insert a new line below and start half of the doc-string.
+	vim.cmd('normal! o"""')
+
+	-- Indent and complete the doc-string.
+	vim.cmd('normal! ==A"""')
+
+	-- Move the cursor to the center of the doc-string and go to insert mode.
+	local cursor_position = vim.api.nvim_win_get_cursor(0)
+	vim.api.nvim_win_set_cursor(0, { cursor_position[1], cursor_position[2] - 3 })
+	vim.api.nvim_feedkeys("a", "n", true)
+end
+
 return {
+	insert_docstrings = insert_docstrings,
 	puppeteer = puppeteer,
 }
