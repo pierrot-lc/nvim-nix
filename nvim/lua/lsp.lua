@@ -1,97 +1,26 @@
-local lspconfig = require("lspconfig")
-
+--- Find LSP-specifics configs here: https://github.com/neovim/nvim-lspconfig/tree/master/lua/lspconfig/configs
 vim.diagnostic.config({ update_in_insert = false })
 
--- Load LSP servers. Only load them if they're available.
-if vim.fn.executable("lua-language-server") then
-	lspconfig["lua_ls"].setup({
-		settings = {
-			Lua = {
-				runtime = {
-					-- Tell the language server which version of Lua you're using
-					-- (most likely LuaJIT in the case of Neovim).
-					version = "LuaJIT",
-				},
-				diagnostics = {
-					-- Get the language server to recognize the `vim` global.
-					globals = { "vim" },
-				},
-				workspace = {
-					-- Make the server aware of Neovim runtime files
-					library = vim.api.nvim_get_runtime_file("", true),
-					-- Remove annoying popup when editing standalone lua files.
-					checkThirdParty = false,
-				},
-				telemetry = {
-					enable = true, -- That's fine.
-				},
-				format = {
-					enable = false,
-				},
-			},
-		},
-	})
-end
+vim.lsp.config("*", {
+	root_markers = { ".git" },
+})
 
-if vim.fn.executable("ruff") == 1 then
-	lspconfig["ruff"].setup({})
-end
-
-if vim.fn.executable("basedpyright") then
-	lspconfig["basedpyright"].setup({
-		settings = {
-			-- See https://docs.basedpyright.com/latest/configuration/language-server-settings/.
-			basedpyright = {
-				disableOrganizeImports = true,
-			},
-		},
-	})
-end
-
-if vim.fn.executable("texlab") == 1 then
-	lspconfig["texlab"].setup({
-		auxDirectory = ".",
-		bibtexFormatter = "bibtex-tidy",
-		build = {
-			executable = "latexmk",
-			forwardSearchAfter = false,
-			onSave = true,
-		},
-		chktex = {
-			onEdit = false,
-			onOpenAndSave = true,
-		},
-		diagnosticsDelay = 300,
-		formatterLineLength = 0,
-		latexFormatter = "latexindent",
-		latexindent = {
-			modifyLineBreaks = true,
-		},
-	})
-end
-
-if vim.fn.executable("bash-language-server") == 1 then
-	lspconfig["bashls"].setup({})
-end
-
-if vim.fn.executable("marksman") == 1 then
-	lspconfig["marksman"].setup({})
-end
-
-if vim.fn.executable("tinymist") == 1 then
-	lspconfig["tinymist"].setup({
-		settings = {
-			formatterMode = "typstyle",
-		},
-	})
-end
-
-if vim.fn.executable("nixd") == 1 then
-	lspconfig["nixd"].setup({})
-end
-
-if vim.fn.executable("gleam") == 1 then
-	lspconfig["gleam"].setup({})
+-- Enable LSPs if their executables are found.
+local lspExecutables = {
+	basedpyright = "basedpyright",
+	bashls = "bash-language-server",
+	gleam = "gleam",
+	lua_ls = "lua-language-server",
+	marksman = "marksman",
+	nixd = "nixd",
+	ruff = "ruff",
+	texlab = "texlab",
+	tinymist = "tinymist",
+}
+for lspName, executableName in pairs(lspExecutables) do
+	if vim.fn.executable(executableName) == 1 then
+		vim.lsp.enable(lspName)
+	end
 end
 
 -- LSP keymappings, triggered when the language server attaches to a buffer.

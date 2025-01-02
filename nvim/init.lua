@@ -50,5 +50,6 @@ vim.wo.relativenumber = false
 require("commands")
 require("commons")
 require("keybindings")
+require("lsp")
 require("pencil")
 require("rooter")

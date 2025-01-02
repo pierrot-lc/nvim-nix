@@ -7,7 +7,7 @@
       name = "everforest";
       flavour = "dark";
     };
-    version = "stable";
+    version = "nightly";
   },
 }:
 with lib; let
@@ -47,7 +47,6 @@ with lib; let
     conform-nvim
 
     # LSPs.
-    nvim-lspconfig
     fidget-nvim
     lazydev-nvim
     lsp_signature-nvim

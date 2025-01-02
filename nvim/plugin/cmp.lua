@@ -1,13 +1,6 @@
-local lspconfig = require("lspconfig")
-local lspdefaults = lspconfig.util.default_config
-local capabilities = require("cmp_nvim_lsp").default_capabilities()
 local cmp = require("cmp")
 local luasnip = require("luasnip")
-
 vim.opt.completeopt = { "menu", "menuone", "noselect" }
-
--- Add completion capabilities to default LSP capabilities.
-lspdefaults.capabilities = vim.tbl_deep_extend("force", lspdefaults.capabilities, capabilities)
 
 -- This function is used to check if the cursor is at the beginning of a word.
 -- It is used to prevent completion from being triggered when inserting a tab.
@@ -53,7 +46,6 @@ local menu_icons = {
 	rg = " ",
 	treesitter = " ",
 }
-
 
 cmp.setup({
 	snippet = {
