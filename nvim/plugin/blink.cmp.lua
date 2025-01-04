@@ -11,8 +11,3 @@ require("blink.cmp").setup({
 	},
 	signature = { enabled = true },
 })
-
-vim.lsp.config("*", {
-	capabilities = require("blink.cmp").get_lsp_capabilities(),
-	root_markers = { ".git" },
-})

@@ -2,6 +2,7 @@
 vim.diagnostic.config({ update_in_insert = false })
 
 vim.lsp.config("*", {
+	capabilities = require("blink.cmp").get_lsp_capabilities(),
 	root_markers = { ".git" },
 })
 
@@ -60,14 +61,6 @@ local function on_attach(ev)
 	if client.server_capabilities.implementationProvider then
 		vim.keymap.set("n", "gi", vim.lsp.buf.implementation, { desc = "Go to implementation", buffer = bufnr })
 	end
-
-	local signature_opts = {
-		handler_opts = { border = "rounded" },
-		hint_enable = false,
-		wrap = false,
-		hi_parameter = "Search",
-	}
-	-- require("lsp_signature").on_attach(signature_opts, bufnr)
 end
 
 -- Use LspAttach autocommand to only map the following keys

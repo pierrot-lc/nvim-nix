@@ -43,7 +43,6 @@ with lib; let
     # LSPs.
     fidget-nvim
     lazydev-nvim
-    lsp_signature-nvim
     outline-nvim
 
     # Miscs.
