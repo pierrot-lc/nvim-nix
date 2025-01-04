@@ -13,11 +13,11 @@ require("neorg").setup({
 			},
 		},
 		-- Add completion support.
-		["core.completion"] = {
-			config = {
-				engine = "nvim-cmp",
-			},
-		},
+		-- ["core.completion"] = {
+		-- 	config = {
+		-- 		engine = "nvim-cmp",
+		-- 	},
+		-- },
 		-- Make any Norg file presentable.
 		-- Use the `:Neorg presenter start` command.
 		["core.presenter"] = {

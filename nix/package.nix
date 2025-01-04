@@ -31,13 +31,7 @@ with lib; let
 
   all-plugins = with pkgs.vimPlugins; [
     # Completers.
-    nvim-cmp
-    cmp-calc
-    cmp-nvim-lsp
-    cmp-path
-    cmp-rg
-    cmp-treesitter
-    cmp_luasnip
+    blink-cmp
 
     # Files.
     nvim-tree-lua
@@ -65,9 +59,6 @@ with lib; let
 
     # Snacks plugins.
     snacks-nvim
-
-    # Snippets.
-    luasnip
 
     # Themes.
     catppuccin-nvim

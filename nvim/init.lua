@@ -7,6 +7,7 @@ vim.g.mapleader = " " -- Redefine leader key.
 vim.g.maplocalleader = "," -- Redefine local leader key.
 vim.opt.breakindent = true -- Conserve indentation of virtual wrapped lines.
 vim.opt.colorcolumn = "" -- Formatting is generally already handled by external packages.
+vim.opt.completeopt = { "menu", "menuone", "noselect" }
 vim.opt.conceallevel = 0 -- Show conceiled text or not (markdown, neorg, latex...).
 vim.opt.cursorline = true -- Highlight cursor line.
 vim.opt.expandtab = true -- Whether or not we want to transform tabs to spaces.

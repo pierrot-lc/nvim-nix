@@ -67,7 +67,7 @@ local function on_attach(ev)
 		wrap = false,
 		hi_parameter = "Search",
 	}
-	require("lsp_signature").on_attach(signature_opts, bufnr)
+	-- require("lsp_signature").on_attach(signature_opts, bufnr)
 end
 
 -- Use LspAttach autocommand to only map the following keys
