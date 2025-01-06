@@ -102,7 +102,3 @@ require("treesitter-context").setup({
 	enable = true,
 	max_lines = 1,
 })
-
--- Use treesitter expressions for folds.
-vim.opt.foldmethod = "expr"
-vim.opt.foldexpr = "nvim_treesitter#foldexpr()"

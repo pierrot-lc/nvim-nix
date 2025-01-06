@@ -26,41 +26,16 @@ end
 
 -- LSP keymappings, triggered when the language server attaches to a buffer.
 local function on_attach(ev)
-	local bufnr = ev.buf
 	local client = vim.lsp.get_client_by_id(ev.data.client_id)
-
 	if client == nil then
-		vim.notify("No client attached to buffer " .. bufnr, vim.log.levels.ERROR)
+		vim.notify("No client attached to buffer " .. ev.buf, vim.log.levels.ERROR)
 		return
 	end
 
-	if client.server_capabilities.completionProvider then
-		-- Enable completion triggered by <c-x><c-o>.
-		vim.bo[bufnr].omnifunc = "v:lua.vim.lsp.omnifunc"
-	end
-
-	if client.server_capabilities.definitionProvider then
-		vim.bo[bufnr].tagfunc = "v:lua.vim.lsp.tagfunc"
-		vim.keymap.set("n", "gd", vim.lsp.buf.definition, { desc = "Go to definition", buffer = bufnr })
-	end
-
-	if client.server_capabilities.declarationProvider then
-		vim.keymap.set("n", "gD", vim.lsp.buf.declaration, { desc = "Go to declaration", buffer = bufnr })
-	end
-
-	if client.server_capabilities.documentRangeFormattingProvider then
-		vim.keymap.set("v", "<leader>lf", function()
-			vim.lsp.buf.range_formatting({ async = true })
-		end, { desc = "Format", buffer = bufnr })
-	end
-
-	if client.server_capabilities.signatureHelpProvider then
-		vim.keymap.set("n", "gs", vim.lsp.buf.signature_help, { desc = "Show signature", buffer = bufnr })
-	end
-
-	if client.server_capabilities.implementationProvider then
-		vim.keymap.set("n", "gi", vim.lsp.buf.implementation, { desc = "Go to implementation", buffer = bufnr })
-	end
+	-- A bunch of keymappings are now setup by default. See :h lsp-defaults
+	vim.lsp.completion.enable(true, ev.data.client_id, ev.buf, { autotrigger = false })
+	vim.keymap.set("n", "gd", vim.lsp.buf.definition, { desc = "Go to definition", buffer = ev.buf })
+	vim.keymap.set("n", "gD", vim.lsp.buf.declaration, { desc = "Go to declaration", buffer = ev.buf })
 end
 
 -- Use LspAttach autocommand to only map the following keys
@@ -69,10 +44,6 @@ vim.api.nvim_create_autocmd("LspAttach", {
 	group = vim.api.nvim_create_augroup("UserLspConfig", {}),
 	callback = on_attach,
 })
-
--- Was the default momentarily. Maybe will be the defaults later on.
-vim.keymap.set("n", "crr", vim.lsp.buf.code_action, { desc = "Code actions" })
-vim.keymap.set("n", "crn", vim.lsp.buf.rename, { desc = "Code actions" })
 
 -- These keybindings are presents for all buffers.
 vim.keymap.set("n", "<leader>lf", function()
