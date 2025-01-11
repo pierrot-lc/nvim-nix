@@ -42,14 +42,14 @@ require("mini.jump2d").setup({
 })
 
 require("mini.pick").setup()
-vim.keymap.set("n", "<Leader>f", MiniPick.builtin.files, { desc = "Find files" })
-vim.keymap.set("n", "<Leader>tg", MiniPick.builtin.grep_live, { desc = "Live grep" })
-vim.keymap.set("n", "<Leader>tb", MiniPick.builtin.buffers, { desc = "Buffers" })
-vim.keymap.set("n", "<Leader>th", MiniPick.builtin.help, { desc = "Help tags" })
-vim.keymap.set("n", "<Leader>tp", MiniPick.builtin.resume, { desc = "Resume previous pick" })
+vim.keymap.set("n", "<leader>f", MiniPick.builtin.files, { desc = "Find files" })
+vim.keymap.set("n", "<leader>tg", MiniPick.builtin.grep_live, { desc = "Live grep" })
+vim.keymap.set("n", "<leader>tb", MiniPick.builtin.buffers, { desc = "Buffers" })
+vim.keymap.set("n", "<leader>th", MiniPick.builtin.help, { desc = "Help tags" })
+vim.keymap.set("n", "<leader>tp", MiniPick.builtin.resume, { desc = "Resume previous pick" })
 
 require("mini.splitjoin").setup({
 	mappings = {
-		toggle = "<Leader>gs",
+		toggle = "<leader>gs",
 	},
 })

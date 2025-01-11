@@ -74,7 +74,6 @@ with lib; let
     # UI.
     dressing-nvim
     which-key-nvim
-    zen-mode-nvim
 
     # General dependencies.
     nvim-web-devicons
