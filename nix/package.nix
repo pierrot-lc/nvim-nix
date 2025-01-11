@@ -30,49 +30,27 @@ with lib; let
   neovim-unwrapped = neovim-versions.${config.version};
 
   all-plugins = with pkgs.vimPlugins; [
-    # Completers.
-    blink-cmp
-
-    # Files.
-    nvim-tree-lua
-    oil-nvim
-
-    # Formatters.
-    conform-nvim
-
-    # LSPs.
-    fidget-nvim
-    lazydev-nvim
-    outline-nvim
-
-    # Miscs.
-    dial-nvim
-    nvim-spider
-    (mkNvimPlugin inputs.vim-characterize "vim-characterize")
-
-    # Mini plugins.
-    mini-nvim
-
-    # Neorg.
-    neorg
-
-    # Snacks plugins.
-    snacks-nvim
-
-    # Themes.
-    catppuccin-nvim
-    gruvbox-nvim
-    rose-pine
     (mkNvimPlugin inputs.everforest-nvim "everforest-nvim")
-
-    # Treesitter.
-    nvim-treesitter.withAllGrammars
+    (mkNvimPlugin inputs.vim-characterize "vim-characterize")
+    blink-cmp
+    catppuccin-nvim
+    conform-nvim
+    dial-nvim
+    fidget-nvim
+    gruvbox-nvim
+    lazydev-nvim
+    mini-nvim
+    neorg
+    nvim-spider
+    nvim-tree-lua
     nvim-treesitter-context
     nvim-treesitter-refactor
     nvim-treesitter-textobjects
-
-    # UI.
-    dressing-nvim
+    nvim-treesitter.withAllGrammars
+    oil-nvim
+    outline-nvim
+    rose-pine
+    snacks-nvim
     which-key-nvim
   ];
 
