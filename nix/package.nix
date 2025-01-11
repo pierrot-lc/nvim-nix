@@ -55,9 +55,8 @@ with lib; let
   ];
 
   # Extra packages for your plugins. I decided not to provide LSPs and other
-  # formatters, but you can add theme here.
-  #
-  # See this debate for more: https://www.reddit.com/r/NixOS/comments/18oai2a/should_lsp_servers_be_in_the_project_flake/
+  # formatters, but you can add theme here. See this debate for more:
+  # https://www.reddit.com/r/NixOS/comments/18oai2a/should_lsp_servers_be_in_the_project_flake/
   extraPackages = with pkgs; [
     ripgrep
     # lua-language-server
