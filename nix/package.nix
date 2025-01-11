@@ -74,10 +74,6 @@ with lib; let
     # UI.
     dressing-nvim
     which-key-nvim
-
-    # General dependencies.
-    nvim-web-devicons
-    plenary-nvim
   ];
 
   # Extra packages for your plugins. I decided not to provide LSPs and other
