@@ -15,8 +15,8 @@ require("snacks").setup({
 		enabled = true,
 		preset = {
 			keys = {
-				{ icon = "󰈢 ", key = "tf", desc = "Find file", action = MiniPick.builtin.files },
-				{ icon = "󰺮 ", key = "tg", desc = "Live grep", action = MiniPick.builtin.grep_live },
+				{ icon = "󰈢 ", key = "<Leader>f", desc = "Find file", action = MiniPick.builtin.files },
+				{ icon = "󰺮 ", key = "<Leader>g", desc = "Live grep", action = MiniPick.builtin.grep_live },
 				{ icon = " ", key = "q", desc = "Quit", action = ":qa" },
 			},
 			header = header,
