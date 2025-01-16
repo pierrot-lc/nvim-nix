@@ -24,10 +24,6 @@
       url = "github:neanias/everforest-nvim";
       flake = false;
     };
-    treewalker-nvim = {
-      url = "github:aaronik/treewalker.nvim";
-      flake = false;
-    };
     vim-characterize = {
       url = "github:tpope/vim-characterize";
       flake = false;
