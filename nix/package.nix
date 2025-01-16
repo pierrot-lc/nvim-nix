@@ -31,6 +31,7 @@ with lib; let
 
   all-plugins = with pkgs.vimPlugins; [
     (mkNvimPlugin inputs.everforest-nvim "everforest-nvim")
+    (mkNvimPlugin inputs.treewalker-nvim "treewalker-nvim")
     (mkNvimPlugin inputs.vim-characterize "vim-characterize")
     blink-cmp
     catppuccin-nvim
@@ -51,7 +52,6 @@ with lib; let
     outline-nvim
     rose-pine
     snacks-nvim
-    which-key-nvim
   ];
 
   # Extra packages for your plugins. I decided not to provide LSPs and other
@@ -81,7 +81,11 @@ in {
     plugins = all-plugins;
     inherit extraPackages;
     inherit extraLuaPackages;
-    extraLuaConfig = /* lua */ ''
+    extraLuaConfig =
+      /*
+      lua
+      */
+      ''
         -- Global theme of the config. The UI plugins use this to set the theme.
         vim.g.theme = "${config.theme.name}"
         vim.opt.background = "${config.theme.flavour}"

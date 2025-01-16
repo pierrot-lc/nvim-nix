@@ -415,6 +415,7 @@
         "gen-luarc": "gen-luarc",
         "neovim-nightly-overlay": "neovim-nightly-overlay",
         "nixpkgs": "nixpkgs_3",
+        "treewalker-nvim": "treewalker-nvim",
         "vim-characterize": "vim-characterize"
       }
     },
@@ -451,6 +452,22 @@
       "original": {
         "owner": "numtide",
         "repo": "treefmt-nix",
+        "type": "github"
+      }
+    },
+    "treewalker-nvim": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1737006809,
+        "narHash": "sha256-eEI1J6a8OHpbTB3D/q3mscJ7LGs/Yoiik0aCVEeJI2k=",
+        "owner": "aaronik",
+        "repo": "treewalker.nvim",
+        "rev": "f1c0f6b3b63e8bd573a7e1ff4542317ca7bcae6d",
+        "type": "github"
+      },
+      "original": {
+        "owner": "aaronik",
+        "repo": "treewalker.nvim",
         "type": "github"
       }
     },

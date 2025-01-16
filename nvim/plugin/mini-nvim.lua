@@ -5,6 +5,61 @@ require("mini.pairs").setup()
 require("mini.statusline").setup()
 require("mini.surround").setup()
 
+local miniclue = require("mini.clue")
+require("mini.clue").setup({
+	triggers = {
+		-- Leader triggers
+		{ mode = "n", keys = "<Leader>" },
+		{ mode = "n", keys = "<LocalLeader>" },
+		{ mode = "x", keys = "<Leader>" },
+		{ mode = "x", keys = "<LocalLeader>" },
+
+		-- Built-in completion
+		{ mode = "i", keys = "<C-x>" },
+
+		-- `g` key
+		{ mode = "n", keys = "g" },
+		{ mode = "x", keys = "g" },
+
+		-- Marks
+		{ mode = "n", keys = "'" },
+		{ mode = "n", keys = "`" },
+		{ mode = "x", keys = "'" },
+		{ mode = "x", keys = "`" },
+
+		-- Registers
+		{ mode = "n", keys = '"' },
+		{ mode = "x", keys = '"' },
+		{ mode = "i", keys = "<C-r>" },
+		{ mode = "c", keys = "<C-r>" },
+
+		-- Window commands
+		{ mode = "n", keys = "<C-w>" },
+
+		-- `z` key
+		{ mode = "n", keys = "z" },
+		{ mode = "x", keys = "z" },
+	},
+
+	clues = {
+		{ mode = "n", keys = "<Leader>g", desc = "+Others" },
+		{ mode = "n", keys = "<Leader>l", desc = "+LSP & TS" },
+		{ mode = "n", keys = "<Leader>t", desc = "+Picks" },
+		{ mode = "n", keys = "<Leader>z", desc = "+Tabs" },
+
+		miniclue.gen_clues.builtin_completion(),
+		miniclue.gen_clues.g(),
+		miniclue.gen_clues.marks(),
+		miniclue.gen_clues.registers(),
+		miniclue.gen_clues.windows(),
+		miniclue.gen_clues.z(),
+	},
+
+	window = {
+		delay = 100,
+	},
+})
+
 local hipatterns = require("mini.hipatterns")
 hipatterns.setup({
 	highlighters = {
@@ -48,7 +103,7 @@ vim.keymap.set("n", "<leader>f", MiniPick.builtin.files, { desc = "Find files" }
 vim.keymap.set("n", "<leader>g", MiniPick.builtin.grep_live, { desc = "Live grep" })
 vim.keymap.set("n", "<leader>tb", MiniPick.builtin.buffers, { desc = "Buffers" })
 vim.keymap.set("n", "<leader>th", MiniPick.builtin.help, { desc = "Help tags" })
-vim.keymap.set("n", "<leader>tp", MiniPick.builtin.resume, { desc = "Resume previous pick" })
+vim.keymap.set("n", "<leader>tt", MiniPick.builtin.resume, { desc = "Resume previous pick" })
 
 require("mini.splitjoin").setup({
 	mappings = {
