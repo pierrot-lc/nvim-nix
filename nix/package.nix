@@ -31,7 +31,6 @@ with lib; let
 
   all-plugins = with pkgs.vimPlugins; [
     (mkNvimPlugin inputs.everforest-nvim "everforest-nvim")
-    (mkNvimPlugin inputs.treewalker-nvim "treewalker-nvim")
     (mkNvimPlugin inputs.vim-characterize "vim-characterize")
     blink-cmp
     catppuccin-nvim
