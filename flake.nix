@@ -28,6 +28,10 @@
       url = "github:tpope/vim-characterize";
       flake = false;
     };
+    vim-minizinc = {
+      url = "github:pierrot-lc/vim-minizinc";
+      flake = false;
+    };
   };
 
   outputs = inputs @ {

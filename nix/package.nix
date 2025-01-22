@@ -32,6 +32,7 @@ with lib; let
   all-plugins = with pkgs.vimPlugins; [
     (mkNvimPlugin inputs.everforest-nvim "everforest-nvim")
     (mkNvimPlugin inputs.vim-characterize "vim-characterize")
+    (mkNvimPlugin inputs.vim-minizinc "vim-minizinc")
     blink-cmp
     catppuccin-nvim
     conform-nvim

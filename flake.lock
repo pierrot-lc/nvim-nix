@@ -415,7 +415,8 @@
         "gen-luarc": "gen-luarc",
         "neovim-nightly-overlay": "neovim-nightly-overlay",
         "nixpkgs": "nixpkgs_3",
-        "vim-characterize": "vim-characterize"
+        "vim-characterize": "vim-characterize",
+        "vim-minizinc": "vim-minizinc"
       }
     },
     "systems": {
@@ -467,6 +468,22 @@
       "original": {
         "owner": "tpope",
         "repo": "vim-characterize",
+        "type": "github"
+      }
+    },
+    "vim-minizinc": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1737580392,
+        "narHash": "sha256-8TNvYWLnLZqoXJRi++EAM3pEWJMj9RznWtvXUFvntFc=",
+        "owner": "pierrot-lc",
+        "repo": "vim-minizinc",
+        "rev": "21c2345c3bfacb008020c570d76a4de644f3bb31",
+        "type": "github"
+      },
+      "original": {
+        "owner": "pierrot-lc",
+        "repo": "vim-minizinc",
         "type": "github"
       }
     }
