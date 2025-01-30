@@ -10,6 +10,7 @@ vim.lsp.config("*", {
 local lspExecutables = {
 	basedpyright = "basedpyright",
 	bashls = "bash-language-server",
+	clangd = "clangd",
 	gleam = "gleam",
 	lua_ls = "lua-language-server",
 	marksman = "marksman",
