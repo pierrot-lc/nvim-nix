@@ -98,7 +98,11 @@ require("mini.jump2d").setup({
 	allowed_windows = { not_current = false },
 })
 
-require("mini.pick").setup()
+require("mini.pick").setup({
+	mappings = {
+		choose_in_split = "<C-x>",
+	},
+})
 vim.keymap.set("n", "<leader>f", MiniPick.builtin.files, { desc = "Find files" })
 vim.keymap.set("n", "<leader>g", MiniPick.builtin.grep_live, { desc = "Live grep" })
 vim.keymap.set("n", "<leader>tb", MiniPick.builtin.buffers, { desc = "Buffers" })

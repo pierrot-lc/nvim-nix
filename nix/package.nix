@@ -81,11 +81,7 @@ in {
     plugins = all-plugins;
     inherit extraPackages;
     inherit extraLuaPackages;
-    extraLuaConfig =
-      /*
-      lua
-      */
-      ''
+    extraLuaConfig = /* lua */ ''
         -- Global theme of the config. The UI plugins use this to set the theme.
         vim.g.theme = "${config.theme.name}"
         vim.opt.background = "${config.theme.flavour}"
