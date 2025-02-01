@@ -7,6 +7,7 @@ vim.api.nvim_create_autocmd("FileType", {
 	group = augroup,
 	desc = "Set some general shift width",
 	pattern = {
+		"c",
 		"css",
 		"gleam",
 		"html",
