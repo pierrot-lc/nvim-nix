@@ -30,6 +30,7 @@ vim.keymap.set("n", "<leader>q", "<cmd>quit<cr>", { desc = "Quit" })
 vim.keymap.set("n", "<leader>x", "<cmd>x<cr>", { desc = "Save and quit" })
 vim.keymap.set("n", "<leader>h", "<cmd>nohl<cr>", { desc = "Remove highlights" })
 vim.keymap.set("n", "<leader>a", select_all, { desc = "Select all text in current buffer" })
+vim.keymap.set("n", "<leader>r", "<cmd>InspectTree<cr>", { desc = "Show parsed tree" })
 
 -- Copy/paste
 vim.keymap.set({ "n", "x" }, "cp", '"+y', { desc = "Copy to system clipboard" })
