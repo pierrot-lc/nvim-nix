@@ -46,15 +46,16 @@ require("snacks").setup({
 	},
 	zen = {
 		on_open = function(_)
-			vim.diagnostic.enable(false)
 			vim.b.miniindentscope_disable = true
-			vim.wo.signcolumn = "no"
+			vim.b.snacks_animate = false
+			vim.diagnostic.enable(false)
 			vim.wo.number = false
 			vim.wo.relativenumber = false
+			vim.wo.signcolumn = "no"
 		end,
 		on_close = function(_)
-			vim.diagnostic.enable(true)
 			vim.b.miniindentscope_disable = false
+			vim.diagnostic.enable(true)
 		end,
 	},
 })
