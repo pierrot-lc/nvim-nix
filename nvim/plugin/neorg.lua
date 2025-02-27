@@ -26,6 +26,8 @@ require("neorg").setup({
 			},
 		},
 		["core.export"] = {},
+		-- Do not update date until https://github.com/nvim-neorg/neorg/issues/1579 fixed.
+		["core.esupports.metagen"] = { config = { update_date = false } },
 	},
 })
 
