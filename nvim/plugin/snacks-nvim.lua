@@ -27,6 +27,8 @@ require("snacks").setup({
 			{ text = footer },
 		},
 	},
+	gitbrowse = { what = "repo" },
+	image = {},
 	quickfile = {},
 	statuscolumn = {
 		enabled = true,
@@ -45,21 +47,31 @@ require("snacks").setup({
 		},
 	},
 	zen = {
-		on_open = function(_)
-			vim.b.miniindentscope_disable = true
-			vim.b.snacks_animate = false
-			vim.diagnostic.enable(false)
-			vim.wo.number = false
-			vim.wo.relativenumber = false
-			vim.wo.signcolumn = "no"
-		end,
-		on_close = function(_)
-			vim.b.miniindentscope_disable = false
-			vim.diagnostic.enable(true)
-		end,
+		toggles = {
+			animate = false,
+			diagnostics = false,
+			dim = true,
+			git_signs = false,
+			line_number = false,
+			mini_indent = false,
+			relative_number = false,
+			signcolumn = "no",
+		},
 	},
+})
+
+Snacks.toggle.new({
+	id = "mini_indent",
+	name = "mini_indent",
+	get = function()
+		return not vim.b.miniindentscope_disable
+	end,
+	set = function(state)
+		vim.b.miniindentscope_disable = not state
+	end,
 })
 
 vim.keymap.set({ "n", "i", "t" }, "<C-g>", Snacks.terminal.toggle, { desc = "Toggle term" })
 vim.keymap.set("n", "<leader>zz", Snacks.zen.zoom, { desc = "Zoom" })
 vim.api.nvim_create_user_command("Zen", Snacks.zen.zen, { desc = "Zen-mode" })
+vim.api.nvim_create_user_command("GitBrowse", Snacks.gitbrowse.open, { desc = "Browse current git repository" })
