@@ -28,7 +28,6 @@ require("snacks").setup({
 		},
 	},
 	gitbrowse = { what = "repo" },
-	image = {},
 	quickfile = {},
 	statuscolumn = {
 		enabled = true,
