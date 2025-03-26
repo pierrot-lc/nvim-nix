@@ -34,6 +34,8 @@ with lib; let
     (mkNvimPlugin inputs.vim-characterize "vim-characterize")
     (mkNvimPlugin inputs.vim-minizinc "vim-minizinc")
     blink-cmp
+    blink-emoji-nvim
+    blink-ripgrep-nvim
     catppuccin-nvim
     conform-nvim
     dial-nvim

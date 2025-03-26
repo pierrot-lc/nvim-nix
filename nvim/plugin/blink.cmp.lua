@@ -8,4 +8,19 @@ require("blink.cmp").setup({
 	},
 	keymap = { preset = "default" },
 	signature = { enabled = true },
+	sources = {
+		default = { "buffer", "emoji", "lsp", "path", "ripgrep", "snippets" },
+		providers = {
+			emoji = {
+				name = "Emoji",
+				module = "blink-emoji",
+				score_offset = 15,
+			},
+			ripgrep = {
+				name = "Ripgrep",
+				module = "blink-ripgrep",
+				score_offset = -10,
+			},
+		},
+	},
 })
