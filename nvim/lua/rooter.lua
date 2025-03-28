@@ -1,5 +1,5 @@
--- Change working directory based on the root of the current project.
--- Thanks to https://nanotipsforvim.prose.sh/automatically-set-the-cwd-without-rooter-plugin.
+--- Change working directory based on the root of the current project.
+--- Thanks to https://nanotipsforvim.prose.sh/automatically-set-the-cwd-without-rooter-plugin.
 
 local rooter = function()
 	-- First, find the root dir based on the first git repository.

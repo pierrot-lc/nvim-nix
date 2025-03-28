@@ -1,12 +1,12 @@
----Simpler replacement of https://github.com/chrisgrieser/nvim-puppeteer for
----python f-strings only.
+--- Simpler replacement of https://github.com/chrisgrieser/nvim-puppeteer for
+--- python f-strings only.
 
----Find the starting position of the string under the current cursor. If the
----cursor is not hovering a string, this function returns nil.
+--- Find the starting position of the string under the current cursor. If the
+--- cursor is not hovering a string, this function returns nil.
 ---
----NOTE: A better version of this would be to search for the next string on the
----right from the current position of the cursor. This could be done using a
----treesitter query or simply a f-jump.
+--- NOTE: A better version of this would be to search for the next string on the
+--- right from the current position of the cursor. This could be done using a
+--- treesitter query or simply a f-jump.
 ---
 ---@return table|nil
 local function string_start_position()
@@ -44,7 +44,7 @@ local function string_start_position()
 	}
 end
 
----Add or remove the f-string under the current cursor.
+--- Add or remove the f-string under the current cursor.
 local function puppeteer()
 	local pos = string_start_position()
 	if not pos then
@@ -63,7 +63,7 @@ local function puppeteer()
 	end
 end
 
---Insert a doc-strings below the current cursor and go to insert mode.
+--- Insert a doc-strings below the current cursor and go to insert mode.
 local function insert_docstrings()
 	-- Insert a new line below and start half of the doc-string.
 	vim.cmd('normal! o"""')
