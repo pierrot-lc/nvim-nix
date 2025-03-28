@@ -4,10 +4,28 @@
 --
 -- Some are taken from https://github.com/Abstract-IDE/abstract-autocmds/blob/main/lua/abstract-autocmds/mappings.lua.
 
----Select all text in the current buffer.
----This function is used to select all text in the current buffer. Once the
----visual mode is left, the cursor is put back to its original position.
----@return nil
+--- Check if the given cursor position is valid in the given buffer (i.e. can
+--- we move the cursor to that position).
+--- @param buffer integer
+--- @param pos integer[]  # (row, col) tuple
+--- @return boolean
+local function is_valid(buffer, pos)
+	if vim.api.nvim_buf_line_count(buffer) < pos[1] then
+		return false
+	end
+
+	local line = vim.api.nvim_buf_get_lines(buffer, pos[1] - 1, pos[1], false)[1]
+	if #line <= pos[2] then
+		return false
+	end
+
+	return true
+end
+
+--- Select all text in the current buffer.
+--- This function is used to select all text in the current buffer. Once the
+--- visual mode is left, the cursor is put back to its original position.
+--- @return nil
 local function select_all()
 	local cursor_position = vim.api.nvim_win_get_cursor(0)
 	vim.api.nvim_buf_set_mark(0, "C", cursor_position[1], cursor_position[2], {})
@@ -18,8 +36,10 @@ local function select_all()
 	-- the cursor is put back to its original position.
 	vim.api.nvim_create_autocmd("ModeChanged", {
 		callback = function()
-			local new_cursor_position = vim.api.nvim_buf_get_mark(0, "C")
-			vim.api.nvim_win_set_cursor(0, new_cursor_position)
+			local pos = vim.api.nvim_buf_get_mark(0, "C")
+			if is_valid(0, pos) then
+				vim.api.nvim_win_set_cursor(0, pos)
+			end
 		end,
 		once = true,
 	})
