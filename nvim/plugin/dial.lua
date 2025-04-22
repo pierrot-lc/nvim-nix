@@ -8,6 +8,7 @@ require("dial.config").augends:register_group({
 		augend.constant.alias.Alpha,
 		augend.constant.alias.bool,
 		augend.constant.new({ elements = { "True", "False" } }),
+		augend.constant.new({ elements = { "light", "dark" } }),
 	},
 })
 vim.keymap.set("n", "<C-a>", require("dial.map").inc_normal(), { noremap = true })
