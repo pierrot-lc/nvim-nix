@@ -20,10 +20,6 @@
     # Add bleeding-edge plugins here.
     # They can be updated with `nix flake update` (make sure to commit the
     # generated flake.lock).
-    everforest-nvim = {
-      url = "github:neanias/everforest-nvim";
-      flake = false;
-    };
     vim-characterize = {
       url = "github:tpope/vim-characterize";
       flake = false;

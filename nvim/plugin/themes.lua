@@ -13,12 +13,6 @@ require("catppuccin").setup({
 	},
 })
 
-require("everforest").setup({
-	background = "hard",
-	float_style = "dim",
-	italics = true,
-})
-
 require("gruvbox").setup({
 	contrast = "hard",
 })
@@ -30,7 +24,6 @@ require("rose-pine").setup({
 local themes = {
 	["catppuccin-mocha"] = "catppuccin",
 	["catppuccin-macchiato"] = "catppuccin",
-	["everforest"] = "everforest",
 	["gruvbox"] = "gruvbox",
 	["rose-pine"] = "rose-pine",
 }

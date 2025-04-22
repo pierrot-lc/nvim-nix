@@ -28,7 +28,6 @@ passing the `config.theme` value to the nix package at build time. You can
 choose between the following themes:
 
 - [`catppuccin`](https://github.com/catppuccin/nvim)
-- [`everforest`](https://github.com/neanias/everforest-nvim)
 - [`gruvbox`](https://github.com/ellisonleao/gruvbox.nvim/)
 - [`rose-pine`](https://github.com/rose-pine/neovim)
 

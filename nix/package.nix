@@ -4,7 +4,7 @@
   inputs,
   config ? {
     theme = {
-      name = "everforest";
+      name = "rose-pine";
       flavour = "dark";
     };
     version = "nightly";
@@ -30,7 +30,6 @@ with lib; let
   neovim-unwrapped = neovim-versions.${config.version};
 
   all-plugins = with pkgs.vimPlugins; [
-    (mkNvimPlugin inputs.everforest-nvim "everforest-nvim")
     (mkNvimPlugin inputs.vim-characterize "vim-characterize")
     (mkNvimPlugin inputs.vim-minizinc "vim-minizinc")
     blink-cmp

@@ -27,7 +27,6 @@ in {
           type = lib.types.enum [
             "catppuccin-macchiato"
             "catppuccin-mocha"
-            "everforest"
             "gruvbox"
             "rose-pine"
           ];
