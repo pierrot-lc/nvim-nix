@@ -8,6 +8,13 @@ local function on_attach(bufnr)
 		api.node.open.edit,
 		{ desc = "Open", buffer = bufnr, noremap = true, silent = true, nowait = true }
 	)
+
+	vim.keymap.set(
+		"n",
+		"<C-s>",
+		api.node.open.horizontal,
+		{ desc = "Open in split", buffer = bufnr, noremap = true, silent = true, nowait = true }
+	)
 end
 
 require("nvim-tree").setup({
