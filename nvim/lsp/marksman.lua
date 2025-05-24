@@ -1,6 +1,6 @@
 ---@type table<string, vim.lsp.Config>
 return {
 	cmd = { "marksman", "server" },
-	filetypes = { "markodwn", "markdown.mdx" },
+	filetypes = { "markdown", "markdown.mdx" },
 	root_markers = { ".marksman.toml" },
 }
