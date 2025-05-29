@@ -4,7 +4,7 @@
   inputs,
   config ? {
     theme = {
-      name = "rose-pine";
+      name = "melange";
       flavour = "dark";
     };
     version = "nightly";
@@ -41,6 +41,7 @@ with lib; let
     fidget-nvim
     gruvbox-nvim
     lazydev-nvim
+    melange-nvim
     mini-nvim
     neorg
     nvim-spider

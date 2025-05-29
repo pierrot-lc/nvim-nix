@@ -26,5 +26,6 @@ local themes = {
 	["catppuccin-macchiato"] = "catppuccin",
 	["gruvbox"] = "gruvbox",
 	["rose-pine"] = "rose-pine",
+	["melange"] = "melange",
 }
 vim.cmd("colorscheme " .. themes[vim.g.theme])
