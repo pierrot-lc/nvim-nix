@@ -28,6 +28,7 @@ in {
             "catppuccin-macchiato"
             "catppuccin-mocha"
             "gruvbox"
+            "melange"
             "rose-pine"
           ];
           default = "catppuccin-mocha";
