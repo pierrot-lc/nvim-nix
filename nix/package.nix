@@ -90,6 +90,23 @@ in {
       '';
   };
 
+  # This is meant to be used within a devshell. Instead of loading the lua
+  # Neovim configuration from the Nix store, it is loaded from
+  # $XDG_CONFIG_HOME/nvim-dev
+  nvim-dev = mkNeovim {
+    inherit neovim-unwrapped;
+    plugins = all-plugins;
+    inherit extraPackages;
+    inherit extraLuaPackages;
+    appName = "nvim-dev";
+    wrapRc = false;
+    extraLuaConfig = /* lua */ ''
+        -- Global theme of the config. The UI plugins use this to set the theme.
+        vim.g.theme = "${config.theme.name}"
+        vim.opt.background = "${config.theme.flavour}"
+      '';
+  };
+
   # This can be symlinked in the devShell's shellHook.
   nvim-luarc-json = mk-luarc-json {
     nvim = neovim-unwrapped;

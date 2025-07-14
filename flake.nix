@@ -18,8 +18,6 @@
     neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
 
     # Add bleeding-edge plugins here.
-    # They can be updated with `nix flake update` (make sure to commit the
-    # generated flake.lock).
     vim-characterize = {
       url = "github:tpope/vim-characterize";
       flake = false;
@@ -66,12 +64,15 @@
         buildInputs = with pkgs; [
           # Tools for Lua and Nix development, useful for editing files in this repo.
           lua-language-server
-          nixd
-          stylua
           luajitPackages.luacheck
+          nixd
+          nvim-dev
+          stylua
         ];
         shellHook = ''
           ln -fs ${pkgs.nvim-luarc-json} .luarc.json
+          # Allow quick iteration of lua configs.
+          ln -Tfns $PWD/nvim ~/.config/nvim-dev
         '';
       };
 
