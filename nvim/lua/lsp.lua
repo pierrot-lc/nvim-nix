@@ -18,6 +18,7 @@ local lspExecutables = {
 	ruff = "ruff",
 	texlab = "texlab",
 	tinymist = "tinymist",
+	ty = "ty",
 }
 for lspName, executableName in pairs(lspExecutables) do
 	if vim.fn.executable(executableName) == 1 then
