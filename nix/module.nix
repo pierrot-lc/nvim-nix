@@ -15,6 +15,7 @@
     config = {
       inherit (config.nvim-nix) theme;
       inherit (config.nvim-nix) version;
+      inherit (config.nvim-nix) extraLuaConfig;
     };
   };
 in {
@@ -44,6 +45,11 @@ in {
         type = lib.types.enum ["stable" "nightly"];
         default = "stable";
         description = "The base version of neovim.";
+      };
+      extraLuaConfig = lib.mkOption {
+        type = lib.types.lines;
+        default = "";
+        description = "Additional configuration to append at the start of your neovim config.";
       };
     };
   };

@@ -8,6 +8,7 @@
       flavour = "dark";
     };
     version = "nightly";
+    extraLuaConfig = "";
   },
 }:
 with lib; let
@@ -76,6 +77,14 @@ with lib; let
       # Nvim-spider's dependency to identify words with UTF-8 accents.
       luautf8
     ];
+  extraLuaConfig = builtins.concatStringsSep "\n" [
+    config.extraLuaConfig
+    /* lua */ ''
+      -- Global theme of the config. The UI plugins use this to set the theme.
+      vim.g.theme = "${config.theme.name}"
+      vim.opt.background = "${config.theme.flavour}"
+    ''
+  ];
 in {
   # This is the neovim derivation returned by the overlay.
   nvim-nix = mkNeovim {
@@ -83,11 +92,7 @@ in {
     plugins = all-plugins;
     inherit extraPackages;
     inherit extraLuaPackages;
-    extraLuaConfig = /* lua */ ''
-        -- Global theme of the config. The UI plugins use this to set the theme.
-        vim.g.theme = "${config.theme.name}"
-        vim.opt.background = "${config.theme.flavour}"
-      '';
+    inherit extraLuaConfig;
   };
 
   # This is meant to be used within a devshell. Instead of loading the lua
@@ -98,13 +103,9 @@ in {
     plugins = all-plugins;
     inherit extraPackages;
     inherit extraLuaPackages;
+    inherit extraLuaConfig;
     appName = "nvim-dev";
     wrapRc = false;
-    extraLuaConfig = /* lua */ ''
-        -- Global theme of the config. The UI plugins use this to set the theme.
-        vim.g.theme = "${config.theme.name}"
-        vim.opt.background = "${config.theme.flavour}"
-      '';
   };
 
   # This can be symlinked in the devShell's shellHook.
