@@ -71,7 +71,7 @@ end
 vim.keymap.set("n", "gqq", function()
 	-- Try to format the paragraph under the cursor.
 	if not require("pencil").format_paragraph() then
-		-- Fallback to if no paragraph has been found.
+		-- Fallback to paragraph formatting if no paragraph has been found.
 		local cursor_position = vim.api.nvim_win_get_cursor(0)
 		vim.api.nvim_buf_set_mark(0, "C", cursor_position[1], cursor_position[2], {})
 
