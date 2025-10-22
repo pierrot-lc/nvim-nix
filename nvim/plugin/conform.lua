@@ -1,6 +1,5 @@
 local formatters_by_ft = {
 	markdown = { "injected" },
-	neorg = { "injected" },
 }
 
 if vim.fn.executable("jq") == 1 then

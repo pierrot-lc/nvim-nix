@@ -12,7 +12,6 @@ a little.
 Some of the features:
 
 - LSPs, linters, formatters for Python.
-- Use [Neorg](https://github.com/nvim-neorg/neorg) for note taking.
 - Optionally use Neovim nightly.
 
 Note: Many LSPs, formatters and others are not packaged in this flake. You have

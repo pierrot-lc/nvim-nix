@@ -44,7 +44,6 @@ with lib; let
     lazydev-nvim
     melange-nvim
     mini-nvim
-    neorg
     nvim-spider
     nvim-tree-lua
     nvim-treesitter-context
@@ -70,9 +69,6 @@ with lib; let
       # Ideally the plugin dependencies are managed by nix but it is not the
       # case for all plugins. See here for more:
       # https://github.com/NixOS/nixpkgs/issues/306367.
-
-      # Note that at least right now, `luasnip` and `neorg` come with their
-      # dependencies!
 
       # Nvim-spider's dependency to identify words with UTF-8 accents.
       luautf8
