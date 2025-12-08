@@ -6,6 +6,10 @@ require("blink.cmp").setup({
 		list = { selection = { preselect = false, auto_insert = true } },
 		menu = { draw = { treesitter = { "lsp" } } },
 	},
+	cmdline = {
+		keymap = { preset = "inherit" },
+		completion = { menu = { auto_show = true } },
+	},
 	keymap = { preset = "default" },
 	signature = { enabled = true },
 	sources = {
