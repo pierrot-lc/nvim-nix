@@ -8,7 +8,6 @@ vim.lsp.config("*", {
 
 -- Enable LSPs if their executables are found.
 local lspExecutables = {
-	basedpyright = "basedpyright",
 	bashls = "bash-language-server",
 	clangd = "clangd",
 	gleam = "gleam",
