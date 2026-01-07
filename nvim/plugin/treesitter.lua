@@ -1,104 +1,55 @@
-require("nvim-treesitter.configs").setup({
-	modules = {},
-
-	-- All parsers are installed with nix.
-	ensure_installed = {},
-	sync_install = false,
-	auto_install = false,
-	ignore_install = {},
-
-	-- Highlight based on treesitter.
-	highlight = {
-		enable = true,
-	},
-
-	-- Indentation based on treesitter (use `=` operator).
-	ident = { enable = true },
-
-	-- Incremental selection in the parsed tree.
-	incremental_selection = {
-		enable = true,
-		keymaps = {
-			init_selection = "<Leader>ls",
-			node_incremental = "<TAB>",
-			node_decremental = "<S-TAB>",
-			scope_incremental = false,
-		},
-	},
-
-	-- Refactor modules.
-	refactor = {
-		highlight_definitions = {
-			enable = true,
-			clear_on_cursor_move = true,
-		},
-		highlight_current_scope = { enable = false },
-		smart_rename = { enable = false },
-	},
-
-	-- Manipulate text-objects.
-	textobjects = {
-		-- Adding text-objects to select operators.
-		select = {
-			enable = true,
-			lookahead = true,
-			include_surrounding_whitespace = true,
-			keymaps = {
-				["af"] = { query = "@function.outer", desc = "Select function outer" },
-				["if"] = { query = "@function.inner", desc = "Select function inner" },
-				["ac"] = { query = "@comment.outer", desc = "Select comment outer" },
-				["ic"] = { query = "@comment.inner", desc = "Select comment inner" },
-				["al"] = { query = "@loop.outer", desc = "Select loop outer" },
-				["il"] = { query = "@loop.inner", desc = "Select loop innter" },
-				["ai"] = { query = "@conditional.outer", desc = "Select conditional outer" },
-				["ii"] = { query = "@conditional.inner", desc = "Select conditional inner" },
-				["aa"] = { query = "@parameter.outer", desc = "Select argument outer" },
-				["ia"] = { query = "@parameter.inner", desc = "Select argument inner" },
-			},
-		},
-
-		-- Swap two text-objects.
-		swap = {
-			enable = true,
-			swap_next = {
-				["<Leader>lp"] = { query = "@parameter.inner", desc = "Swap with the next parameter" },
-			},
-			swap_previous = {
-				["<Leader>lP"] = { query = "@parameter.inner", desc = "Swap with the previous parameter" },
-			},
-		},
-
-		-- Move around text-objects.
-		move = {
-			enable = true,
-			set_jumps = true,
-			goto_next_start = {
-				["]]"] = "@function.outer",
-			},
-			goto_next_end = {
-				["]["] = "@function.outer",
-			},
-			goto_previous_start = {
-				["[["] = "@function.outer",
-			},
-			goto_previous_end = {
-				["[]"] = "@function.outer",
-			},
-		},
-
-		-- Peek definition code using built-in LSP.
-		lsp_interop = {
-			enable = true,
-			border = "rounded",
-			peek_definition_code = {
-				["<Leader>lm"] = { query = "@function.outer", desc = "Show function definition" },
-				["<Leader>lc"] = { query = "@class.outer", desc = "Show class definition" },
-			},
-		},
+require("nvim-treesitter-textobjects").setup({
+	select = {
+		lookahead = true,
 	},
 })
 
-require("treesitter-context").setup({
-	enable = true,
-	max_lines = 1,
+local treesitter_setup = function()
+	vim.treesitter.start()
+	vim.wo[0][0].foldexpr = "v:lua.vim.treesitter.foldexpr()"
+	vim.wo[0][0].foldmethod = "expr"
+	vim.bo.indentexpr = "v:lua.require('nvim-treesitter').indentexpr()"
+
+	local select = function(query)
+		return function()
+			require("nvim-treesitter-textobjects.select").select_textobject(query, "textobjects")
+		end
+	end
+	vim.keymap.set({ "x", "o" }, "ac", select("@comment.outer"))
+	vim.keymap.set({ "x", "o" }, "ic", select("@comment.inner"))
+	vim.keymap.set({ "x", "o" }, "ai", select("@conditional.outer"))
+	vim.keymap.set({ "x", "o" }, "ii", select("@conditional.inner"))
+	vim.keymap.set({ "x", "o" }, "af", select("@function.outer"))
+	vim.keymap.set({ "x", "o" }, "if", select("@function.inner"))
+	vim.keymap.set({ "x", "o" }, "al", select("@loop.outer"))
+	vim.keymap.set({ "x", "o" }, "il", select("@loop.inner"))
+	vim.keymap.set({ "x", "o" }, "aa", select("@parameter.outer"))
+	vim.keymap.set({ "x", "o" }, "ia", select("@parameter.inner"))
+
+	local swap_next = function(query)
+		return function()
+			require("nvim-treesitter-textobjects.swap").swap_next(query)
+		end
+	end
+	local swap_previous = function(query)
+		return function()
+			require("nvim-treesitter-textobjects.swap").swap_previous(query)
+		end
+	end
+	vim.keymap.set({ "n" }, "<Leader>lp", swap_next("@parameter.inner"), { desc = "Swap next" })
+	vim.keymap.set({ "n" }, "<Leader>lP", swap_previous("@parameter.inner"), { desc = "Swap previous" })
+end
+
+vim.api.nvim_create_autocmd("FileType", {
+	pattern = {
+		"bash",
+		"gleam",
+		"lua",
+		"markdown",
+		"nix",
+		"python",
+		"tex",
+	},
+	callback = treesitter_setup,
 })
+vim.keymap.set({ "n" }, "<leader>lt", treesitter_setup, { desc = "Start treesitter" })

@@ -46,8 +46,6 @@ with lib; let
     mini-nvim
     nvim-spider
     nvim-tree-lua
-    nvim-treesitter-context
-    nvim-treesitter-refactor
     nvim-treesitter-textobjects
     nvim-treesitter.withAllGrammars
     oil-nvim
