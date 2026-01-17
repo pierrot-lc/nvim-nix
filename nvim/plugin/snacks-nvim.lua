@@ -62,13 +62,16 @@ require("snacks").setup({
 Snacks.toggle.new({
 	id = "mini_indent",
 	name = "mini_indent",
-	get = function()
-		return not vim.b.miniindentscope_disable
-	end,
-	set = function(state)
-		vim.b.miniindentscope_disable = not state
-	end,
+	get = function() return not vim.b.miniindentscope_disable end,
+	set = function(state) vim.b.miniindentscope_disable = not state end,
 })
+
+Snacks.toggle.new({
+	id = "wrap_lines",
+	name = "wrap_lines",
+	get = function() return vim.opt.wrap:get() end,
+	set = function(state) vim.opt.wrap = state end,
+}):map("<leader>sw", { desc = "Toggle wrapped lines" })
 
 vim.keymap.set({ "n", "i", "t" }, "<C-g>", Snacks.terminal.toggle, { desc = "Toggle term" })
 vim.keymap.set("n", "<leader>zz", Snacks.zen.zoom, { desc = "Zoom" })
