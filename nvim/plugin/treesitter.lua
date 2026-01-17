@@ -44,11 +44,13 @@ vim.api.nvim_create_autocmd("FileType", {
 	pattern = {
 		"bash",
 		"gleam",
+		"just",
 		"lua",
 		"markdown",
 		"nix",
 		"python",
 		"tex",
+		"typst",
 	},
 	callback = treesitter_setup,
 })

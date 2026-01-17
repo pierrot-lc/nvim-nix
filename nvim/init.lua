@@ -16,10 +16,8 @@ vim.opt.expandtab = true -- Whether or not we want to transform tabs to spaces.
 vim.opt.fillchars:append("fold: ")
 vim.opt.foldcolumn = "0"
 vim.opt.foldenable = true
-vim.opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
 vim.opt.foldlevel = 99
 vim.opt.foldlevelstart = 99 -- Do not fold by default when opening a file.
-vim.opt.foldmethod = "expr"
 vim.opt.foldtext = ""
 vim.opt.grepformat = "%f:%l:%c:%m"
 vim.opt.grepprg = "rg --vimgrep --smart-case"
