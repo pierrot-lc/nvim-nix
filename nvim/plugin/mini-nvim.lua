@@ -46,6 +46,7 @@ require("mini.clue").setup({
 		{ mode = "n", keys = "<Leader>l", desc = "+LSP & TS" },
 		{ mode = "n", keys = "<Leader>t", desc = "+Picks" },
 		{ mode = "n", keys = "<Leader>z", desc = "+Tabs" },
+		{ mode = "n", keys = "<Leader>s", desc = "+Toggles" },
 
 		miniclue.gen_clues.builtin_completion(),
 		miniclue.gen_clues.g(),

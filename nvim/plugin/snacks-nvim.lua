@@ -71,9 +71,16 @@ Snacks.toggle.new({
 	name = "wrap_lines",
 	get = function() return vim.opt.wrap:get() end,
 	set = function(state) vim.opt.wrap = state end,
-}):map("<leader>sw", { desc = "Toggle wrapped lines" })
+}):map("<Leader>sw", { desc = "Toggle wrapped lines" })
+
+Snacks.toggle.new({
+	id = "spell",
+	name = "spell",
+	get = function() return vim.opt.spell:get() end,
+	set = function(state) vim.opt.spell = state end,
+}):map("<Leader>ss", { desc = "Toggle spell" })
 
 vim.keymap.set({ "n", "i", "t" }, "<C-g>", Snacks.terminal.toggle, { desc = "Toggle term" })
-vim.keymap.set("n", "<leader>zz", Snacks.zen.zoom, { desc = "Zoom" })
+vim.keymap.set("n", "<Leader>zz", Snacks.zen.zoom, { desc = "Zoom" })
 vim.api.nvim_create_user_command("Zen", Snacks.zen.zen, { desc = "Zen-mode" })
 vim.api.nvim_create_user_command("GitBrowse", Snacks.gitbrowse.open, { desc = "Browse current git repository" })
