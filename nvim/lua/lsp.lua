@@ -14,6 +14,7 @@ local lspExecutables = {
 	lua_ls = "lua-language-server",
 	marksman = "marksman",
 	nixd = "nixd",
+	qmlls = "qmlls",
 	ruff = "ruff",
 	texlab = "texlab",
 	tinymist = "tinymist",
