@@ -11,22 +11,22 @@ require("snacks").setup({
 	bigfile = {
 		enabled = true,
 	},
-	dashboard = {
-		enabled = true,
-		preset = {
-			keys = {
-				{ icon = "󰈢 ", key = "<Leader>f", desc = "Find file", action = MiniPick.builtin.files },
-				{ icon = "󰺮 ", key = "<Leader>g", desc = "Live grep", action = MiniPick.builtin.grep_live },
-				{ icon = " ", key = "q", desc = "Quit", action = ":qa" },
-			},
-			header = header,
-		},
-		sections = {
-			{ section = "header" },
-			{ section = "keys", gap = 1, padding = 1 },
-			{ text = footer },
-		},
-	},
+	-- dashboard = {
+	-- 	enabled = true,
+	-- 	preset = {
+	-- 		keys = {
+	-- 			{ icon = "󰈢 ", key = "<Leader>f", desc = "Find file", action = MiniPick.builtin.files },
+	-- 			{ icon = "󰺮 ", key = "<Leader>g", desc = "Live grep", action = MiniPick.builtin.grep_live },
+	-- 			{ icon = " ", key = "q", desc = "Quit", action = ":qa" },
+	-- 		},
+	-- 		header = header,
+	-- 	},
+	-- 	sections = {
+	-- 		{ section = "header" },
+	-- 		{ section = "keys", gap = 1, padding = 1 },
+	-- 		{ text = footer },
+	-- 	},
+	-- },
 	gitbrowse = { what = "repo" },
 	quickfile = {},
 	statuscolumn = {
