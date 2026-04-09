@@ -1,6 +1,4 @@
 --- Find LSP-specifics configs here: https://github.com/neovim/nvim-lspconfig/tree/master/lua/lspconfig/configs
-vim.diagnostic.config({ update_in_insert = false })
-
 vim.lsp.config("*", {
 	capabilities = require("blink.cmp").get_lsp_capabilities(),
 	root_markers = { ".git" },
@@ -60,3 +58,26 @@ end, { desc = "Show diagnostics" })
 vim.keymap.set("n", "<leader>ld", function()
 	return vim.diagnostic.enable(not vim.diagnostic.is_enabled())
 end, { desc = "Toggle diagnostics" })
+
+vim.diagnostic.config({
+	severity_sort = true,
+	update_in_insert = false,
+	float = {
+		border = "rounded",
+		source = "if_many",
+	},
+	underline = true,
+	virtual_text = {
+		spacing = 2,
+		source = "if_many",
+		prefix = "●",
+	},
+	signs = {
+		text = {
+			[vim.diagnostic.severity.ERROR] = "E",
+			[vim.diagnostic.severity.WARN] = "W",
+			[vim.diagnostic.severity.INFO] = "I",
+			[vim.diagnostic.severity.HINT] = "H",
+		},
+	},
+})
