@@ -53,8 +53,7 @@ vim.keymap.set("n", "<leader>a", select_all, { desc = "Select all text in curren
 vim.keymap.set("n", "<leader>r", "<cmd>InspectTree<cr>", { desc = "Show parsed tree" })
 
 -- Copy/paste
-vim.keymap.set({ "n", "x" }, "cp", '"+y', { desc = "Copy to system clipboard" })
-vim.keymap.set({ "n", "x" }, "cv", '"+p', { desc = "Paste from system clipboard" })
+vim.keymap.set({ "n", "x" }, "cy", '"+y', { desc = "Copy to system clipboard" })
 vim.keymap.set("n", "x", '"_x', { desc = "Delete without changing internal clipboard" })
 vim.keymap.set("n", "dd", function()
 	if vim.api.nvim_get_current_line():match("^%s*$") then
